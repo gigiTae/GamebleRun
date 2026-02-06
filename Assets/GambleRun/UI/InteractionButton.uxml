@@ -1,0 +1,3 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="InteractionPanel" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/GambleRun/Icon/EButton.png?fileID=2800000&amp;guid=190dc2647f268b544ac9f83573be2d7d&amp;type=3#EButton&quot;); opacity: 1; display: flex; width: 32px; height: 32px; visibility: visible; position: absolute; top: -16px; left: -16px;" />
+</ui:UXML>

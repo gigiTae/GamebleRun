@@ -1,0 +1,40 @@
+.slot {
+    width: 100px;
+    height: 100px;
+    
+    margin: 10px;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);   
+    border-radius: 10px;
+}
+
+.slot:hover {
+    border-color: rgb(255, 255,0);   
+}
+
+.storage_slotContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: scroll;
+    height: auto;
+}
+
+.slot_icon {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.slot_stack_label {
+    position: absolute; /* 부모인 .slot 기준 절대 위치 */
+    right: 2px;         /* 오른쪽 끝에서 5px 띄움 */
+    bottom: 2px;        /* 바닥 끝에서 5px 띄움 */
+    
+    /* 텍스트 가독성을 위한 스타일 */
+    color: white;
+    -unity-font-style: bold;
+    font-size: 14px;
+    /* 검은색 외곽선 효과 (가독성 향상) */
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: black;
+}
