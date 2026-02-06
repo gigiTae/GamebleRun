@@ -9,10 +9,13 @@ namespace GambleRun
     {
         public Sprite Icon;
         public uint ItemCount;
-        public SlotViewInit(Sprite icon, uint itemCount)
+        public int SlotIndex;
+
+        public SlotViewInit(Sprite icon, uint itemCount, int slotIndex)
         {
             Icon = icon;
             ItemCount = itemCount;
+            SlotIndex = slotIndex;
         }
     }
 
@@ -21,25 +24,25 @@ namespace GambleRun
     {
         private Image _icon;
         private Label _stackLabel;
+        private int _slotIndex = -1;
+        public int SlotIndex => _slotIndex;
 
         public SlotView()
         {
             _icon = new Image();
             _icon.AddToClassList("slot_icon");
+            _icon.pickingMode = PickingMode.Ignore;
             Add(_icon);
 
             _stackLabel = new Label();
             _stackLabel.AddToClassList("slot_stack_label");
+            _stackLabel.pickingMode = PickingMode.Ignore;
             Add(_stackLabel);
-
-            RegisterCallback<PointerDownEvent>(OnPointerDown);
-        }
-        private void OnPointerDown(PointerDownEvent evt)
-        {
         }
 
         public void Setup(SlotViewInit data)
         {
+            _slotIndex = data.SlotIndex;
             SetIcon(data.Icon);
             SetStackLabel(data.ItemCount);
         }

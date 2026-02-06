@@ -15,10 +15,11 @@ public enum ItemRarity
 [CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Objects/ItemData")]
 public class ItemData : ScriptableObject
 {
-    public string ItemName = "None";
+    public string ItemName = "Empty";
     public int Price = 1;
     public int Weight = 0;  
     public uint Count = 1;
     public Sprite Icon = null;
     public ItemRarity Rarity = ItemRarity.Common;
+
 } 

@@ -185,7 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fee48faa1097344397ed5ce3db874df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StorageParentName: backpack_panel
+  _storageParentName: backpack_panel
+  _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
   testData: {fileID: 11400000, guid: 25ac837f9b8b12645b7dfd94d159466d, type: 2}
 --- !u!114 &29888376
 MonoBehaviour:
@@ -199,7 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fee48faa1097344397ed5ce3db874df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StorageParentName: spoils_panel
+  _storageParentName: spoils_panel
+  _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
   testData: {fileID: 11400000, guid: dc23dfc298d0bcc4ab28ea28a66fd1f6, type: 2}
 --- !u!114 &29888377
 MonoBehaviour:
@@ -213,7 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fee48faa1097344397ed5ce3db874df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StorageParentName: equipment_panel
+  _storageParentName: equipment_panel
+  _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
   testData: {fileID: 11400000, guid: dba9580170736794b9ccde2d4e3ec06b, type: 2}
 --- !u!1 &63657912
 GameObject:

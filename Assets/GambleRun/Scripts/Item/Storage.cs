@@ -1,13 +1,14 @@
 using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UIElements;
+using GambleRun.Manager;
 
 namespace GambleRun
 {
     public class Storage : MonoBehaviour
     {
-        public string StorageParentName;
-
+        [SerializeField] private string _storageParentName;
+        [SerializeField] private DragDropManager _dragDropManager;
         [SerializeField] private StorageData testData;
 
         private UIDocument _uiDocument;
@@ -19,21 +20,19 @@ namespace GambleRun
             _uiDocument = GetComponent<UIDocument>();
             _storageView = new StorageView();
 
-            VisualElement StorageView = _uiDocument.rootVisualElement.Q(StorageParentName);
+            VisualElement StorageView = _uiDocument.rootVisualElement.Q(_storageParentName);
 
             if (StorageView != null)
             {
                 StorageView.Add(_storageView);
-            }
-            else
-            {
-                return;
             }
 
             if (testData != null)
             {
                 _storageData = testData;
             }
+
+            BindPointerCallback();
 
             RefreshView();
         }
@@ -45,8 +44,6 @@ namespace GambleRun
                 SetupStorageView();
             }
         }
-
-
         private void SetupStorageView()
         {
             _storageView.ClearContainer();
@@ -57,10 +54,59 @@ namespace GambleRun
             {
                 Sprite icon = items[i] == null ? null : items[i].Icon;
                 uint count = items[i] == null ? 0 : items[i].Count;
-                SlotViewInit slotData = new(icon, count);
+                SlotViewInit slotData = new(icon, count, i);
                 _storageView.AddSlot(slotData);
             }
+        }
 
+        private void BindPointerCallback()
+        {
+            _storageView.RegisterCallback<PointerDownEvent>(OnPointerDown);
+            _storageView.RegisterCallback<PointerUpEvent>(OnPointerUp);
+            _storageView.RegisterCallback<PointerMoveEvent>(OnPointerMove);
+        }
+
+        private void OnPointerDown(PointerDownEvent evt)
+        {
+            // evt.target : 실제로 이벤트를 발생시킨 가장 깊은 곳의 자식 요소.
+            // evt.currentTarget: 이벤트를 처리하고 있는 현재 요소.
+            SlotView clickedSlot = evt.target as SlotView;
+
+            if (clickedSlot != null)
+            {
+                _dragDropManager.BeginDragDrop(this, clickedSlot.SlotIndex);
+            }
+        }
+
+        private void OnPointerMove(PointerMoveEvent evt)
+        {
+
+
+        }
+
+        private void OnPointerUp(PointerUpEvent evt)
+        {
+            SlotView dropSlot = evt.target as SlotView;
+
+            if (dropSlot != null)
+            {
+                _dragDropManager.EndDragDrop(this, dropSlot.SlotIndex);
+            }
+        }
+
+        public void SetItem(ItemData item, int itemIndex2)
+        {
+            Sprite icon = item == null ? null : item.Icon;
+            uint count = item == null ? 0 : item.Count;
+            SlotViewInit initData = new(icon, count, itemIndex2);
+            _storageView.RefreshSlot(itemIndex2, initData);
+
+            _storageData.SetItem(item, itemIndex2);
+        }
+
+        public ItemData GetItemData(int index)
+        {
+            return _storageData.Items[index];
         }
     }
 }
