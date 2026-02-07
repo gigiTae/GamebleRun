@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe5ff79eeab86944acdcea0ccf5baae, type: 3}
   m_Name: Sample
   m_EditorClassIdentifier: 
-  ItemName: Sample
+  ItemName: Emerald
   Price: 1
   Weight: 0
-  Count: 5
+  Count: 1
   Icon: {fileID: 21300000, guid: d4acfee7725bb8e4aad2146c09e7a52a, type: 3}
   Rarity: 0

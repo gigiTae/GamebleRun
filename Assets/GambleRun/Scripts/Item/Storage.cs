@@ -2,6 +2,7 @@ using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UIElements;
 using GambleRun.Manager;
+using System.Dynamic;
 
 namespace GambleRun
 {
@@ -9,7 +10,7 @@ namespace GambleRun
     {
         [SerializeField] private string _storageParentName;
         [SerializeField] private DragDropManager _dragDropManager;
-        [SerializeField] private StorageData testData;
+        [SerializeField] private StorageData _testData;
 
         private UIDocument _uiDocument;
         private StorageView _storageView;
@@ -20,30 +21,45 @@ namespace GambleRun
             _uiDocument = GetComponent<UIDocument>();
             _storageView = new StorageView();
 
-            VisualElement StorageView = _uiDocument.rootVisualElement.Q(_storageParentName);
+            VisualElement parentView = _uiDocument.rootVisualElement.Q(_storageParentName);
 
-            if (StorageView != null)
+            if (parentView != null)
             {
-                StorageView.Add(_storageView);
+                parentView.Add(_storageView);
             }
 
-            if (testData != null)
+            // TestData
+            if (_testData != null)
             {
-                _storageData = testData;
+                _storageData = Instantiate(_testData);
+                var items = _testData.Items;
+
+                for (int i = 0; i < items.Count; ++i)
+                {
+                    if (items[i] != null)
+                    {
+                        ItemData data = Instantiate(items[i]);
+                        _storageData.SetItem(data, i);
+                    }
+                    else
+                    {
+                        _storageData.SetItem(null, i);
+                    }
+                }
             }
 
             BindPointerCallback();
-
             RefreshView();
         }
 
         public void RefreshView()
         {
-            if (testData != null && _storageView != null)
+            if (_testData != null && _storageView != null)
             {
                 SetupStorageView();
             }
         }
+
         private void SetupStorageView()
         {
             _storageView.ClearContainer();

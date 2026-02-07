@@ -30,23 +30,31 @@ namespace GambleRun.Manager
                 return;
             }
 
-            if(endStorage != _startStorage)
-            {
-                Debug.Log("Diff");
-            }
-
-            // 1. 같은 공간
             ItemData startItem = _startStorage.GetItemData(_startItemIndex);
             ItemData endItem = endStorage.GetItemData(endItemIndex);
 
-            _startStorage.SetItem(endItem, _startItemIndex);
-            endStorage.SetItem(startItem, endItemIndex);
+            bool CanCombine = (startItem && endItem 
+                && startItem.ItemName == endItem.ItemName
+                && _startItemIndex != endItemIndex);
+
+            if (CanCombine)
+            {
+                Debug.Log("Combine");
+                startItem.Count += endItem.Count;
+                _startStorage.SetItem(null, _startItemIndex);
+                endStorage.SetItem(startItem, endItemIndex);
+            }
+            else
+            {
+                _startStorage.SetItem(endItem, _startItemIndex);
+                endStorage.SetItem(startItem, endItemIndex);
+            }
+
 
             _isDragging = false;
             _startItemIndex = -1;
             _startStorage = null;
         }
-
     }
 }
 
