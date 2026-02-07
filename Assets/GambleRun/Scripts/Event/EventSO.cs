@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EventSO", menuName = "Scriptable Objects/EventSO")]
 public abstract class EventSO<T> : ScriptableObject
 {
     private event Action<T> OnRaised;

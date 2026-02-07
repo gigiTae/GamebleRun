@@ -1,36 +1,37 @@
 using UnityEngine;
 
-public class ItemBox : MonoBehaviour, IInteractable
+namespace GambleRun
 {
-    [SerializeField]
-    private StorageData _storage;
-    [SerializeField]
-    private ItemBoxEvent _itemBoxOpenEvent;
-    private InteractionButtonView _interactionView;
-
-    void Awake()
+    public class ItemBox : MonoBehaviour, IInteractable
     {
-        _interactionView = GetComponent<InteractionButtonView>();
-    }
+        [SerializeField]
+        private StorageData _storage;
+        [SerializeField]
+        private ItemBoxEvent _itemBoxOpenEvent;
+        private InteractionButtonView _interactionView;
+        void Awake()
+        {
+            _interactionView = GetComponent<InteractionButtonView>();
+        }
 
-    public void Interact()
-    {
-        _itemBoxOpenEvent.Raise(_storage);
-    }
+        public void Interact()
+        {
+            _itemBoxOpenEvent.Raise(_storage);
+        }
 
-    public bool IsInteractable()
-    {
-        return true;
-    }
+        public bool IsInteractable()
+        {
+            return true;
+        }
 
-    public void OnEnterFocus()
-    {
-        _interactionView.Show(true);
-    }
+        public void OnEnterFocus()
+        {
+            _interactionView.Show(true);
+        }
 
-    public void OnExitFocus()
-    {
-        _interactionView.Show(false);
+        public void OnExitFocus()
+        {
+            _interactionView.Show(false);
+        }
     }
-
 }

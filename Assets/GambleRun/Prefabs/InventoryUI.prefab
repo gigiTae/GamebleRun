@@ -10,9 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1808322829852550831}
   - component: {fileID: 4103243829611010739}
-  - component: {fileID: 3505361644300955954}
-  - component: {fileID: 6063575742743489718}
-  - component: {fileID: 1873889482219772189}
   m_Layer: 0
   m_Name: InventoryUI
   m_TagString: Untagged
@@ -54,48 +51,3 @@ MonoBehaviour:
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
---- !u!114 &3505361644300955954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2426915747371153383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fee48faa1097344397ed5ce3db874df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _storageParentName: backpack_panel
-  _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
-  testData: {fileID: 11400000, guid: 25ac837f9b8b12645b7dfd94d159466d, type: 2}
---- !u!114 &6063575742743489718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2426915747371153383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fee48faa1097344397ed5ce3db874df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _storageParentName: spoils_panel
-  _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
-  testData: {fileID: 11400000, guid: dc23dfc298d0bcc4ab28ea28a66fd1f6, type: 2}
---- !u!114 &1873889482219772189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2426915747371153383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fee48faa1097344397ed5ce3db874df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _storageParentName: equipment_panel
-  _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
-  testData: {fileID: 11400000, guid: dba9580170736794b9ccde2d4e3ec06b, type: 2}

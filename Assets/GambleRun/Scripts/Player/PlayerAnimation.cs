@@ -2,83 +2,85 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour
+namespace GambleRun
 {
-    private readonly int MOVE_SPEED_ID = Animator.StringToHash("MoveSpeed");
-    private readonly int ON_INTERACTION_ID = Animator.StringToHash("OnInteraction");
-
-    private Animator _animator;
-    private PlayerMovement _movement;
-
-    [SerializeField]
-    private ItemBoxEvent _itemBoxOpenEvent;
-
-    [SerializeField]
-    private ItemBoxEvent _itemBoxCloseEvent;
-
-    private void Awake()
+    public class PlayerAnimation : MonoBehaviour
     {
-        _movement = GetComponentInParent<PlayerMovement>();
+        private readonly int MOVE_SPEED_ID = Animator.StringToHash("MoveSpeed");
+        private readonly int ON_INTERACTION_ID = Animator.StringToHash("OnInteraction");
 
-        if (_movement == null)
+        private Animator _animator;
+        private PlayerMovement _movement;
+
+        [SerializeField]
+        private ItemBoxEvent _itemBoxOpenEvent;
+
+        [SerializeField]
+        private ItemBoxEvent _itemBoxCloseEvent;
+
+        private void Awake()
         {
-            Debug.Log("PlayertMovement is null");
+            _movement = GetComponentInParent<PlayerMovement>();
+
+            if (_movement == null)
+            {
+                Debug.Log("PlayertMovement is null");
+            }
+
+            _animator = GetComponent<Animator>();
+
+            if (_animator == null)
+            {
+                Debug.Log("Animator is null");
+            }
+
+            if (_itemBoxOpenEvent != null)
+            {
+                _itemBoxOpenEvent.Subscribe(OnInteraction);
+            }
+            else
+            {
+                Debug.Log("ItmeBoxOpenEvent is null");
+            }
+
+            if (_itemBoxCloseEvent != null)
+            {
+                _itemBoxCloseEvent.Subscribe(OffInteraction);
+            }
+            else
+            {
+                Debug.Log("ItmeBoxCloseEvent is null");
+            }
         }
 
-        _animator = GetComponent<Animator>();
-
-        if (_animator == null)
+        private void OnDestroy()
         {
-            Debug.Log("Animator is null");
+            _itemBoxOpenEvent.Unsubscribe(OnInteraction);
+            _itemBoxCloseEvent.Unsubscribe(OffInteraction);
         }
 
-        if (_itemBoxOpenEvent != null)
+        private void OnInteraction(StorageData data)
         {
-            _itemBoxOpenEvent.Subscribe(OnInteraction);
-        }
-        else
-        {
-            Debug.Log("ItmeBoxOpenEvent is null");
+            _animator.SetBool(ON_INTERACTION_ID, true);
         }
 
-        if(_itemBoxCloseEvent != null)
+        private void OffInteraction(StorageData data)
         {
-            _itemBoxCloseEvent.Subscribe(OffInteraction);
+            _animator.SetBool(ON_INTERACTION_ID, false);
         }
-        else
+
+        // Update is called once per frame
+        private void Update()
         {
-            Debug.Log("ItmeBoxCloseEvent is null");
+            UpdateAnimParams();
+        }
+
+        private void UpdateAnimParams()
+        {
+            if (_animator != null)
+            {
+                _animator.SetFloat(MOVE_SPEED_ID, _movement.HorizontalSpeedRatio);
+            }
         }
     }
-
-    private void OnDestroy()
-    {
-        _itemBoxOpenEvent.Unsubscribe(OnInteraction);
-        _itemBoxCloseEvent.Unsubscribe(OffInteraction); 
-    }
-
-    private void OnInteraction(StorageData data)
-    {
-        _animator.SetBool(ON_INTERACTION_ID, true);
-    }
-
-    private void OffInteraction(StorageData data)
-    {
-        _animator.SetBool(ON_INTERACTION_ID, false);
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        UpdateAnimParams();
-    }
-
-    private void UpdateAnimParams()
-    {
-        if (_animator != null)
-        {
-            _animator.SetFloat(MOVE_SPEED_ID, _movement.HorizontalSpeedRatio);
-        }
-    }
-
 }

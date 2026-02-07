@@ -1,8 +1,6 @@
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UIElements;
 using GambleRun.Manager;
-using System.Dynamic;
 
 namespace GambleRun
 {
@@ -18,7 +16,7 @@ namespace GambleRun
 
         private void Awake()
         {
-            _uiDocument = GetComponent<UIDocument>();
+            _uiDocument = GetComponentInParent<UIDocument>();
             _storageView = new StorageView();
 
             VisualElement parentView = _uiDocument.rootVisualElement.Q(_storageParentName);
@@ -49,13 +47,18 @@ namespace GambleRun
             }
 
             BindPointerCallback();
-            RefreshView();
+            RefreshStorage(_testData);
         }
 
-        public void RefreshView()
+
+        /// <summary>
+        /// 스토리지를 새로운 데이터로 갱신합니다 
+        /// </summary>
+        public void RefreshStorage(StorageData storageData)
         {
-            if (_testData != null && _storageView != null)
+            if (storageData != null && _storageView != null)
             {
+                _storageData = storageData;
                 SetupStorageView();
             }
         }
@@ -79,7 +82,6 @@ namespace GambleRun
         {
             _storageView.RegisterCallback<PointerDownEvent>(OnPointerDown);
             _storageView.RegisterCallback<PointerUpEvent>(OnPointerUp);
-            _storageView.RegisterCallback<PointerMoveEvent>(OnPointerMove);
         }
 
         private void OnPointerDown(PointerDownEvent evt)
@@ -92,12 +94,6 @@ namespace GambleRun
             {
                 _dragDropManager.BeginDragDrop(this, clickedSlot.SlotIndex);
             }
-        }
-
-        private void OnPointerMove(PointerMoveEvent evt)
-        {
-
-
         }
 
         private void OnPointerUp(PointerUpEvent evt)
@@ -116,7 +112,6 @@ namespace GambleRun
             uint count = item == null ? 0 : item.Count;
             SlotViewInit initData = new(icon, count, itemIndex2);
             _storageView.RefreshSlot(itemIndex2, initData);
-
             _storageData.SetItem(item, itemIndex2);
         }
 
