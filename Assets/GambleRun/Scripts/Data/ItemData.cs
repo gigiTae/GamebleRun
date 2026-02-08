@@ -25,7 +25,7 @@ namespace GambleRun
 
 
     // 아이템 기본적인 데이터를 설정
-    [CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Objects/ItemData")]
+    [CreateAssetMenu(fileName = "ItemData", menuName = "GameData/ItemData")]
     public class ItemData : ScriptableObject
     {
         public string ItemName = "Empty";

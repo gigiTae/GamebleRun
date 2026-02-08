@@ -12,11 +12,8 @@ namespace GambleRun
         private Animator _animator;
         private PlayerMovement _movement;
 
-        [SerializeField]
-        private ItemBoxEvent _itemBoxOpenEvent;
-
-        [SerializeField]
-        private ItemBoxEvent _itemBoxCloseEvent;
+        [SerializeField] private ItemBoxEvent _itemBoxOpenEvent;
+        [SerializeField] private ItemBoxEvent _itemBoxCloseEvent;
 
         private void Awake()
         {

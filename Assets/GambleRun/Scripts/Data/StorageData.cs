@@ -1,16 +1,33 @@
 using System;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
 namespace GambleRun
 {
-    [CreateAssetMenu(fileName = "StorageData", menuName = "Scriptable Objects/StorageData")]
+    [CreateAssetMenu(fileName = "StorageData", menuName = "GameData/StorageData")]
     public class StorageData : ScriptableObject
     {
         [SerializeField] private List<ItemData> _items = new();
         public IReadOnlyList<ItemData> Items => _items;
+        public StorageData Clone()
+        {
+            StorageData newStorage = CreateInstance<StorageData>();
+            foreach (var item in _items)
+            {
+                if (item != null)
+                {
+                    newStorage._items.Add(Instantiate(item));
+                }
+                else
+                {
+                    newStorage._items.Add(null);
+                }
+            }
+            return newStorage;
+        }
 
         // 아이템을 추가합니다 
         public bool AddItem(ItemData item)
@@ -64,5 +81,6 @@ namespace GambleRun
         {
             _items = new(size);
         }
+
     }
 }

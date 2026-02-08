@@ -973,8 +973,9 @@ GameObject:
   m_Component:
   - component: {fileID: -8679921383154817045}
   - component: {fileID: 5866666021909216657}
+  - component: {fileID: 6567178024967010487}
   m_Layer: 0
-  m_Name: castle_guard_01
+  m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,7 +1011,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: d2602f70bde05c94393f9abd0aa84047, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -1019,6 +1020,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6567178024967010487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149155446097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 480ac42e279f3c3498f9048e82ca2760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemBoxOpenEvent: {fileID: 11400000, guid: feb6de6c4bf4e54428ae16e17d30e7f4, type: 2}
+  _itemBoxCloseEvent: {fileID: 11400000, guid: 0fac2a6d48aea23419113a7c047f748a, type: 2}
 --- !u!1 &1082271958561512970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630cd82199fbfc040b467f3435ec2185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
 --- !u!65 &2838450438826351351
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1511,7 +1527,7 @@ GameObject:
   - component: {fileID: 3634021308258956019}
   - component: {fileID: 1470928966775667490}
   - component: {fileID: 6150922043921215704}
-  - component: {fileID: 6298286798567265373}
+  - component: {fileID: 1754034848337916259}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1573,10 +1589,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561edc3f5c95058459dc50279317c340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: 10
+  _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
+  _rotationSpeed: 15
   _moveSpeed: 5
   _gravity: -9.81
---- !u!114 &6298286798567265373
+--- !u!114 &1754034848337916259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1585,27 +1602,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7239880456313921797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: a0c384619e9c25f4682f8efb99e54a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
+  _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
+  _inventoryOpenEvent: {fileID: 11400000, guid: f04cc50e1ca768b48bc6a6b239925ce3, type: 2}
 --- !u!1 &7363479242261063072
 GameObject:
   m_ObjectHideFlags: 0

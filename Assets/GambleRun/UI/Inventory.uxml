@@ -6,11 +6,11 @@
                 <ui:Label text="전리품&#10;" name="spoils" style="color: rgb(255, 255, 255); -unity-text-align: upper-center; font-size: 25px;" />
             </ui:VisualElement>
             <ui:VisualElement name="player_panel" style="flex-grow: 0; width: 65%; flex-shrink: 0;">
-                <ui:VisualElement name="backpack_panel" style="flex-grow: 0; height: 60%; flex-shrink: 0;">
-                    <ui:Label text="가방" name="backpack" style="font-size: 25px; color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
-                </ui:VisualElement>
                 <ui:VisualElement name="equipment_panel" style="flex-grow: 0; flex-shrink: 0; height: 40%;">
                     <ui:Label text="장비" name="equipment" style="font-size: 25px; color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="backpack_panel" style="flex-grow: 0; height: 60%; flex-shrink: 0;">
+                    <ui:Label text="가방" name="backpack" style="font-size: 25px; color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

@@ -13,6 +13,7 @@ namespace GambleRun
         void Awake()
         {
             _interactionView = GetComponent<InteractionButtonView>();
+            _storage = _storage.Clone();
         }
 
         public void Interact()

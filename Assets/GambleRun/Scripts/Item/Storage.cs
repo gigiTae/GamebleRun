@@ -25,21 +25,7 @@ namespace GambleRun
             // TestData
             if (_testData != null)
             {
-                _storageData = Instantiate(_testData);
-                var items = _testData.Items;
-
-                for (int i = 0; i < items.Count; ++i)
-                {
-                    if (items[i] != null)
-                    {
-                        ItemData data = Instantiate(items[i]);
-                        _storageData.SetItem(data, i);
-                    }
-                    else
-                    {
-                        _storageData.SetItem(null, i);
-                    }
-                }
+                _storageData = _testData.Clone();
             }
 
             BindPointerCallback();

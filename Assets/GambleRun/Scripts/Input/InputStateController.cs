@@ -44,8 +44,7 @@ namespace GambleRun
         private void OnCloseInventory()
         {
             ChangeState(InputState.Gameplay);
-            Debug.Log("CloseInventory In Input");
-        }
+        }   
 
         private void ChangeState(InputState newState)
         {

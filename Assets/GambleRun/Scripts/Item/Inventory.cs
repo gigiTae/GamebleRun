@@ -42,7 +42,6 @@ namespace GambleRun
             if (_uiDocument != null)
             {
                 _uiDocument.rootVisualElement.style.display = DisplayStyle.None;
-                Debug.Log(_uiDocument.rootVisualElement.name);
             }
 
             if (_inputManager != null)
