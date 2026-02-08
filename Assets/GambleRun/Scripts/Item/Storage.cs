@@ -6,7 +6,7 @@ namespace GambleRun
 {
     public class Storage : MonoBehaviour
     {
-        [SerializeField] private string _storageParentName;
+        [SerializeField] private string _parentVisualElement;
         [SerializeField] private DragDropManager _dragDropManager;
         [SerializeField] private StorageData _testData;
 
@@ -19,14 +19,8 @@ namespace GambleRun
         private void Awake()
         {
             _uiDocument = GetComponentInParent<UIDocument>();
-            _storageView = new StorageView();
 
-            VisualElement parentView = _uiDocument.rootVisualElement.Q(_storageParentName);
-
-            if (parentView != null)
-            {
-                parentView.Add(_storageView);
-            }
+            MakeView();
 
             // TestData
             if (_testData != null)
@@ -118,6 +112,21 @@ namespace GambleRun
             return _storageData.Items[index];
         }
 
-       
+        private void MakeView()
+        {
+            _storageView = new StorageView();
+            VisualElement parentView = _uiDocument.rootVisualElement.Q(_parentVisualElement);
+
+            if (parentView != null)
+            {
+                parentView.Add(_storageView);
+            }
+        }
+
+        public void SetVisible(bool isVisible)
+        {
+            VisualElement parentView = _uiDocument.rootVisualElement.Q(_parentVisualElement);
+            parentView.style.visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
+        }
     }
 }

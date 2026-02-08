@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fee48faa1097344397ed5ce3db874df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _storageParentName: equipment_panel
+  _parentVisualElement: equipment_panel
   _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
   _testData: {fileID: 11400000, guid: dba9580170736794b9ccde2d4e3ec06b, type: 2}
 --- !u!1 &147583378
@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fee48faa1097344397ed5ce3db874df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _storageParentName: spoils_panel
+  _parentVisualElement: spoils_panel
   _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
   _testData: {fileID: 11400000, guid: dc23dfc298d0bcc4ab28ea28a66fd1f6, type: 2}
 --- !u!1 &679272138 stripped
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fee48faa1097344397ed5ce3db874df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _storageParentName: backpack_panel
+  _parentVisualElement: backpack_panel
   _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
   _testData: {fileID: 11400000, guid: 25ac837f9b8b12645b7dfd94d159466d, type: 2}
 --- !u!1 &1199742719 stripped
@@ -575,6 +575,7 @@ MonoBehaviour:
   _itemBoxOpenEvent: {fileID: 11400000, guid: feb6de6c4bf4e54428ae16e17d30e7f4, type: 2}
   _itemBoxCloseEvent: {fileID: 11400000, guid: 0fac2a6d48aea23419113a7c047f748a, type: 2}
   _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
+  _inventoryOpenEvent: {fileID: 11400000, guid: f04cc50e1ca768b48bc6a6b239925ce3, type: 2}
 --- !u!1 &1325342805
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,8 +747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
-  _itemBoxOpenEvent: {fileID: 11400000, guid: feb6de6c4bf4e54428ae16e17d30e7f4, type: 2}
   _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
+  _inventoryOpenEvent: {fileID: 11400000, guid: f04cc50e1ca768b48bc6a6b239925ce3, type: 2}
 --- !u!1001 &5637184645063243563
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,6 +29,7 @@ namespace GambleRun
         [SerializeField] private ItemBoxEvent _itemBoxOpenEvent;
         [SerializeField] private ItemBoxEvent _itemBoxCloseEvent;
         [SerializeField] private InventoryEvent _inventoryCloseEvent;
+        [SerializeField] private InventoryEvent _inventoryOpenEvent;
 
         InventoryState _state = InventoryState.Close;
 
@@ -41,6 +42,7 @@ namespace GambleRun
             if (_uiDocument != null)
             {
                 _uiDocument.rootVisualElement.style.display = DisplayStyle.None;
+                Debug.Log(_uiDocument.rootVisualElement.name);
             }
 
             if (_inputManager != null)
@@ -81,17 +83,11 @@ namespace GambleRun
 
         private void SubscribeEvent()
         {
-            if (_itemBoxOpenEvent != null)
-            {
-                _itemBoxOpenEvent.Subscribe(OnOpenItemBox);
-            }
+            _itemBoxOpenEvent?.Subscribe(OnOpenItemBox);
         }
         private void UnsubscribeEvent()
         {
-            if (_itemBoxOpenEvent != null)
-            {
-                _itemBoxOpenEvent.Unsubscribe(OnOpenItemBox);
-            }
+            _itemBoxOpenEvent?.Unsubscribe(OnOpenItemBox);
         }
 
         private void OnOpenItemBox(StorageData data)
@@ -103,32 +99,40 @@ namespace GambleRun
         private void OpenFullInventory()
         {
             _state = InventoryState.FullyOpen;
-
+            _spoils.SetVisible(true);
+           
             // UI
             _uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+
+            // Event
+            _inventoryOpenEvent.Raise();
         }
 
         private void OpenPlayerPartInventory()
         {
             _state = InventoryState.PlayerPartOpen;
+            _spoils.SetVisible(false);
 
             // UI
             _uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+
+            // Event
+            _inventoryOpenEvent.Raise();
         }
 
         private void CloseInventory()
         {
-            if(_state == InventoryState.FullyOpen)
+            if (_state == InventoryState.FullyOpen)
             {
                 _itemBoxCloseEvent.Raise(_spoils.Data);
             }
 
-            _inventoryCloseEvent.Raise();
-            Debug.Log("CloseInventoryInInventory");
-
             // UI
             _uiDocument.rootVisualElement.style.display = DisplayStyle.None;
             _state = InventoryState.Close;
+
+            // Event
+            _inventoryCloseEvent.Raise();
         }
     }
 

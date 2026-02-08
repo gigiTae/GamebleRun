@@ -10,8 +10,8 @@ namespace GambleRun
         private DefaultInputAction _inputActions;
         
         // GameEvent
-        [SerializeField] private ItemBoxEvent _itemBoxOpenEvent;
         [SerializeField] private InventoryEvent _inventoryCloseEvent;
+        [SerializeField] private InventoryEvent _inventoryOpenEvent;
 
         // 게임의 가능한 입력 상태들을 정의
         public enum InputState
@@ -26,17 +26,17 @@ namespace GambleRun
         {
             _inputActions = _inputManager?.DefaultInputAction;
 
-            _itemBoxOpenEvent.Subscribe(OnOpenItemBox);
+            _inventoryOpenEvent.Subscribe(OnOpenInventoryBox);
             _inventoryCloseEvent.Subscribe(OnCloseInventory);
         }
 
         private void OnDestroy()
         {
-            _itemBoxOpenEvent?.Unsubscribe(OnOpenItemBox);
+            _inventoryOpenEvent?.Unsubscribe(OnOpenInventoryBox);
             _inventoryCloseEvent?.Unsubscribe(OnCloseInventory);
         }
 
-        private void OnOpenItemBox(StorageData data)
+        private void OnOpenInventoryBox()
         {
             ChangeState(InputState.Inventory);
         }
