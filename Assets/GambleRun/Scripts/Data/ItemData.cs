@@ -34,5 +34,18 @@ namespace GambleRun
         public uint Count = 1;
         public Sprite Icon = null;
         public ItemRarity Rarity = ItemRarity.None;
+
+        public ItemData Clone()
+        {
+            ItemData data = CreateInstance<ItemData>();
+            data.ItemName = ItemName;
+            data.Price = Price;
+            data.Weight = Weight;
+            data.Count = Count; 
+            data.Icon = Icon;
+            data.Rarity = Rarity;
+
+            return data;
+        }
     }
 }

@@ -26,8 +26,8 @@ namespace GambleRun
         [SerializeField] private Storage _spoils;
 
         // event
-        [SerializeField] private ItemBoxEvent _itemBoxOpenEvent;
-        [SerializeField] private ItemBoxEvent _itemBoxCloseEvent;
+        [SerializeField] private LootEvent _lootOpenEvent;
+        [SerializeField] private LootEvent _lootCloseEvent;
         [SerializeField] private InventoryEvent _inventoryCloseEvent;
         [SerializeField] private InventoryEvent _inventoryOpenEvent;
 
@@ -82,14 +82,14 @@ namespace GambleRun
 
         private void SubscribeEvent()
         {
-            _itemBoxOpenEvent?.Subscribe(OnOpenItemBox);
+            _lootOpenEvent?.Subscribe(OnOpenLoot);
         }
         private void UnsubscribeEvent()
         {
-            _itemBoxOpenEvent?.Unsubscribe(OnOpenItemBox);
+            _lootOpenEvent?.Unsubscribe(OnOpenLoot);
         }
 
-        private void OnOpenItemBox(StorageData data)
+        private void OnOpenLoot(StorageData data)
         {
             _spoils.RefreshStorage(data);
             OpenFullInventory();
@@ -123,7 +123,7 @@ namespace GambleRun
         {
             if (_state == InventoryState.FullyOpen)
             {
-                _itemBoxCloseEvent.Raise(_spoils.Data);
+                _lootCloseEvent.Raise(_spoils.Data);
             }
 
             // UI

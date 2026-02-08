@@ -12,8 +12,8 @@ namespace GambleRun
         private Animator _animator;
         private PlayerMovement _movement;
 
-        [SerializeField] private ItemBoxEvent _itemBoxOpenEvent;
-        [SerializeField] private ItemBoxEvent _itemBoxCloseEvent;
+        [SerializeField] private LootEvent _lootOpenEvent;
+        [SerializeField] private LootEvent _lootCloseEvent;
 
         private void Awake()
         {
@@ -31,18 +31,18 @@ namespace GambleRun
                 Debug.Log("Animator is null");
             }
 
-            if (_itemBoxOpenEvent != null)
+            if (_lootOpenEvent != null)
             {
-                _itemBoxOpenEvent.Subscribe(OnInteraction);
+                _lootOpenEvent.Subscribe(OnInteraction);
             }
             else
             {
                 Debug.Log("ItmeBoxOpenEvent is null");
             }
 
-            if (_itemBoxCloseEvent != null)
+            if (_lootCloseEvent != null)
             {
-                _itemBoxCloseEvent.Subscribe(OffInteraction);
+                _lootCloseEvent.Subscribe(OffInteraction);
             }
             else
             {
@@ -52,8 +52,8 @@ namespace GambleRun
 
         private void OnDestroy()
         {
-            _itemBoxOpenEvent.Unsubscribe(OnInteraction);
-            _itemBoxCloseEvent.Unsubscribe(OffInteraction);
+            _lootOpenEvent.Unsubscribe(OnInteraction);
+            _lootCloseEvent.Unsubscribe(OffInteraction);
         }
 
         private void OnInteraction(StorageData data)

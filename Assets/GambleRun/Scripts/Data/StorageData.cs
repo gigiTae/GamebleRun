@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace GambleRun
 {
@@ -11,15 +8,18 @@ namespace GambleRun
     public class StorageData : ScriptableObject
     {
         [SerializeField] private List<ItemData> _items = new();
+
         public IReadOnlyList<ItemData> Items => _items;
+
         public StorageData Clone()
         {
             StorageData newStorage = CreateInstance<StorageData>();
+
             foreach (var item in _items)
             {
                 if (item != null)
                 {
-                    newStorage._items.Add(Instantiate(item));
+                    newStorage._items.Add(item.Clone());
                 }
                 else
                 {
@@ -32,7 +32,7 @@ namespace GambleRun
         // 아이템을 추가합니다 
         public bool AddItem(ItemData item)
         {
-            int index = GetEmptyIndex();
+            int index = GetCloseEmptyIndex();
 
             if (index == -1)
             {
@@ -47,6 +47,7 @@ namespace GambleRun
         {
             _items[index] = data;
         }
+
         // 저장공간의 인덱스의 아이템을 비웁니다
         public void Empty(int index)
         {
@@ -68,7 +69,7 @@ namespace GambleRun
         }
 
         // 가장가까운 빈공간의 인덱스를 반환합니다
-        public int GetEmptyIndex()
+        public int GetCloseEmptyIndex()
         {
             for (int i = 0; i < _items.Count; i++)
             {
@@ -77,9 +78,32 @@ namespace GambleRun
             return -1;
         }
 
+        /// <summary>
+        /// 스토리지의 빈공간 갯수를 반환
+        /// </summary>
+        public int EmptySpaceCount
+        {
+            get
+            {
+                int size = 0;
+                for (int i = 0; i < _items.Count; i++)
+                {
+                    if (_items[i] == null)
+                    {
+                        ++size;
+                    }    
+                }
+                return size;
+            }
+        }
+
         public void ResetStorage(int size)
         {
-            _items = new(size);
+            _items = new List<ItemData>(size);
+            for (int i = 0; i < size; i++)
+            {
+                _items.Add(null);
+            }
         }
 
     }

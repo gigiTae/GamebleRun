@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84816d34571427a41a5cc5f6455028e4, type: 3}
+  m_Name: GoodBox
+  m_EditorClassIdentifier: 
+  SlotCount: 5
+  FixedItems: []
+  ProbabilityItems:
+  - Item: {fileID: 11400000, guid: 721bbf2a2165d3d41b3efb5064b83178, type: 2}
+    Probability: 1
+  - Item: {fileID: 11400000, guid: c48c9c814bc94a549b765afb55c4560e, type: 2}
+    Probability: 1
+  - Item: {fileID: 11400000, guid: 39f51d3448d3d00418baa80132fa45f8, type: 2}
+    Probability: 1

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84816d34571427a41a5cc5f6455028e4, type: 3}
+  m_Name: BaseBox
+  m_EditorClassIdentifier: 
+  SlotCount: 5
+  FixedItems: []
+  ProbabilityItems:
+  - Item: {fileID: 11400000, guid: 0d9b08b533cdbe3428b0d5032b8ab53a, type: 2}
+    Probability: 1
+  - Item: {fileID: 11400000, guid: 5abd7fae5eb1fd54b8d2e0dc520577a9, type: 2}
+    Probability: 1
+  - Item: {fileID: 11400000, guid: 721bbf2a2165d3d41b3efb5064b83178, type: 2}
+    Probability: 1

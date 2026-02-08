@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbe5ff79eeab86944acdcea0ccf5baae, type: 3}
-  m_Name: ItemData
+  m_Name: C_Coffe
   m_EditorClassIdentifier: 
-  ItemName: Emerald
-  Price: 500
+  ItemName: Coffee
+  Price: 20
   Weight: 1
   Count: 1
-  Icon: {fileID: 21300000, guid: d4acfee7725bb8e4aad2146c09e7a52a, type: 3}
-  Rarity: 0
+  Icon: {fileID: 21300000, guid: 1e25b4d3914dba74d99d9ca369c6614a, type: 3}
+  Rarity: 1
