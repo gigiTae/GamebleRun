@@ -6,6 +6,7 @@ namespace GambleRun
     {
         [SerializeField]
         private StorageData _storage;
+
         [SerializeField]
         private ItemBoxEvent _itemBoxOpenEvent;
         private InteractionButtonView _interactionView;

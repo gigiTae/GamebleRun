@@ -14,6 +14,8 @@ namespace GambleRun
         private StorageView _storageView;
         private StorageData _storageData;
 
+        public StorageData Data => _storageData;
+
         private void Awake()
         {
             _uiDocument = GetComponentInParent<UIDocument>();
@@ -88,9 +90,7 @@ namespace GambleRun
         {
             // evt.target : 실제로 이벤트를 발생시킨 가장 깊은 곳의 자식 요소.
             // evt.currentTarget: 이벤트를 처리하고 있는 현재 요소.
-            SlotView clickedSlot = evt.target as SlotView;
-
-            if (clickedSlot != null)
+            if (evt.target is SlotView clickedSlot)
             {
                 _dragDropManager.BeginDragDrop(this, clickedSlot.SlotIndex);
             }
@@ -98,9 +98,7 @@ namespace GambleRun
 
         private void OnPointerUp(PointerUpEvent evt)
         {
-            SlotView dropSlot = evt.target as SlotView;
-
-            if (dropSlot != null)
+            if (evt.target is SlotView dropSlot)
             {
                 _dragDropManager.EndDragDrop(this, dropSlot.SlotIndex);
             }
@@ -119,5 +117,7 @@ namespace GambleRun
         {
             return _storageData.Items[index];
         }
+
+       
     }
 }

@@ -475,6 +475,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &723517944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7239880456313921797, guid: 52789279617eea6418116fa57652a48e, type: 3}
+  m_PrefabInstance: {fileID: 7613529821317337708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &941890368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 52789279617eea6418116fa57652a48e, type: 3}
@@ -563,11 +568,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37022d9635ec21d48afec3a57da01a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
   _backpack: {fileID: 1039299009}
   _equipment: {fileID: 79836426}
   _spoils: {fileID: 582927356}
   _itemBoxOpenEvent: {fileID: 11400000, guid: feb6de6c4bf4e54428ae16e17d30e7f4, type: 2}
   _itemBoxCloseEvent: {fileID: 11400000, guid: 0fac2a6d48aea23419113a7c047f748a, type: 2}
+  _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
 --- !u!1 &1325342805
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,13 +726,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 1710297077}
-  _offset: {x: 0, y: 5, z: -5}
+  _offset: {x: 0, y: 7, z: -7}
   _smoothSpeed: 0.125
 --- !u!4 &1710297077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3634021308258956019, guid: 52789279617eea6418116fa57652a48e, type: 3}
   m_PrefabInstance: {fileID: 7613529821317337708}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1710297085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723517944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c384619e9c25f4682f8efb99e54a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
+  _itemBoxOpenEvent: {fileID: 11400000, guid: feb6de6c4bf4e54428ae16e17d30e7f4, type: 2}
+  _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
 --- !u!1001 &5637184645063243563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -899,6 +921,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 2450793143611865777, guid: 52789279617eea6418116fa57652a48e, type: 3}
+      propertyPath: _inputManager
+      value: 
+      objectReference: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
     - target: {fileID: 3634021308258956019, guid: 52789279617eea6418116fa57652a48e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -944,20 +970,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6150922043921215704, guid: 52789279617eea6418116fa57652a48e, type: 3}
+      propertyPath: _inputManager
+      value: 
+      objectReference: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
+    - target: {fileID: 6150922043921215704, guid: 52789279617eea6418116fa57652a48e, type: 3}
       propertyPath: _rotationSpeed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298286798567265373, guid: 52789279617eea6418116fa57652a48e, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 5b4ffe718faebc94f98d0fc3032cda5f, type: 3}
+    - target: {fileID: 6298286798567265373, guid: 52789279617eea6418116fa57652a48e, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: GamePlay
       objectReference: {fileID: 0}
     - target: {fileID: 7239880456313921797, guid: 52789279617eea6418116fa57652a48e, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6298286798567265373, guid: 52789279617eea6418116fa57652a48e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3634021308258956019, guid: 52789279617eea6418116fa57652a48e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1199742724}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7239880456313921797, guid: 52789279617eea6418116fa57652a48e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1710297085}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 52789279617eea6418116fa57652a48e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 941890371}

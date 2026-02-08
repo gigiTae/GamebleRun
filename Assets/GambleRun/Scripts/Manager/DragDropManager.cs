@@ -50,7 +50,6 @@ namespace GambleRun.Manager
             _startStorage.SetItem(null, _startItemIndex);
             endStorage.SetItem(end, endIdx);
         }
-
         private void SwapItems(ItemData start, ItemData end, Storage endStorage, int endIdx)
         {
             _startStorage.SetItem(end, _startItemIndex);

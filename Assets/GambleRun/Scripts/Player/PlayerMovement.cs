@@ -1,12 +1,16 @@
+using GambleRun;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController _controller;
-    private PlayerInput _playerInput;
     private Vector3 _currentVelocity;
     private Camera _mainCamera;
+
+    [SerializeField] private InputManager _inputManager;
+    private DefaultInputAction.GamePlayActions _gamePlayActions;
 
     [SerializeField] private float _rotationSpeed = 10f; // 회전 속도 설정
     [SerializeField] private float _moveSpeed = 5.0f;
@@ -24,10 +28,14 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
-        _playerInput = GetComponent<PlayerInput>();
         _mainCamera = Camera.main;
-    }
 
+        if (_inputManager != null)
+        {
+            _gamePlayActions = _inputManager.GamePlayActions;
+        }
+    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -36,13 +44,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyInput()
     {
-        Vector2 moveInput = _playerInput.actions["Move"].ReadValue<Vector2>();
-
+        Vector2 moveInput = _gamePlayActions.Move.ReadValue<Vector2>();
         Vector3 right = _mainCamera.transform.right;
         Vector3 forward = _mainCamera.transform.forward;
 
         forward.y = 0; // 카메라가 아래를 보고 있어도 앞방향은 수평이 되도록 함
-        right.y = 0;   // 우측 방향도 수평이 되도록 함
+        right.y = 0;   // 우측 방향도 수평이 되도록 함 //  필요할까?
 
         forward.Normalize();
         right.Normalize();
