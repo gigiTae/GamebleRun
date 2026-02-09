@@ -23,7 +23,7 @@ namespace GambleRun
         // storage
         [SerializeField] private Storage _backpack;
         [SerializeField] private Storage _equipment;
-        [SerializeField] private Storage _spoils;
+        [SerializeField] private Storage _loot;
 
         // event
         [SerializeField] private LootEvent _lootOpenEvent;
@@ -82,40 +82,34 @@ namespace GambleRun
 
         private void SubscribeEvent()
         {
-            _lootOpenEvent?.Subscribe(OnOpenLoot);
+            _lootOpenEvent.Subscribe(OnOpenLoot);
         }
         private void UnsubscribeEvent()
         {
-            _lootOpenEvent?.Unsubscribe(OnOpenLoot);
+            _lootOpenEvent.Unsubscribe(OnOpenLoot);
         }
 
         private void OnOpenLoot(StorageData data)
         {
-            _spoils.RefreshStorage(data);
+            _loot.RefreshStorage(data);
             OpenFullInventory();
         }
 
         private void OpenFullInventory()
         {
             _state = InventoryState.FullyOpen;
-            _spoils.SetVisible(true);
+            _loot.SetVisible(true);
            
-            // UI
             _uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
-
-            // Event
             _inventoryOpenEvent.Raise();
         }
 
         private void OpenPlayerPartInventory()
         {
             _state = InventoryState.PlayerPartOpen;
-            _spoils.SetVisible(false);
+            _loot.SetVisible(false);
 
-            // UI
             _uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
-
-            // Event
             _inventoryOpenEvent.Raise();
         }
 
@@ -123,14 +117,11 @@ namespace GambleRun
         {
             if (_state == InventoryState.FullyOpen)
             {
-                _lootCloseEvent.Raise(_spoils.Data);
+                _lootCloseEvent.Raise(_loot.Data);
             }
 
-            // UI
             _uiDocument.rootVisualElement.style.display = DisplayStyle.None;
             _state = InventoryState.Close;
-
-            // Event
             _inventoryCloseEvent.Raise();
         }
     }

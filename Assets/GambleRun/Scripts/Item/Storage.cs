@@ -11,32 +11,30 @@ namespace GambleRun
         [SerializeField] private StorageData _testData;
 
         private UIDocument _uiDocument;
-        private StorageView _storageView;
-        private StorageData _storageData;
-
+        protected StorageView _storageView;
+        protected StorageData _storageData;
         public StorageData Data => _storageData;
-
-        private void Awake()
+        protected virtual void Awake()
         {
             _uiDocument = GetComponentInParent<UIDocument>();
 
             MakeView();
 
-            // TestData
             if (_testData != null)
             {
                 _storageData = _testData.Clone();
             }
 
             BindPointerCallback();
-            RefreshStorage(_testData);
+            SetupStorageView();
         }
 
+        protected virtual void OnDestroy() { }
 
         /// <summary>
         /// 스토리지를 새로운 데이터로 갱신합니다 
         /// </summary>
-        public void RefreshStorage(StorageData storageData)
+        public virtual void RefreshStorage(StorageData storageData)
         {
             if (storageData != null && _storageView != null)
             {
@@ -54,8 +52,9 @@ namespace GambleRun
             for (int i = 0; i < items.Count; ++i)
             {
                 Sprite icon = items[i] == null ? null : items[i].Icon;
-                uint count = items[i] == null ? 0 : items[i].Count;
-                SlotViewInit slotData = new(icon, count, i);
+                uint count = items[i] == null ? 0 : items[i].Stack;
+                bool isIdentified = items[i] == null ? true : items[i].IsIdentified;
+                SlotViewInit slotData = new(icon, count, i, isIdentified);
                 _storageView.AddSlot(slotData);
             }
         }
@@ -70,10 +69,22 @@ namespace GambleRun
         {
             // evt.target : 실제로 이벤트를 발생시킨 가장 깊은 곳의 자식 요소.
             // evt.currentTarget: 이벤트를 처리하고 있는 현재 요소.
-            if (evt.target is SlotView clickedSlot)
+            if (evt.target is SlotView clickedSlot && CanBeginDrag(clickedSlot))
             {
                 _dragDropManager.BeginDragDrop(this, clickedSlot.SlotIndex);
             }
+        }
+
+        protected virtual bool CanBeginDrag(SlotView slot)
+        {
+            ItemData data = _storageData.Items[slot.SlotIndex];
+
+            if (data == null || !data.IsIdentified)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private void OnPointerUp(PointerUpEvent evt)
@@ -87,12 +98,13 @@ namespace GambleRun
         public void SetItem(ItemData item, int itemIndex2)
         {
             Sprite icon = item == null ? null : item.Icon;
-            uint count = item == null ? 0 : item.Count;
-            SlotViewInit initData = new(icon, count, itemIndex2);
+            uint count = item == null ? 0 : item.Stack;
+            bool isIdentified = item == null ? true : item.IsIdentified;
+
+            SlotViewInit initData = new(icon, count, itemIndex2, isIdentified);
             _storageView.RefreshSlot(itemIndex2, initData);
             _storageData.SetItem(item, itemIndex2);
         }
-
         public ItemData GetItemData(int index)
         {
             return _storageData.Items[index];
@@ -114,5 +126,6 @@ namespace GambleRun
             VisualElement parentView = _uiDocument.rootVisualElement.Q(_parentVisualElement);
             parentView.style.visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
         }
+
     }
 }

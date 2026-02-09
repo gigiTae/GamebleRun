@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: GoodBox
   m_EditorClassIdentifier: 
   SlotCount: 5
-  FixedItems: []
   ProbabilityItems:
   - Item: {fileID: 11400000, guid: 721bbf2a2165d3d41b3efb5064b83178, type: 2}
-    Probability: 1
+    Probability: 50
   - Item: {fileID: 11400000, guid: c48c9c814bc94a549b765afb55c4560e, type: 2}
-    Probability: 1
+    Probability: 50
   - Item: {fileID: 11400000, guid: 39f51d3448d3d00418baa80132fa45f8, type: 2}
-    Probability: 1
+    Probability: 10

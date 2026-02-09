@@ -46,7 +46,7 @@ namespace GambleRun.Manager
         private void CombineItems(ItemData start, ItemData end, Storage endStorage, int endIdx)
         {
             // 병합 로직: 시작 아이템 수량을 끝 아이템에 합치고 시작 슬롯 비우기
-            end.Count += start.Count;
+            end.Stack += start.Stack;
             _startStorage.SetItem(null, _startItemIndex);
             endStorage.SetItem(end, endIdx);
         }
@@ -61,8 +61,10 @@ namespace GambleRun.Manager
             // 같은 아이템이고, 자기 자신으로의 드롭이 아닐 때 (같은 인벤토리 내 같은 슬롯 방지)
             return start != null && end != null &&
                    start.ItemName == end.ItemName &&
-                   !(_startStorage == endStorage && _startItemIndex == endIdx);
+                   !(_startStorage == endStorage && _startItemIndex == endIdx)
+                   && start.IsStackable && end.IsStackable;
         }
+
         private void ResetState()
         {
             _isDragging = false;

@@ -11,6 +11,11 @@ namespace GambleRun
 
         public IReadOnlyList<ItemData> Items => _items;
 
+        public void UpdateItems(List<ItemData> items)
+        {
+            _items = items;
+        }
+
         public StorageData Clone()
         {
             StorageData newStorage = CreateInstance<StorageData>();
@@ -29,7 +34,9 @@ namespace GambleRun
             return newStorage;
         }
 
+        /// <summary>
         // 아이템을 추가합니다 
+        /// </summary>
         public bool AddItem(ItemData item)
         {
             int index = GetCloseEmptyIndex();
@@ -48,7 +55,9 @@ namespace GambleRun
             _items[index] = data;
         }
 
+        /// <summary>
         // 저장공간의 인덱스의 아이템을 비웁니다
+        /// </summary>
         public void Empty(int index)
         {
             if (_items.Count > index)
@@ -57,7 +66,9 @@ namespace GambleRun
             }
         }
 
+        /// <summary>
         // 저장공간이 가득찬지 확인합니다
+        /// </summary>
         bool IsFull()
         {
             foreach (ItemData data in _items)
@@ -68,7 +79,9 @@ namespace GambleRun
             return true;
         }
 
+        /// <summary>
         // 가장가까운 빈공간의 인덱스를 반환합니다
+        /// </summary>
         public int GetCloseEmptyIndex()
         {
             for (int i = 0; i < _items.Count; i++)
@@ -103,6 +116,21 @@ namespace GambleRun
             for (int i = 0; i < size; i++)
             {
                 _items.Add(null);
+            }
+        }
+
+        /// <summary>
+        /// 스토리지 내 모든 아이템의 식별 상태를 설정합니다.
+        /// </summary>
+        /// <param name="isIdentified">true면 모두 공개, false면 모두 숨김</param>
+        public void SetAllItemsIdentification(bool isIdentified)
+        {
+            foreach (var item in _items)
+            {
+                if (item != null)
+                {
+                    item.IsIdentified = isIdentified;
+                }
             }
         }
 

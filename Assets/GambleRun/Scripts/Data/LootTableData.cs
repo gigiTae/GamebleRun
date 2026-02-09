@@ -1,7 +1,5 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 
 namespace GambleRun
@@ -10,47 +8,64 @@ namespace GambleRun
     public struct ProbabilityItem
     {
         public ItemData Item;     // 아이템 데이터
-        public float Probability; // 확률
-    }
 
+        [UnityEngine.Range(0f, 100f)]
+        public float Probability; // 당첨 확률
+    }
 
     [CreateAssetMenu(fileName = "LootTableData", menuName = "GameData/LootTableData")]
     public class LootTableData : ScriptableObject
     {
         public int SlotCount = 1; // 전리품 슬롯
 
-        // TODO : MinMaxSlotCount에 따른 확률추가
-
-        public List<ItemData> FixedItems; // 고정 아이템
         public List<ProbabilityItem> ProbabilityItems;
 
-        public ItemData GetRandomCloneItem()
+        public List<ItemData> GetRandomCloneItems()
         {
-            if (ProbabilityItems == null || ProbabilityItems.Count == 0) return null;
+            List<ItemData> items = new List<ItemData>(SlotCount);
 
-            // 1. 전체 확률의 총합 계산
-            float totalProbability = 0;
-            foreach (var item in ProbabilityItems)
+            if (ProbabilityItems == null || ProbabilityItems.Count == 0)
             {
-                totalProbability += item.Probability;
+                FillEmptySlots(items);
+                return items;
             }
 
-            // 2. 0 ~ 총합 사이의 랜덤 값 결정
-            float randomPoint = Random.value * totalProbability;
-
-            // 3. 랜덤 값이 어느 아이템 구간에 속하는지 확인
-            float currentSum = 0;
-            foreach (var item in ProbabilityItems)
+            // 1. 원본 데이터를 보호하기 위해 복사본 생성
+            List<ProbabilityItem> pool = new List<ProbabilityItem>(ProbabilityItems);
+            
+            // 2. Fisher-Yates Shuffle
+            for (int i = pool.Count - 1; i > 0; i--)
             {
-                currentSum += item.Probability;
-                if (randomPoint <= currentSum)
+                int randomIndex = Random.Range(0, i + 1);
+                var temp = pool[i];
+                pool[i] = pool[randomIndex];
+                pool[randomIndex] = temp;
+            }
+
+            // 3. 당첨 확인 및 리스트 추가
+            foreach (var data in pool)
+            {
+                if (items.Count >= SlotCount) break;
+
+                float randomValue = Random.Range(0f, 100f);
+                if (randomValue <= data.Probability)
                 {
-                    return item.Item.Clone();
-                }
+                    if (data.Item != null)
+                        items.Add(data.Item.Clone());
+                }   
             }
 
-            return null;
+            FillEmptySlots(items);
+
+            return items;
+        }
+
+        private void FillEmptySlots(List<ItemData> items)
+        {
+            while (items.Count < SlotCount)
+            {
+                items.Add(null);
+            }
         }
     }
-
 }

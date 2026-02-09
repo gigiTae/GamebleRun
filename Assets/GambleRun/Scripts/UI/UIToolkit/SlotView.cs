@@ -10,12 +10,14 @@ namespace GambleRun
         public Sprite Icon;
         public uint ItemCount;
         public int SlotIndex;
+        public bool IsIdentified;
 
-        public SlotViewInit(Sprite icon, uint itemCount, int slotIndex)
+        public SlotViewInit(Sprite icon, uint itemCount, int slotIndex, bool isIdentified = true)
         {
             Icon = icon;
             ItemCount = itemCount;
             SlotIndex = slotIndex;
+            IsIdentified = isIdentified;
         }
     }
 
@@ -43,8 +45,16 @@ namespace GambleRun
         public void Setup(SlotViewInit data)
         {
             _slotIndex = data.SlotIndex;
-            SetIcon(data.Icon);
             SetStackLabel(data.ItemCount);
+
+            if (data.IsIdentified)
+            {
+                SetIcon(data.Icon);
+            }
+            else
+            {
+                SetIcon(ConfigManager.Instance.SlotConfig.SearchIcon);
+            }
         }
 
         public void ClearSlot()

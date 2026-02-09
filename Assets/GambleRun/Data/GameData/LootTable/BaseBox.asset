@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: BaseBox
   m_EditorClassIdentifier: 
   SlotCount: 5
-  FixedItems: []
   ProbabilityItems:
   - Item: {fileID: 11400000, guid: 0d9b08b533cdbe3428b0d5032b8ab53a, type: 2}
     Probability: 1
   - Item: {fileID: 11400000, guid: 5abd7fae5eb1fd54b8d2e0dc520577a9, type: 2}
-    Probability: 1
+    Probability: 5
   - Item: {fileID: 11400000, guid: 721bbf2a2165d3d41b3efb5064b83178, type: 2}
-    Probability: 1
+    Probability: 100

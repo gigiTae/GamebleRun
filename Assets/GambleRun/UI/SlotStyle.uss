@@ -1,15 +1,24 @@
 .slot {
     width: 100px;
     height: 100px;
-    
     margin: 10px;
+
+    background-color: rgba(30, 30, 30, 0.8);
+
     border-width: 2px;
-    border-color: rgb(255, 255, 255);   
+    border-color: #4A4A4A;
     border-radius: 10px;
 }
 
 .slot:hover {
-    border-color: rgb(255, 255,0);   
+    /* ë‹¨ìˆœ ë…¸ë€ìƒ‰ë³´ë‹¤ëŠ” ë°ì€ ê¸ˆìƒ‰ì´ë‚˜ í˜•ê´‘ í•˜ëŠ˜ìƒ‰ì´ ê°€ì‹œì„±ì´ ì¢‹ìŠµë‹ˆë‹¤ */
+    border-color: #00E5FF; 
+    background-color: rgba(60, 60, 60, 0.9);
+}
+
+.slot:active {
+    border-color: #FFA500;
+    border-width: 3px;
 }
 
 .storage_slotContainer {
@@ -26,15 +35,16 @@
 }
 
 .slot_stack_label {
-    position: absolute; /* ºÎ¸ğÀÎ .slot ±âÁØ Àı´ë À§Ä¡ */
-    right: 2px;         /* ¿À¸¥ÂÊ ³¡¿¡¼­ 5px ¶ç¿ò */
-    bottom: 2px;        /* ¹Ù´Ú ³¡¿¡¼­ 5px ¶ç¿ò */
+    position: absolute; /* ë¶€ëª¨ì¸ .slot ê¸°ì¤€ ì ˆëŒ€ ìœ„ì¹˜ */
+     right: 5px;
+    bottom: 3px;       /* ë°”ë‹¥ ëì—ì„œ 5px ë„ì›€ */
     
-    /* ÅØ½ºÆ® °¡µ¶¼ºÀ» À§ÇÑ ½ºÅ¸ÀÏ */
-    color: white;
+    /* í…ìŠ¤íŠ¸ ê°€ë…ì„±ì„ ìœ„í•œ ìŠ¤íƒ€ì¼ */
+     color: #FFEB3B;
     -unity-font-style: bold;
     font-size: 14px;
-    /* °ËÀº»ö ¿Ü°û¼± È¿°ú (°¡µ¶¼º Çâ»ó) */
-    -unity-text-outline-width: 1px;
-    -unity-text-outline-color: black;
+
+    /* ì™¸ê³½ì„ ì„ ì¡°ê¸ˆ ë” ë‘ê»ê²Œ í•´ì„œ ë°°ê²½ìƒ‰ì— ìƒê´€ì—†ì´ ë³´ì´ê²Œ í•¨ */
+    -unity-text-outline-width: 1.5px;
+    -unity-text-outline-color: #000000;
 }
