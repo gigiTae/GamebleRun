@@ -9,36 +9,36 @@ namespace GambleRun
     [System.Serializable]
     public struct ProbabilityItem
     {
-        public ItemData Item;     // ¾ÆÀÌÅÛ µ¥ÀÌÅÍ
-        public float Probability; // È®·ü
+        public ItemData Item;     // ì•„ì´í…œ ë°ì´í„°
+        public float Probability; // í™•ë¥ 
     }
 
 
     [CreateAssetMenu(fileName = "LootTableData", menuName = "GameData/LootTableData")]
     public class LootTableData : ScriptableObject
     {
-        public int SlotCount = 1; // Àü¸®Ç° ½½·Ô
+        public int SlotCount = 1; // ì „ë¦¬í’ˆ ìŠ¬ë¡¯
 
-        // TODO : MinMaxSlotCount¿¡ µû¸¥ È®·üÃß°¡
+        // TODO : MinMaxSlotCountì— ë”°ë¥¸ í™•ë¥ ì¶”ê°€
 
-        public List<ItemData> FixedItems; // °íÁ¤ ¾ÆÀÌÅÛ
+        public List<ItemData> FixedItems; // ê³ ì • ì•„ì´í…œ
         public List<ProbabilityItem> ProbabilityItems;
 
         public ItemData GetRandomCloneItem()
         {
             if (ProbabilityItems == null || ProbabilityItems.Count == 0) return null;
 
-            // 1. ÀüÃ¼ È®·üÀÇ ÃÑÇÕ °è»ê
+            // 1. ì „ì²´ í™•ë¥ ì˜ ì´í•© ê³„ì‚°
             float totalProbability = 0;
             foreach (var item in ProbabilityItems)
             {
                 totalProbability += item.Probability;
             }
 
-            // 2. 0 ~ ÃÑÇÕ »çÀÌÀÇ ·£´ı °ª °áÁ¤
+            // 2. 0 ~ ì´í•© ì‚¬ì´ì˜ ëœë¤ ê°’ ê²°ì •
             float randomPoint = Random.value * totalProbability;
 
-            // 3. ·£´ı °ªÀÌ ¾î´À ¾ÆÀÌÅÛ ±¸°£¿¡ ¼ÓÇÏ´ÂÁö È®ÀÎ
+            // 3. ëœë¤ ê°’ì´ ì–´ëŠ ì•„ì´í…œ êµ¬ê°„ì— ì†í•˜ëŠ”ì§€ í™•ì¸
             float currentSum = 0;
             foreach (var item in ProbabilityItems)
             {

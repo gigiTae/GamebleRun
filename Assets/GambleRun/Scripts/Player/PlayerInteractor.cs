@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace GambleRun
 {
-    // ÇÃ·¹ÀÌ¾îÀÇ »óÈ£ÀÛ¿ëÀ» ´ã´ç
+    // í”Œë ˆì´ì–´ì˜ ìƒí˜¸ì‘ìš©ì„ ë‹´ë‹¹
     public class PlayerInteractor : MonoBehaviour
     {
         [SerializeField] private InputManager _inputManager;
@@ -48,12 +48,12 @@ namespace GambleRun
             IInteractable closest = null;
             float minDistance = float.MaxValue;
 
-            // ¸®½ºÆ®¸¦ µ¹¸ç °¡Àå °¡±î¿î ¿ÀºêÁ§Æ® °è»ê
+            // ë¦¬ìŠ¤íŠ¸ë¥¼ ëŒë©° ê°€ì¥ ê°€ê¹Œìš´ ì˜¤ë¸Œì íŠ¸ ê³„ì‚°
             for (int i = _interactableObjects.Count - 1; i >= 0; i--)
             {
                 var interactable = _interactableObjects[i];
 
-                // ¿ÀºêÁ§Æ®°¡ ÆÄ±«µÇ¾ú°Å³ª ºñÈ°¼ºÈ­µÈ °æ¿ì ¸®½ºÆ®¿¡¼­ Á¦°Å
+                // ì˜¤ë¸Œì íŠ¸ê°€ íŒŒê´´ë˜ì—ˆê±°ë‚˜ ë¹„í™œì„±í™”ëœ ê²½ìš° ë¦¬ìŠ¤íŠ¸ì—ì„œ ì œê±°
                 if (interactable == null || (interactable is MonoBehaviour mb && !mb.gameObject.activeInHierarchy))
                 {
                     _interactableObjects.RemoveAt(i);
@@ -78,7 +78,7 @@ namespace GambleRun
 
         private void OnTriggerEnter(Collider other)
         {
-            // IInteractable ÀÎÅÍÆäÀÌ½º¸¦ °¡Áö°í ÀÖ´ÂÁö È®ÀÎ
+            // IInteractable ì¸í„°í˜ì´ìŠ¤ë¥¼ ê°€ì§€ê³  ìˆëŠ”ì§€ í™•ì¸
             if (other.TryGetComponent<IInteractable>(out var interactable))
             {
                 if (!_interactableObjects.Contains(interactable))
@@ -92,7 +92,7 @@ namespace GambleRun
         {
             if (other.TryGetComponent<IInteractable>(out var interactable))
             {
-                // ¸®½ºÆ®¿¡¼­ Á¦°ÅµÉ ¶§ Æ÷Ä¿½ºµµ ÇÔ²² ÇØÁ¦
+                // ë¦¬ìŠ¤íŠ¸ì—ì„œ ì œê±°ë  ë•Œ í¬ì»¤ìŠ¤ë„ í•¨ê»˜ í•´ì œ
                 if (_nearestInteractableObject == interactable)
                 {
                     interactable.OnExitFocus();

@@ -5,7 +5,7 @@ namespace GambleRun.Manager
     [CreateAssetMenu(fileName = "DragDropManager", menuName = "Manager/DragDropManager")]
     public class DragDropManager : ScriptableObject
     {
-        // »óÅÂ º¯¼ö
+        // ìƒíƒœ ë³€ìˆ˜
         private bool _isDragging = false;
         private Storage _startStorage;
         private int _startItemIndex = -1;
@@ -45,7 +45,7 @@ namespace GambleRun.Manager
 
         private void CombineItems(ItemData start, ItemData end, Storage endStorage, int endIdx)
         {
-            // º´ÇÕ ·ÎÁ÷: ½ÃÀÛ ¾ÆÀÌÅÛ ¼ö·®À» ³¡ ¾ÆÀÌÅÛ¿¡ ÇÕÄ¡°í ½ÃÀÛ ½½·Ô ºñ¿ì±â
+            // ë³‘í•© ë¡œì§: ì‹œì‘ ì•„ì´í…œ ìˆ˜ëŸ‰ì„ ë ì•„ì´í…œì— í•©ì¹˜ê³  ì‹œì‘ ìŠ¬ë¡¯ ë¹„ìš°ê¸°
             end.Count += start.Count;
             _startStorage.SetItem(null, _startItemIndex);
             endStorage.SetItem(end, endIdx);
@@ -58,7 +58,7 @@ namespace GambleRun.Manager
 
         private bool CanCombine(ItemData start, ItemData end, Storage endStorage, int endIdx)
         {
-            // °°Àº ¾ÆÀÌÅÛÀÌ°í, ÀÚ±â ÀÚ½ÅÀ¸·ÎÀÇ µå·ÓÀÌ ¾Æ´Ò ¶§ (°°Àº ÀÎº¥Åä¸® ³» °°Àº ½½·Ô ¹æÁö)
+            // ê°™ì€ ì•„ì´í…œì´ê³ , ìê¸° ìì‹ ìœ¼ë¡œì˜ ë“œë¡­ì´ ì•„ë‹ ë•Œ (ê°™ì€ ì¸ë²¤í† ë¦¬ ë‚´ ê°™ì€ ìŠ¬ë¡¯ ë°©ì§€)
             return start != null && end != null &&
                    start.ItemName == end.ItemName &&
                    !(_startStorage == endStorage && _startItemIndex == endIdx);

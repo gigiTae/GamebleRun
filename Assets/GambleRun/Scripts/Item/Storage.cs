@@ -34,7 +34,7 @@ namespace GambleRun
 
 
         /// <summary>
-        /// ½ºÅä¸®Áö¸¦ »õ·Î¿î µ¥ÀÌÅÍ·Î °»½ÅÇÕ´Ï´Ù 
+        /// ìŠ¤í† ë¦¬ì§€ë¥¼ ìƒˆë¡œìš´ ë°ì´í„°ë¡œ ê°±ì‹ í•©ë‹ˆë‹¤ 
         /// </summary>
         public void RefreshStorage(StorageData storageData)
         {
@@ -68,8 +68,8 @@ namespace GambleRun
 
         private void OnPointerDown(PointerDownEvent evt)
         {
-            // evt.target : ½ÇÁ¦·Î ÀÌº¥Æ®¸¦ ¹ß»ı½ÃÅ² °¡Àå ±íÀº °÷ÀÇ ÀÚ½Ä ¿ä¼Ò.
-            // evt.currentTarget: ÀÌº¥Æ®¸¦ Ã³¸®ÇÏ°í ÀÖ´Â ÇöÀç ¿ä¼Ò.
+            // evt.target : ì‹¤ì œë¡œ ì´ë²¤íŠ¸ë¥¼ ë°œìƒì‹œí‚¨ ê°€ì¥ ê¹Šì€ ê³³ì˜ ìì‹ ìš”ì†Œ.
+            // evt.currentTarget: ì´ë²¤íŠ¸ë¥¼ ì²˜ë¦¬í•˜ê³  ìˆëŠ” í˜„ì¬ ìš”ì†Œ.
             if (evt.target is SlotView clickedSlot)
             {
                 _dragDropManager.BeginDragDrop(this, clickedSlot.SlotIndex);

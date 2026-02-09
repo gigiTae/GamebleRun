@@ -1,14 +1,13 @@
 using UnityEngine;
 
 
-
 namespace GambleRun
 {
-    // »óÈ£ÀÛ¿ë ÀÎÅÍÆäÀÌ½º 
+    // ìƒí˜¸ì‘ìš© ì¸í„°í˜ì´ìŠ¤ 
     public interface IInteractable
     {
-        void Interact(); // »óÈ£ÀÛ¿ë ½ÇÇà
-        bool IsInteractable(); // ÇöÀç »óÈ£ÀÛ¿ë °¡´ÉÇÑ »óÅÂÀÎÁö È®ÀÎ
+        void Interact(); // ìƒí˜¸ì‘ìš© ì‹¤í–‰
+        bool IsInteractable(); // í˜„ì¬ ìƒí˜¸ì‘ìš© ê°€ëŠ¥í•œ ìƒíƒœì¸ì§€ í™•ì¸
         void OnEnterFocus();
         void OnExitFocus();
     }

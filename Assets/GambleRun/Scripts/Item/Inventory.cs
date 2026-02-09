@@ -7,9 +7,9 @@ namespace GambleRun
 {
     enum InventoryState
     {
-        Close, // ´ÝÈû
-        FullyOpen, // Àü¸®Ç°,Àåºñ,°¡¹æ 
-        PlayerPartOpen, // Àåºñ, °¡¹æ 
+        Close, // ë‹«íž˜
+        FullyOpen, // ì „ë¦¬í’ˆ,ìž¥ë¹„,ê°€ë°© 
+        PlayerPartOpen, // ìž¥ë¹„, ê°€ë°© 
     }
 
     public class Inventory : MonoBehaviour

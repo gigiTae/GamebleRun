@@ -1,6 +1,6 @@
 
 
-## ¾ÆÀÌÅÛ µ¥ÀÌÅÍ ³×ÀÌ¹Ö ±ÔÄ¢ ##
+## ì•„ì´í…œ ë°ì´í„° ë„¤ì´ë° ê·œì¹™ ##
 
 None
 Common
@@ -9,5 +9,5 @@ Rare
 Epic
 Legendary
 
-¾ÆÀÌÅÛÀÇ Èñ±áµµÀÇ Ã¹ ½ºÆç¸µÀ» ½ÃÀÛÀ¸·Î _ ¸¦ Æ÷ÇÔÇÏ¿© ÀÌ¸§À» ÀÛ¼ºÇÑ´Ù
+ì•„ì´í…œì˜ í¬ê¸”ë„ì˜ ì²« ìŠ¤íŽ ë§ì„ ì‹œìž‘ìœ¼ë¡œ _ ë¥¼ í¬í•¨í•˜ì—¬ ì´ë¦„ì„ ìž‘ì„±í•œë‹¤
 ex) L_Diamond , C_Coin

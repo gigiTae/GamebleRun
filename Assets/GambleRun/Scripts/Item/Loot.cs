@@ -58,7 +58,7 @@ namespace GambleRun
                     }
                 }
 
-                // ¾ÆÀÌÅÛ ½ºÆù
+                // ì•„ì´í…œ ìŠ¤í°
                 int emptySpace = _data.EmptySpaceCount;
                 Debug.Log(emptySpace);
 

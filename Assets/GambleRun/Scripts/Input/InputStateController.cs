@@ -13,11 +13,11 @@ namespace GambleRun
         [SerializeField] private InventoryEvent _inventoryCloseEvent;
         [SerializeField] private InventoryEvent _inventoryOpenEvent;
 
-        // °ÔÀÓÀÇ °¡´ÉÇÑ ÀÔ·Â »óÅÂµéÀ» Á¤ÀÇ
+        // ê²Œì„ì˜ ê°€ëŠ¥í•œ ì…ë ¥ ìƒíƒœë“¤ì„ ì •ì˜
         public enum InputState
         {
-            Gameplay,        // Æò»ó½Ã 
-            Inventory,       // ¸Ş´º/ÀÎº¥Åä¸® (Ä³¸¯ÅÍ Á¶ÀÛ ÀüÃ¼ Â÷´Ü, UI¸¸ °¡´É)
+            Gameplay,        // í‰ìƒì‹œ 
+            Inventory,       // ë©”ë‰´/ì¸ë²¤í† ë¦¬ (ìºë¦­í„° ì¡°ì‘ ì „ì²´ ì°¨ë‹¨, UIë§Œ ê°€ëŠ¥)
         }
 
         private InputState _currentState = InputState.Gameplay;

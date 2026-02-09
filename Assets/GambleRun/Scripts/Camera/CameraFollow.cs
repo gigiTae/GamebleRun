@@ -6,16 +6,16 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Vector3 _offset;   
     [SerializeField] private float _smoothSpeed = 0.125f;
 
-    void LateUpdate() // ÀÌµ¿ÀÌ ³¡³­ ÈÄ Ä«¸Ş¶ó°¡ µû¶ó°¡µµ·Ï LateUpdate »ç¿ë
+    void LateUpdate() // ì´ë™ì´ ëë‚œ í›„ ì¹´ë©”ë¼ê°€ ë”°ë¼ê°€ë„ë¡ LateUpdate ì‚¬ìš©
     {
-        // ¸ñÇ¥ À§Ä¡ = ÇÃ·¹ÀÌ¾î À§Ä¡ + °íÁ¤µÈ ¿ÀÇÁ¼Â
+        // ëª©í‘œ ìœ„ì¹˜ = í”Œë ˆì´ì–´ ìœ„ì¹˜ + ê³ ì •ëœ ì˜¤í”„ì…‹
         Vector3 desiredPosition = _target.position + _offset;
 
-        // ºÎµå·´°Ô µû¶ó°¡±â (¼±ÅÃ »çÇ×)
+        // ë¶€ë“œëŸ½ê²Œ ë”°ë¼ê°€ê¸° (ì„ íƒ ì‚¬í•­)
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, _smoothSpeed);
 
         transform.position = smoothedPosition;
 
-        // Ä«¸Ş¶ó´Â Ç×»ó ¹Ì¸® ¼³Á¤µÈ °¢µµ(ÄõÅÍºä)¸¦ À¯ÁöÇÏ¸ç È¸ÀüÇÏÁö ¾ÊÀ½
+        // ì¹´ë©”ë¼ëŠ” í•­ìƒ ë¯¸ë¦¬ ì„¤ì •ëœ ê°ë„(ì¿¼í„°ë·°)ë¥¼ ìœ ì§€í•˜ë©° íšŒì „í•˜ì§€ ì•ŠìŒ
     }
 }

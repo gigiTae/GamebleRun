@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GambleRun
 {
-    // ¾ÆÀÌÅÛ µî±Ş
+    // ì•„ì´í…œ ë“±ê¸‰
     public enum ItemRarity
     {
         None,
@@ -15,16 +15,16 @@ namespace GambleRun
     }
     public enum ItemType
     {
-        None,          // ±âº»°ª (¼³Á¤µÇÁö ¾ÊÀ½)
-        Backpack,      // °¡¹æ
-        Accessory,     // Àå½Å±¸
-        Consumable,    // ¼Òºñ ¾ÆÀÌÅÛ
-        Material,      // Á¦ÀÛ Àç·á
-        Etc            // ÀâÅÆ
+        None,          // ê¸°ë³¸ê°’ (ì„¤ì •ë˜ì§€ ì•ŠìŒ)
+        Backpack,      // ê°€ë°©
+        Accessory,     // ì¥ì‹ êµ¬
+        Consumable,    // ì†Œë¹„ ì•„ì´í…œ
+        Material,      // ì œì‘ ì¬ë£Œ
+        Etc            // ì¡íƒ¬
     }
 
 
-    // ¾ÆÀÌÅÛ ±âº»ÀûÀÎ µ¥ÀÌÅÍ¸¦ ¼³Á¤
+    // ì•„ì´í…œ ê¸°ë³¸ì ì¸ ë°ì´í„°ë¥¼ ì„¤ì •
     [CreateAssetMenu(fileName = "ItemData", menuName = "GameData/ItemData")]
     public class ItemData : ScriptableObject
     {

@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private InputManager _inputManager;
     private DefaultInputAction.GamePlayActions _gamePlayActions;
 
-    [SerializeField] private float _rotationSpeed = 10f; // È¸Àü ¼Óµµ ¼³Á¤
+    [SerializeField] private float _rotationSpeed = 10f; // íšŒì „ ì†ë„ ì„¤ì •
     [SerializeField] private float _moveSpeed = 5.0f;
     [SerializeField] private float _gravity = -9.81f;
 
@@ -48,8 +48,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 right = _mainCamera.transform.right;
         Vector3 forward = _mainCamera.transform.forward;
 
-        forward.y = 0; // Ä«¸Þ¶ó°¡ ¾Æ·¡¸¦ º¸°í ÀÖ¾îµµ ¾Õ¹æÇâÀº ¼öÆòÀÌ µÇµµ·Ï ÇÔ
-        right.y = 0;   // ¿ìÃø ¹æÇâµµ ¼öÆòÀÌ µÇµµ·Ï ÇÔ //  ÇÊ¿äÇÒ±î?
+        forward.y = 0; // ì¹´ë©”ë¼ê°€ ì•„ëž˜ë¥¼ ë³´ê³  ìžˆì–´ë„ ì•žë°©í–¥ì€ ìˆ˜í‰ì´ ë˜ë„ë¡ í•¨
+        right.y = 0;   // ìš°ì¸¡ ë°©í–¥ë„ ìˆ˜í‰ì´ ë˜ë„ë¡ í•¨ //  í•„ìš”í• ê¹Œ?
 
         forward.Normalize();
         right.Normalize();
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveDirection = right * moveInput.x + forward * moveInput.y;
         Vector3 moveValue = moveDirection * _moveSpeed;
 
-        // ÇÃ·¹ÀÌ¾î ¹æÇâ ¼³Á¤
+        // í”Œë ˆì´ì–´ ë°©í–¥ ì„¤ì •
         if (moveInput.sqrMagnitude > 0.01f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);

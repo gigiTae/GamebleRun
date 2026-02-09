@@ -12,7 +12,7 @@ namespace GambleRun
         public void Subscribe(Action<T> listener) => OnRaised += listener;
         public void Unsubscribe(Action<T> listener) => OnRaised -= listener;
 
-        // ÇÃ·¹ÀÌ ¸ðµå Á¾·á ½Ã ÃÊ±âÈ­ (¿¡µðÅÍ ÆíÀÇ¼º)
+        // í”Œë ˆì´ ëª¨ë“œ ì¢…ë£Œ ì‹œ ì´ˆê¸°í™” (ì—ë””í„° íŽ¸ì˜ì„±)
         protected virtual void OnEnable() => OnRaised = null;
     }
 

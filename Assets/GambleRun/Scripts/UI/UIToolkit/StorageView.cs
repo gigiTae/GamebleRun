@@ -31,14 +31,14 @@ namespace GambleRun
 
         public void RefreshSlot(int slotIndex ,SlotViewInit data)
         {
-            // 1. ÀÎµ¦½º À¯È¿¼º °Ë»ç (¾ÈÀüÀ» À§ÇØ)
+            // 1. ì¸ë±ìŠ¤ ìœ íš¨ì„± ê²€ì‚¬ (ì•ˆì „ì„ ìœ„í•´)
             if (slotIndex < 0 || slotIndex >= _slotContainer.childCount)
             {
                 Debug.LogWarning($"[StorageView] Invalid slot index: {slotIndex}");
                 return;
             }
 
-            // 2. ÇØ´ç ÀÎµ¦½ºÀÇ ÀÚ½ÄÀ» SlotView·Î °¡Á®¿À±â
+            // 2. í•´ë‹¹ ì¸ë±ìŠ¤ì˜ ìì‹ì„ SlotViewë¡œ ê°€ì ¸ì˜¤ê¸°
             if (_slotContainer[slotIndex] is SlotView slot)
             {
                 slot.Setup(data);

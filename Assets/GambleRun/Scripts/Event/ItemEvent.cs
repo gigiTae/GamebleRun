@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GambleRun
 {
-    // ¾ÆÀÌÅÛ ¹Ú½º ÀÌº¥Æ® 
+    // ì•„ì´í…œ ë°•ìŠ¤ ì´ë²¤íŠ¸ 
     [CreateAssetMenu(fileName = "LootEvent", menuName = "Events/LootEvent")]
     public class LootEvent : EventSO<StorageData> { }
 }

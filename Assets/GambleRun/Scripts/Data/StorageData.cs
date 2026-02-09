@@ -29,7 +29,7 @@ namespace GambleRun
             return newStorage;
         }
 
-        // ¾ÆÀÌÅÛÀ» Ãß°¡ÇÕ´Ï´Ù 
+        // ì•„ì´í…œì„ ì¶”ê°€í•©ë‹ˆë‹¤ 
         public bool AddItem(ItemData item)
         {
             int index = GetCloseEmptyIndex();
@@ -48,7 +48,7 @@ namespace GambleRun
             _items[index] = data;
         }
 
-        // ÀúÀå°ø°£ÀÇ ÀÎµ¦½ºÀÇ ¾ÆÀÌÅÛÀ» ºñ¿ó´Ï´Ù
+        // ì €ì¥ê³µê°„ì˜ ì¸ë±ìŠ¤ì˜ ì•„ì´í…œì„ ë¹„ì›ë‹ˆë‹¤
         public void Empty(int index)
         {
             if (_items.Count > index)
@@ -57,7 +57,7 @@ namespace GambleRun
             }
         }
 
-        // ÀúÀå°ø°£ÀÌ °¡µæÂùÁö È®ÀÎÇÕ´Ï´Ù
+        // ì €ì¥ê³µê°„ì´ ê°€ë“ì°¬ì§€ í™•ì¸í•©ë‹ˆë‹¤
         bool IsFull()
         {
             foreach (ItemData data in _items)
@@ -68,7 +68,7 @@ namespace GambleRun
             return true;
         }
 
-        // °¡Àå°¡±î¿î ºó°ø°£ÀÇ ÀÎµ¦½º¸¦ ¹İÈ¯ÇÕ´Ï´Ù
+        // ê°€ì¥ê°€ê¹Œìš´ ë¹ˆê³µê°„ì˜ ì¸ë±ìŠ¤ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤
         public int GetCloseEmptyIndex()
         {
             for (int i = 0; i < _items.Count; i++)
@@ -79,7 +79,7 @@ namespace GambleRun
         }
 
         /// <summary>
-        /// ½ºÅä¸®ÁöÀÇ ºó°ø°£ °¹¼ö¸¦ ¹İÈ¯
+        /// ìŠ¤í† ë¦¬ì§€ì˜ ë¹ˆê³µê°„ ê°¯ìˆ˜ë¥¼ ë°˜í™˜
         /// </summary>
         public int EmptySpaceCount
         {

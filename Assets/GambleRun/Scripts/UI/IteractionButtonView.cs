@@ -9,7 +9,7 @@ namespace GambleRun
     {
         private VisualElement _interactionPanel;
 
-        [SerializeField] private Vector3 _offset = new Vector3(0, 0, 0); // ¹Ú½º ¸Ó¸® À§ ³ôÀÌ Á¶Àı
+        [SerializeField] private Vector3 _offset = new Vector3(0, 0, 0); // ë°•ìŠ¤ ë¨¸ë¦¬ ìœ„ ë†’ì´ ì¡°ì ˆ
 
         private void Awake()
         {
