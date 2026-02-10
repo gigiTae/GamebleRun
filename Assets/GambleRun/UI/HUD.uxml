@@ -1,8 +1,10 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/GambleRun/UI/StaminaStyle.uss?fileID=7433441132597879392&amp;guid=65fc53e0c2b917146a6887b0f68ec8d2&amp;type=3#StaminaStyle" />
-    <ui:VisualElement name="root" style="flex-grow: 1;">
-        <ui:VisualElement name="StaminaPanel" style="flex-grow: 1; position: absolute; bottom: 10%; width: 25%; height: auto; left: 37.5%;">
-            <ui:ProgressBar value="22" name="stamina_progress_bar" style="width: auto;" />
-        </ui:VisualElement>
+    <Style src="project://database/Assets/GambleRun/UI/Style/StaminaStyle.uss?fileID=7433441132597879392&amp;guid=65fc53e0c2b917146a6887b0f68ec8d2&amp;type=3#StaminaStyle" />
+    <Style src="project://database/Assets/GambleRun/UI/Style/GoldStyle.uss?fileID=7433441132597879392&amp;guid=aaf5be2725ef7a245bfe8103668a4681&amp;type=3#GoldStyle" />
+    <ui:VisualElement name="gold_panel" style="flex-grow: 1; font-size: initial; -unity-text-generator: advanced; -unity-font-style: normal;">
+        <ui:Label text="3200" name="gold_label" style="font-size: 50%; -unity-text-generator: advanced;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="stamina_panel" style="flex-grow: 1; position: absolute; bottom: 10%; width: 25%; height: auto; left: 37.5%;">
+        <ui:ProgressBar value="22" name="stamina_progress_bar" style="width: auto;" />
     </ui:VisualElement>
 </ui:UXML>

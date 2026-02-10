@@ -1,0 +1,28 @@
+#gold_panel {
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    padding: 5px 15px;
+    border-width: 5px;
+    border-color: rgba(255, 215, 0, 0.5);
+    min-width: 150px;
+    height: 7.5%;
+    width: 20%;
+    bottom: 2.5%;
+    left: 2.5%;
+    position: absolute;
+    -unity-text-generator: advanced;
+    font-size: initial;
+}
+
+#gold_label {
+    color: white;
+    -unity-text-generator: advanced;
+    font-size: 70%;
+    -unity-font-style: bold;
+    -unity-text-align: middle-right;
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}

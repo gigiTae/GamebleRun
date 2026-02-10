@@ -8,7 +8,7 @@ namespace GambleRun
     {
         public readonly float CurrentRatio; // (current/ max)
 
-        public ProgressBarContext(float ratio, bool isVisible = true)
+        public ProgressBarContext(float ratio)
         {
             CurrentRatio = ratio;
         }
