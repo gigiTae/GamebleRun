@@ -19,7 +19,9 @@ namespace GambleRun
         [SerializeField] private OnProgressBarUpdate _progressChangedEvent;
         [SerializeField] private UIDocument _uiDocument;
         [SerializeField] private string _progressBarName;
-        
+        [SerializeField] private bool _useHideOption;
+        [SerializeField][Range(0f, 1f)] private float _hideRatio;
+
         private ProgressBar _progressBar;
 
         private void Awake()
@@ -56,6 +58,15 @@ namespace GambleRun
         {
             if (_progressBar == null) return;
             _progressBar.value = ratio * 100f;
+
+            if(_useHideOption && _hideRatio <= ratio)
+            {
+                _progressBar.style.visibility = Visibility.Hidden;
+            }
+            else
+            {
+                _progressBar.style.visibility = Visibility.Visible;
+            }
         }
     }
 }

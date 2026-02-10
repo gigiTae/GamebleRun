@@ -1141,6 +1141,8 @@ MonoBehaviour:
   _progressChangedEvent: {fileID: 11400000, guid: e87b9290bc7f2a943b45463c7e04eb69, type: 2}
   _uiDocument: {fileID: 670294263}
   _progressBarName: stamina_progress_bar
+  _useHideOption: 1
+  _hideRatio: 0.6
 --- !u!1 &697127266 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2783766441560327342, guid: 7b1202a1b491454488481556d0f9f06d, type: 3}

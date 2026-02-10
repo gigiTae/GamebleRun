@@ -8,7 +8,6 @@ namespace GambleRun
     public class StorageData : ScriptableObject
     {
         [SerializeField] private List<ItemData> _items = new();
-
         public IReadOnlyList<ItemData> Items => _items;
 
         public void UpdateItems(List<ItemData> items)
