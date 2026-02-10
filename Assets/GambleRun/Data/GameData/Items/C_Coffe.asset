@@ -18,7 +18,7 @@ MonoBehaviour:
   IsStackable: 1
   Stack: 1
   MaxStack: 99
-  Icon: {fileID: 21300000, guid: 1e25b4d3914dba74d99d9ca369c6614a, type: 3}
+  Icon: {fileID: 21300000, guid: 344a7c2d0b4f34c4395a922b77bf2d0a, type: 3}
   Rarity: 1
   Type: 4
   IsIdentified: 1

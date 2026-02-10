@@ -113,6 +113,15 @@ namespace GambleRun
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f3903c3-532b-4d72-9644-c82b4130fea9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""OpenInventory"",
                     ""type"": ""Button"",
                     ""id"": ""92078a0f-7093-4d8a-94a0-21725d8b894b"",
@@ -287,6 +296,17 @@ namespace GambleRun
                     ""action"": ""OpenInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5426f6e-8e4c-473d-a81e-80c776106ffb"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -345,6 +365,7 @@ namespace GambleRun
             m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
             m_GamePlay_Move = m_GamePlay.FindAction("Move", throwIfNotFound: true);
             m_GamePlay_Interact = m_GamePlay.FindAction("Interact", throwIfNotFound: true);
+            m_GamePlay_Sprint = m_GamePlay.FindAction("Sprint", throwIfNotFound: true);
             m_GamePlay_OpenInventory = m_GamePlay.FindAction("OpenInventory", throwIfNotFound: true);
             // Inventory
             m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
@@ -433,6 +454,7 @@ namespace GambleRun
         private List<IGamePlayActions> m_GamePlayActionsCallbackInterfaces = new List<IGamePlayActions>();
         private readonly InputAction m_GamePlay_Move;
         private readonly InputAction m_GamePlay_Interact;
+        private readonly InputAction m_GamePlay_Sprint;
         private readonly InputAction m_GamePlay_OpenInventory;
         /// <summary>
         /// Provides access to input actions defined in input action map "GamePlay".
@@ -453,6 +475,10 @@ namespace GambleRun
             /// Provides access to the underlying input action "GamePlay/Interact".
             /// </summary>
             public InputAction @Interact => m_Wrapper.m_GamePlay_Interact;
+            /// <summary>
+            /// Provides access to the underlying input action "GamePlay/Sprint".
+            /// </summary>
+            public InputAction @Sprint => m_Wrapper.m_GamePlay_Sprint;
             /// <summary>
             /// Provides access to the underlying input action "GamePlay/OpenInventory".
             /// </summary>
@@ -489,6 +515,9 @@ namespace GambleRun
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
                 @OpenInventory.started += instance.OnOpenInventory;
                 @OpenInventory.performed += instance.OnOpenInventory;
                 @OpenInventory.canceled += instance.OnOpenInventory;
@@ -509,6 +538,9 @@ namespace GambleRun
                 @Interact.started -= instance.OnInteract;
                 @Interact.performed -= instance.OnInteract;
                 @Interact.canceled -= instance.OnInteract;
+                @Sprint.started -= instance.OnSprint;
+                @Sprint.performed -= instance.OnSprint;
+                @Sprint.canceled -= instance.OnSprint;
                 @OpenInventory.started -= instance.OnOpenInventory;
                 @OpenInventory.performed -= instance.OnOpenInventory;
                 @OpenInventory.canceled -= instance.OnOpenInventory;
@@ -673,6 +705,13 @@ namespace GambleRun
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnInteract(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Sprint" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSprint(InputAction.CallbackContext context);
             /// <summary>
             /// Method invoked when associated input action "OpenInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>

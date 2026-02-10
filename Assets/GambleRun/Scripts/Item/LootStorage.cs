@@ -55,7 +55,6 @@ namespace GambleRun
             {
                 StopCoroutine(_identifyingCorutine);
                 _identifyingCorutine = null;
-                Debug.Log("Stop");
             }
         }
 
@@ -82,7 +81,6 @@ namespace GambleRun
                         );
 
                     _storageView.RefreshSlot(i, initData);
-                    Debug.Log($"{i}번 슬롯 아이템 확인 완료!");
                 }
             }
 

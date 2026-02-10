@@ -1512,7 +1512,6 @@ GameObject:
   - component: {fileID: 3634021308258956019}
   - component: {fileID: 1470928966775667490}
   - component: {fileID: 6150922043921215704}
-  - component: {fileID: 1754034848337916259}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1575,24 +1574,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
-  _rotationSpeed: 15
-  _moveSpeed: 5
-  _gravity: -9.81
---- !u!114 &1754034848337916259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7239880456313921797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0c384619e9c25f4682f8efb99e54a2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
-  _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
-  _inventoryOpenEvent: {fileID: 11400000, guid: f04cc50e1ca768b48bc6a6b239925ce3, type: 2}
 --- !u!1 &7363479242261063072
 GameObject:
   m_ObjectHideFlags: 0

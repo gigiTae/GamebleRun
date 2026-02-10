@@ -34,7 +34,7 @@ namespace GambleRun
         {
             if (_nearestInteractableObject != null && _nearestInteractableObject.IsInteractable())
             {
-                _nearestInteractableObject. ();
+                _nearestInteractableObject.Interact();
             }
         }
 

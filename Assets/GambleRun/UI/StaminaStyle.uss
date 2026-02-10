@@ -1,0 +1,28 @@
+#stamina_progress_bar {
+    width: 250px;
+    height: 20px;
+    margin: 10px;
+    opacity: 0.8;
+}
+
+#stamina_progress_bar .unity-progress-bar__background {
+    background-color: rgba(35, 35, 35, 0.7);
+    border-width: 1px;
+    border-color: rgb(85, 85, 85);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#stamina_progress_bar .unity-progress-bar__progress {
+    background-color: rgb(176, 176, 176);
+    margin: 1px;
+    border-radius: 4px;
+    transition-property: width;
+    transition-duration: 0.3s;
+}
+
+#stamina_progress_bar .unity-progress-bar__title {
+    color: rgb(210, 210, 210);
+    -unity-font-style: normal;
+    font-size: 11px;
+}
