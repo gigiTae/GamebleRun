@@ -22,6 +22,10 @@ namespace GambleRun
             }
 
             BindPointerCallback();
+        }
+
+        private void Start()
+        {
             SetupStorageView();
         }
 
@@ -47,12 +51,19 @@ namespace GambleRun
 
             for (int i = 0; i < items.Count; ++i)
             {
-                Sprite icon = items[i] == null ? null : items[i].Icon;
-                uint count = items[i] == null ? 0 : items[i].Stack;
-                bool isIdentified = items[i] == null ? true : items[i].IsIdentified;
-                SlotInit slotData = new(icon, count, i, isIdentified);
-                _storageView.AddSlot(slotData);
+                SlotInit slotInit = CreateSlotInit(items[i], i);
+                _storageView.AddSlot(slotInit);
             }
+        }
+
+        private SlotInit CreateSlotInit(ItemData item, int index)
+        {
+            if (item == null)
+            {
+                return new SlotInit(null, 0, index, true);
+            }
+
+            return new SlotInit(item.Icon, item.Stack, index, item.IsIdentified);
         }
 
         private void BindPointerCallback()
@@ -91,15 +102,11 @@ namespace GambleRun
             }
         }
 
-        public void SetItem(ItemData item, int itemIndex2)
+        public void SetItem(ItemData item, int index)
         {
-            Sprite icon = item == null ? null : item.Icon;
-            uint count = item == null ? 0 : item.Stack;
-            bool isIdentified = item == null ? true : item.IsIdentified;
-
-            SlotInit initData = new(icon, count, itemIndex2, isIdentified);
-            _storageView.RefreshSlot(itemIndex2, initData);
-            _storageData.SetItem(item, itemIndex2);
+            SlotInit initData = CreateSlotInit(item, index);
+            _storageView.RefreshSlot(index, initData);
+            _storageData.SetItem(item, index);
         }
 
         public ItemData GetItemData(int index)

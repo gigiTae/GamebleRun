@@ -10,6 +10,10 @@ namespace GambleRun.Manager
         private Storage _startStorage;
         private int _startItemIndex = -1;
         public bool IsDragging => _isDragging;
+        private void OnEnable()
+        {
+            ResetState(); 
+        }
 
         public void BeginDragDrop(Storage storage, int itemIndex)
         {

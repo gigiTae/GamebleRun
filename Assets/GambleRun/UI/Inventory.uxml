@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/GambleRun/UI/SlotStyle%201.uss?fileID=7433441132597879392&amp;guid=d20426cf60cce2245b1099f18d9dd991&amp;type=3#SlotStyle 1" />
+    <Style src="project://database/Assets/GambleRun/UI/SlotStyle.uss?fileID=7433441132597879392&amp;guid=812804eda4cf6e647bde5c1aeb955299&amp;type=3#SlotStyle" />
     <ui:VisualElement name="root" style="flex-grow: 1; display: flex; visibility: visible;">
         <ui:VisualElement name="inventory_panel" style="flex-grow: 1; width: auto; height: auto; position: relative; background-color: rgba(0, 0, 0, 0.59); top: auto; margin-top: 5%; margin-bottom: 5%; margin-right: 10%; margin-left: 10%; flex-direction: row; border-top-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px; display: flex;">
             <ui:VisualElement name="loot_panel" style="flex-grow: 0; width: 35%; flex-shrink: 0; display: flex; visibility: visible;">

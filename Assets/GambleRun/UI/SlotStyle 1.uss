@@ -22,7 +22,7 @@
     border-width: 3px;
 }
 
-.storage_slotContainer {
+.xc {
     flex-direction: row;
     flex-wrap: wrap;
     overflow: scroll;

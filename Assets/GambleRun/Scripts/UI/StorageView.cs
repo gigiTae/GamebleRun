@@ -18,12 +18,15 @@ namespace GambleRun
 
         private void Awake()
         {
-            _storagePanel = _uiDocument.rootVisualElement.Q(_storagePanelName);
-            _storageLabel = _storagePanel.Q<Label>();
-            _slotContainer = _storagePanel.Q<SlotContainer>();
+            if (_uiDocument != null)
+            {
+                _storagePanel = _uiDocument.rootVisualElement.Q(_storagePanelName);
+                _storageLabel = _storagePanel.Q<Label>();
+                _slotContainer = _storagePanel.Q<SlotContainer>();
 
-            _slotContainer.RegisterCallback<PointerDownEvent>(OnPointerDown);
-            _slotContainer.RegisterCallback<PointerUpEvent>(OnPointerUp);
+                _slotContainer.RegisterCallback<PointerDownEvent>(OnPointerDown);
+                _slotContainer.RegisterCallback<PointerUpEvent>(OnPointerUp);
+            }
         }
 
         private void OnPointerDown(PointerDownEvent evt)
@@ -35,7 +38,6 @@ namespace GambleRun
         {
             PointerUpEvent?.Invoke(evt);
         }
-
 
         public void SetVisible(bool isVisible)
         {
