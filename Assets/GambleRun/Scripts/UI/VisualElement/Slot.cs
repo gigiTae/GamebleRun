@@ -5,14 +5,14 @@ using UnityEngine.UIElements;
 
 namespace GambleRun
 {
-    public struct SlotViewInit
+    public struct SlotInit
     {
         public Sprite Icon;
         public uint ItemCount;
         public int SlotIndex;
         public bool IsIdentified;
 
-        public SlotViewInit(Sprite icon, uint itemCount, int slotIndex, bool isIdentified = true)
+        public SlotInit(Sprite icon, uint itemCount, int slotIndex, bool isIdentified = true)
         {
             Icon = icon;
             ItemCount = itemCount;
@@ -22,14 +22,14 @@ namespace GambleRun
     }
 
     [UxmlElement]
-    public partial class SlotView : VisualElement
+    public partial class Slot : VisualElement
     {
         private Image _icon;
         private Label _stackLabel;
         private int _slotIndex = -1;
         public int SlotIndex => _slotIndex;
 
-        public SlotView()
+        public Slot()
         {
             _icon = new Image();
             _icon.AddToClassList("slot_icon");
@@ -40,9 +40,17 @@ namespace GambleRun
             _stackLabel.AddToClassList("slot_stack_label");
             _stackLabel.pickingMode = PickingMode.Ignore;
             Add(_stackLabel);
+
+            RegisterCallback<GeometryChangedEvent>(evt => {
+                // 1. 현재 계산된 가로 너비를 가져옵니다.
+                float currentWidth = evt.newRect.width;
+
+                // 2. 가로 너비와 동일하게 세로 높이를 강제로 할당합니다.
+                style.height = currentWidth;
+            });
         }
 
-        public void Setup(SlotViewInit data)
+        public void Setup(SlotInit data)
         {
             _slotIndex = data.SlotIndex;
             SetStackLabel(data.ItemCount);
@@ -56,7 +64,6 @@ namespace GambleRun
                 SetIcon(ConfigManager.Instance.SlotConfig.SearchIcon);
             }
         }
-
         public void ClearSlot()
         {
             SetStackLabel(0);

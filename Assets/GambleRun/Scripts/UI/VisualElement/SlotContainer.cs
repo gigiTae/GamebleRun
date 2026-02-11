@@ -6,30 +6,36 @@ using UnityEngine.UIElements;
 namespace GambleRun
 {
     [UxmlElement]
-    public partial class StorageView : VisualElement
+    public partial class SlotContainer : VisualElement
     {
         private VisualElement _slotContainer;
-        public StorageView()
+        public SlotContainer()
         {
             _slotContainer = new VisualElement();
             _slotContainer.AddToClassList("storage_slotContainer");
             Add(_slotContainer);
-        }
 
+            // UI Toolkit Build 전용
+            for (int i = 0; i < 10; ++i)
+            {
+                AddSlot(new SlotInit(null, 0, 1, true));
+            }
+        }
+      
         public void ClearContainer()
         {
             _slotContainer.Clear();
         }
 
-        public void AddSlot(SlotViewInit data)
+        public void AddSlot(SlotInit data)
         {
-            SlotView slot = new();
+            Slot slot = new();
             slot.AddToClassList("slot");
             _slotContainer.Add(slot);
             slot.Setup(data);
         }
 
-        public void RefreshSlot(int slotIndex ,SlotViewInit data)
+        public void RefreshSlot(int slotIndex, SlotInit data)
         {
             // 1. 인덱스 유효성 검사 (안전을 위해)
             if (slotIndex < 0 || slotIndex >= _slotContainer.childCount)
@@ -39,7 +45,7 @@ namespace GambleRun
             }
 
             // 2. 해당 인덱스의 자식을 SlotView로 가져오기
-            if (_slotContainer[slotIndex] is SlotView slot)
+            if (_slotContainer[slotIndex] is Slot slot)
             {
                 slot.Setup(data);
             }

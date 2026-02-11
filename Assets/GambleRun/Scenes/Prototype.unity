@@ -1201,6 +1201,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7239880456313921797, guid: 52789279617eea6418116fa57652a48e, type: 3}
   m_PrefabInstance: {fileID: 7613529821317337708}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &760075415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2377742767382843412, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+  m_PrefabInstance: {fileID: 5805661948184264310}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &925850014 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2783766441560327342, guid: 7b1202a1b491454488481556d0f9f06d, type: 3}
@@ -2792,8 +2803,23 @@ MonoBehaviour:
   _parentVisualElement: loot_panel
   _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
   _testData: {fileID: 11400000, guid: dc23dfc298d0bcc4ab28ea28a66fd1f6, type: 2}
+  _storageView: {fileID: 1957087042}
   _identifyDelay: 2
   _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
+--- !u!114 &1957087042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957087038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89174bf695fd574481d336246984f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiDocument: {fileID: 760075415}
+  _storagePanelName: loot_panel
 --- !u!1001 &2089178503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2919,18 +2945,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4118987257683218595, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+      propertyPath: _uiDocument
+      value: 
+      objectReference: {fileID: 760075415}
+    - target: {fileID: 4118987257683218595, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+      propertyPath: _storageView
+      value: 
+      objectReference: {fileID: 5805661948184264314}
     - target: {fileID: 5177896766551787888, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 7044666952649137219, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+      propertyPath: _uiDocument
+      value: 
+      objectReference: {fileID: 760075415}
+    - target: {fileID: 7044666952649137219, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+      propertyPath: _storageView
+      value: 
+      objectReference: {fileID: 5805661948184264313}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5173158736645465067, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5805661948184264314}
+    - targetCorrespondingSourceObject: {fileID: 4272269734312038814, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5805661948184264313}
     - targetCorrespondingSourceObject: {fileID: 3592920705828372604, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1957087041}
+    - targetCorrespondingSourceObject: {fileID: 3592920705828372604, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1957087042}
   m_SourcePrefab: {fileID: 100100000, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+--- !u!1 &5805661948184264311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4272269734312038814, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+  m_PrefabInstance: {fileID: 5805661948184264310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5805661948184264312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5173158736645465067, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+  m_PrefabInstance: {fileID: 5805661948184264310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5805661948184264313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805661948184264311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89174bf695fd574481d336246984f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiDocument: {fileID: 760075415}
+  _storagePanelName: equipment_panel
+--- !u!114 &5805661948184264314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805661948184264312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89174bf695fd574481d336246984f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiDocument: {fileID: 760075415}
+  _storagePanelName: backpack_panel
 --- !u!1001 &7613529821317337708
 PrefabInstance:
   m_ObjectHideFlags: 0

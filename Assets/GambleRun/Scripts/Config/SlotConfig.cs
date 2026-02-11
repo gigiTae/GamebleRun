@@ -8,8 +8,6 @@ namespace GambleRun
     {
         [SerializeField] private Sprite _searchIcon;
         public Sprite SearchIcon => _searchIcon;
-       
-
     }
 
 }

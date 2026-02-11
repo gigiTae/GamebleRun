@@ -9,17 +9,13 @@ namespace GambleRun
         [SerializeField] private string _parentVisualElement;
         [SerializeField] private DragDropManager _dragDropManager;
         [SerializeField] private StorageData _testData;
+        [SerializeField] protected StorageView _storageView;
 
-        private UIDocument _uiDocument;
-        protected StorageView _storageView;
         protected StorageData _storageData;
+
         public StorageData Data => _storageData;
         protected virtual void Awake()
         {
-            _uiDocument = GetComponentInParent<UIDocument>();
-
-            MakeView();
-
             if (_testData != null)
             {
                 _storageData = _testData.Clone();
@@ -54,28 +50,28 @@ namespace GambleRun
                 Sprite icon = items[i] == null ? null : items[i].Icon;
                 uint count = items[i] == null ? 0 : items[i].Stack;
                 bool isIdentified = items[i] == null ? true : items[i].IsIdentified;
-                SlotViewInit slotData = new(icon, count, i, isIdentified);
+                SlotInit slotData = new(icon, count, i, isIdentified);
                 _storageView.AddSlot(slotData);
             }
         }
 
         private void BindPointerCallback()
         {
-            _storageView.RegisterCallback<PointerDownEvent>(OnPointerDown);
-            _storageView.RegisterCallback<PointerUpEvent>(OnPointerUp);
+            _storageView.PointerDownEvent += OnPointerDown;
+            _storageView.PointerUpEvent += OnPointerUp;
         }
 
         private void OnPointerDown(PointerDownEvent evt)
         {
             // evt.target : 실제로 이벤트를 발생시킨 가장 깊은 곳의 자식 요소.
             // evt.currentTarget: 이벤트를 처리하고 있는 현재 요소.
-            if (evt.target is SlotView clickedSlot && CanBeginDrag(clickedSlot))
+            if (evt.target is Slot clickedSlot && CanBeginDrag(clickedSlot))
             {
                 _dragDropManager.BeginDragDrop(this, clickedSlot.SlotIndex);
             }
         }
 
-        protected virtual bool CanBeginDrag(SlotView slot)
+        protected virtual bool CanBeginDrag(Slot slot)
         {
             ItemData data = _storageData.Items[slot.SlotIndex];
 
@@ -89,7 +85,7 @@ namespace GambleRun
 
         private void OnPointerUp(PointerUpEvent evt)
         {
-            if (evt.target is SlotView dropSlot)
+            if (evt.target is Slot dropSlot)
             {
                 _dragDropManager.EndDragDrop(this, dropSlot.SlotIndex);
             }
@@ -101,30 +97,19 @@ namespace GambleRun
             uint count = item == null ? 0 : item.Stack;
             bool isIdentified = item == null ? true : item.IsIdentified;
 
-            SlotViewInit initData = new(icon, count, itemIndex2, isIdentified);
+            SlotInit initData = new(icon, count, itemIndex2, isIdentified);
             _storageView.RefreshSlot(itemIndex2, initData);
             _storageData.SetItem(item, itemIndex2);
         }
+
         public ItemData GetItemData(int index)
         {
             return _storageData.Items[index];
         }
 
-        private void MakeView()
-        {
-            _storageView = new StorageView();
-            VisualElement parentView = _uiDocument.rootVisualElement.Q(_parentVisualElement);
-
-            if (parentView != null)
-            {
-                parentView.Add(_storageView);
-            }
-        }
-
         public void SetVisible(bool isVisible)
         {
-            VisualElement parentView = _uiDocument.rootVisualElement.Q(_parentVisualElement);
-            parentView.style.visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
+            _storageView.SetVisible(isVisible);
         }
 
     }

@@ -73,7 +73,7 @@ namespace GambleRun
                     if (item == null) continue;
                     item.IsIdentified = true;
 
-                    SlotViewInit initData = new(
+                    SlotInit initData = new(
                             item.Icon,
                             item.Stack,
                             i,
@@ -84,7 +84,6 @@ namespace GambleRun
                 }
             }
 
-            // 5. 코루틴 관리 리스트에서 제거
             _identifyingCorutine = null;
         }
 
