@@ -21,7 +21,7 @@ namespace GambleRun
     /// </summary>
     public class PlayerGold : MonoBehaviour
     {
-        [SerializeField] private PlayerData _playerData;
+        [SerializeField] private PlayerSettingData _playerData;
         [SerializeField] private OnGoldChangedEvent _onGoldChangedEvent;
 
         public float _ownedGold = 100;

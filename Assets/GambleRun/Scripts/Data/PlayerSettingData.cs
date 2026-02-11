@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace GambleRun
 {
-    [CreateAssetMenu(fileName = "PlayerData", menuName = "Scriptable Objects/PlayerData")]
-    public class PlayerData : ScriptableObject
+    [CreateAssetMenu(fileName = "PlayerSettingData", menuName = "Player/PlayerSettingData")]
+    public class PlayerSettingData : ScriptableObject
     {
         [Header("Movement")]
         [SerializeField] private float _moveSpeed = 5.0f;

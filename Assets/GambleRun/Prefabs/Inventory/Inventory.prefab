@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8488976982074084008}
+  - component: {fileID: 3221742059088300953}
+  - component: {fileID: 8723581783137189015}
   m_Layer: 0
-  m_Name: SpoilsUI
+  m_Name: LootStorage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,6 +33,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3742290752878863449}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3221742059088300953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592920705828372604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75431128d9a4d884cb328a70b98af297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parentVisualElement: loot_panel
+  _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
+  _testData: {fileID: 11400000, guid: dc23dfc298d0bcc4ab28ea28a66fd1f6, type: 2}
+  _storageView: {fileID: 8723581783137189015}
+  _identifyDelay: 2
+  _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
+--- !u!114 &8723581783137189015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592920705828372604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89174bf695fd574481d336246984f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiDocument: {fileID: 2377742767382843412}
+  _storagePanelName: loot_panel
 --- !u!1 &4272269734312038814
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,8 +75,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8009360459521488680}
   - component: {fileID: 7044666952649137219}
+  - component: {fileID: 6344878829968970952}
   m_Layer: 0
-  m_Name: EquipmentUI
+  m_Name: EquipmentStorage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,6 +113,21 @@ MonoBehaviour:
   _parentVisualElement: equipment_panel
   _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
   _testData: {fileID: 11400000, guid: dba9580170736794b9ccde2d4e3ec06b, type: 2}
+  _storageView: {fileID: 6344878829968970952}
+--- !u!114 &6344878829968970952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4272269734312038814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89174bf695fd574481d336246984f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiDocument: {fileID: 2377742767382843412}
+  _storagePanelName: equipment_panel
 --- !u!1 &5173158736645465067
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,8 +138,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6814407149166344462}
   - component: {fileID: 4118987257683218595}
+  - component: {fileID: 5593573087135816521}
   m_Layer: 0
-  m_Name: BackpackUI
+  m_Name: BackpackStorage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +176,21 @@ MonoBehaviour:
   _parentVisualElement: backpack_panel
   _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
   _testData: {fileID: 11400000, guid: 25ac837f9b8b12645b7dfd94d159466d, type: 2}
+  _storageView: {fileID: 5593573087135816521}
+--- !u!114 &5593573087135816521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173158736645465067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89174bf695fd574481d336246984f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiDocument: {fileID: 2377742767382843412}
+  _storagePanelName: backpack_panel
 --- !u!1 &5177896766551787888
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +242,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: 18d84b58f5fd4054081903c7f5e9f82a, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 202b78f7a0233c14da90befbbdf0d8fc, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
@@ -195,8 +261,8 @@ MonoBehaviour:
   _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
   _backpack: {fileID: 4118987257683218595}
   _equipment: {fileID: 7044666952649137219}
-  _loot: {fileID: 0}
-  _lootOpenEvent: {fileID: 0}
-  _lootCloseEvent: {fileID: 0}
+  _loot: {fileID: 3221742059088300953}
+  _lootOpenEvent: {fileID: 11400000, guid: feb6de6c4bf4e54428ae16e17d30e7f4, type: 2}
+  _lootCloseEvent: {fileID: 11400000, guid: 0fac2a6d48aea23419113a7c047f748a, type: 2}
   _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
   _inventoryOpenEvent: {fileID: 11400000, guid: f04cc50e1ca768b48bc6a6b239925ce3, type: 2}

@@ -12,7 +12,7 @@ namespace GambleRun
     public class PlayerStamina : MonoBehaviour
     {
         [SerializeField] private OnProgressBarUpdate _staminaChangedEvent;
-        [SerializeField] private PlayerData _playerData;
+        [SerializeField] private PlayerSettingData _playerSettingData;
 
         private float _currentStamina;
         private bool _isExhausted;
@@ -29,7 +29,7 @@ namespace GambleRun
         private void Start()
         {
             _isExhausted = false;
-            _currentStamina = _playerData.MaxStamina;
+            _currentStamina = _playerSettingData.MaxStamina;
 
             UpdateView();
             _canRegenStamina = true;
@@ -43,7 +43,7 @@ namespace GambleRun
 
         private void CheckExhausted()
         {
-            if (_isExhausted && _currentStamina >= _playerData.ExhaustedRecoverThreshold)
+            if (_isExhausted && _currentStamina >= _playerSettingData.ExhaustedRecoverThreshold)
             {
                 _isExhausted = false;
             }
@@ -53,8 +53,8 @@ namespace GambleRun
         {
             if (_canRegenStamina)
             {
-                float regenStamina = Time.deltaTime * _playerData.StaminaRegenRate;
-                _currentStamina = Mathf.Min(_currentStamina + regenStamina, _playerData.MaxStamina);
+                float regenStamina = Time.deltaTime * _playerSettingData.StaminaRegenRate;
+                _currentStamina = Mathf.Min(_currentStamina + regenStamina, _playerSettingData.MaxStamina);
                 UpdateView();
             }
         }
@@ -81,13 +81,13 @@ namespace GambleRun
         private IEnumerator RegenDelayRoutine()
         {
             _canRegenStamina = false;
-            yield return new WaitForSeconds(_playerData.RegenDelayTime);
+            yield return new WaitForSeconds(_playerSettingData.RegenDelayTime);
             _canRegenStamina = true;
         }
 
         private void UpdateView()
         {
-            float ratio = _currentStamina / _playerData.MaxStamina;
+            float ratio = _currentStamina / _playerSettingData.MaxStamina;
             _staminaChangedEvent.Raise(new ProgressBarContext(ratio));
         }
 

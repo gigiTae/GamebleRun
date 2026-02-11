@@ -1,0 +1,110 @@
+using GambleRun.Core;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+
+namespace GambleRun.Persistence
+{
+
+    [Serializable]
+    public class GameData
+    {
+        public string FileName = "Save";
+        public string CurrentLevelName = "S";
+    }
+
+    public interface ISaveable
+    {
+        SerializableGuid Id { get; set; }
+    }
+
+    public interface IBind<TData> where TData : ISaveable
+    {
+        SerializableGuid Id { get; set; }
+        void Bind(TData data);
+    }
+
+    /// <summary>
+    /// 게임의 로드와 세이브를 담당합니다
+    /// </summary>
+    public class SaveLoadManager : Singleton<SaveLoadManager>
+    {
+        [SerializeField] GameData _gameData =new();
+
+        private IDataService _dataService;
+        protected override void Awake()
+        {
+            base.Awake();
+            _dataService = new FileDataService(new JsonSerializer());
+        }
+
+        //void Start() => NewGame();
+
+        //void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
+        //void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name == "Menu") return;
+
+            //Bind<Hero, PlayerData>(gameData.playerData);
+            //Bind<Inventory.Inventory, InventoryData>(gameData.inventoryData);
+        }
+
+        void InjectGameData()
+        {
+
+        }
+
+        void Bind<T, TData>(TData data) where T : MonoBehaviour, IBind<TData> where TData : ISaveable, new()
+        {
+            var entity = FindObjectsByType<T>(FindObjectsSortMode.None).FirstOrDefault();
+            if (entity != null)
+            {
+                if (data == null)
+                {
+                    data = new TData { Id = entity.Id };
+                }
+                entity.Bind(data);
+            }
+        }
+
+        void Bind<T, TData>(List<TData> datas) where T : MonoBehaviour, IBind<TData> where TData : ISaveable, new()
+        {
+            var entities = FindObjectsByType<T>(FindObjectsSortMode.None);
+
+            foreach (var entity in entities)
+            {
+                var data = datas.FirstOrDefault(d => d.Id == entity.Id);
+                if (data == null)
+                {
+                    data = new TData { Id = entity.Id };
+                    datas.Add(data);
+                }
+                entity.Bind(data);
+            }
+        }
+
+
+        public void SaveGame() => _dataService.Save(_gameData);
+
+        public void LoadGame(string fileName)
+        {
+            _gameData = _dataService.Load(fileName);
+
+            if (String.IsNullOrWhiteSpace(_gameData.CurrentLevelName))
+            {
+                _gameData.CurrentLevelName = "Demo";
+            }
+        }
+
+        public void ReloadGame() => LoadGame(_gameData.FileName);
+
+        public void DeleteGame(string gameName) => _dataService.Delete(gameName);
+
+    }
+
+}

@@ -7,7 +7,7 @@ namespace GambleRun
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private PlayerData _playerData;
+        [SerializeField] private PlayerSettingData _playerSettingData;
         private CharacterController _controller;
         private Vector3 _currentVelocity;
         private Camera _mainCamera;
@@ -23,7 +23,7 @@ namespace GambleRun
             get
             {
                 Vector3 horizontalVelocity = new Vector3(_currentVelocity.x, 0, _currentVelocity.z);
-                return horizontalVelocity.magnitude / _playerData.SprintSpeed;
+                return horizontalVelocity.magnitude / _playerSettingData.SprintSpeed;
             }
         }
 
@@ -64,12 +64,12 @@ namespace GambleRun
 
                 // 회전 처리
                 Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _playerData.RotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _playerSettingData.RotationSpeed * Time.deltaTime);
             }
 
             // 3. 속도 결정 (입력이 없으면 자동으로 0)
             bool canSprint = !_playerStamina.IsExhausted && _gamePlayActions.Sprint.IsPressed();
-            float currentSpeed = canSprint ? _playerData.SprintSpeed : _playerData.MoveSpeed;
+            float currentSpeed = canSprint ? _playerSettingData.SprintSpeed : _playerSettingData.MoveSpeed;
 
             _currentVelocity.x = moveDirection.x * currentSpeed;
             _currentVelocity.z = moveDirection.z * currentSpeed;
@@ -83,7 +83,7 @@ namespace GambleRun
             // 6. 스태미나 소모 (실제로 움직이고 있고 달리기 중일 때만)
             if (canSprint && moveInput.sqrMagnitude > 0.01f)
             {
-                _playerStamina.UseStamina(Time.deltaTime* _playerData.SprintStaminaCost ); // 예시: 초당 소모
+                _playerStamina.UseStamina(Time.deltaTime* _playerSettingData.SprintStaminaCost ); // 예시: 초당 소모
             }
         }
 
@@ -94,7 +94,7 @@ namespace GambleRun
                 _currentVelocity.y = 0f;
             }
 
-            _currentVelocity.y += _playerData.Gravity * Time.deltaTime;
+            _currentVelocity.y += _playerSettingData.Gravity * Time.deltaTime;
         }
     }
 }

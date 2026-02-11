@@ -14,12 +14,7 @@ namespace GambleRun.Core
 
         private GameObject _player;
 
-        void Awake()
-        {
-            StartGame();
-        }
-
-        private void StartGame()
+        public void StartGame()
         {
             if (_spawnPoint != null)
             {

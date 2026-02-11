@@ -1,0 +1,5 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="background_panel" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/GambleRun/Sprite/LoadingUI.jpg?fileID=2800000&amp;guid=1860dc0f1ece2b540ba1b969506cde9d&amp;type=3#LoadingUI&quot;); -unity-text-align: upper-center;">
+        <ui:ProgressBar value="10" title="55%" high-value="100" tabindex="0" name="loading_progress_bar" style="position: absolute; bottom: 10%; left: 25%; width: 50%; height: 10%; flex-grow: 0; -unity-text-outline-width: 0;" />
+    </ui:VisualElement>
+</ui:UXML>
