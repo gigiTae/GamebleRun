@@ -52,6 +52,11 @@ namespace GambleRun
 
             ItemData data = item.Data;
 
+            if (data == null)
+            {
+                return new SlotInit(null, 0, index, true);
+            }
+
             return new SlotInit(data.Icon, item.Quantity, index, item.IsIdentified);
         }
 

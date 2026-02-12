@@ -1,5 +1,6 @@
 using GambleRun;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
@@ -23,7 +24,7 @@ namespace GambleRun
         // Storage
         [SerializeField] private Storage _backpackStorage;
         [SerializeField] private Storage _equipmentStorage;
-        [SerializeField] private Storage _looStorage;
+        [SerializeField] private LootStorage _looStorage;
 
         // event
         [SerializeField] private LootEvent _lootOpenEvent;
@@ -49,6 +50,9 @@ namespace GambleRun
                 _inputActions = _inputManager.DefaultInputAction;
                 BindInputAction();
             }
+        }
+        private void Start()
+        {
         }
 
         private void OnOpenInventoryContext(InputAction.CallbackContext context)
@@ -89,7 +93,8 @@ namespace GambleRun
 
         private void OnOpenLoot(StorageData data)
         {
-            _looStorage.Bind(data);
+            _looStorage.BindAndIdentify(data);
+
             OpenFullInventory();
         }
 
@@ -97,7 +102,7 @@ namespace GambleRun
         {
             _state = InventoryState.FullyOpen;
             _looStorage.SetVisible(true);
-           
+
             _uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
             _inventoryOpenEvent.Raise();
         }

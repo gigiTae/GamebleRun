@@ -37,9 +37,12 @@ namespace GambleRun
             }
         }
 
-        public override void Bind(StorageData data)
+        /// <summary>
+        /// 바인딩과 아이템 식별을 시작합니다
+        /// </summary>
+        public void BindAndIdentify(StorageData data)
         {
-            base.Bind(data);
+            Bind(data);
             StartIdentifyStorage();
         }
 

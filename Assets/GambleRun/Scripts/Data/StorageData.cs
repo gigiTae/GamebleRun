@@ -107,10 +107,5 @@ namespace GambleRun
         //        _items.Add(null);
         //    }
         //}
-
-        /// <summary>
-        /// 스토리지 내 모든 아이템의 식별 상태를 설정합니다.
-        /// </summary>
-        /// <param name="isIdentified">true면 모두 공개, false면 모두 숨김</param>
     }
 }

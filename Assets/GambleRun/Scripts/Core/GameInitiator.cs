@@ -42,9 +42,11 @@ namespace GambleRun
 
 
             ////////////////// Creation Sector ////////////////
+
             CreateLevel();
             var player = Instantiate(_playerPrefab);
 
+            //** Instanisate -> Awake(), OnEable() 호출 **/
 
             //////////////// Preparation Sector ///////////////
 
@@ -62,6 +64,8 @@ namespace GambleRun
             //SaveLoadManager.Instance;
 
             _loadingScreenView.CloseLoadingScreen();
+
+            // 함수 종료시 Start() 호출
         }
 
         private void ViewLoadScreen()

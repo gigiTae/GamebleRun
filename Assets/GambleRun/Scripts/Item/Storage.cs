@@ -21,12 +21,20 @@ namespace GambleRun
         }
 
         protected virtual void OnDestroy() { }
-
-        public virtual void Bind(StorageData data)
+        public void Bind(StorageData data)
         {
+            if (data.Items.Count == 0)
+            {
+                for (int i = 0; i < 10; ++i)
+                {
+                    data.Items.Add(null);
+                }
+            }
+
             data.Id = Id;
             _presenter.BindStorageData(data);
         }
+
 
         public void SetVisible(bool isVisible)
         {

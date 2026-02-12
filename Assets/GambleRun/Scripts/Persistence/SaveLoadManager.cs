@@ -17,6 +17,7 @@ namespace GambleRun.Persistence
         public string CurrentLevelName = "S";
 
         public PlayerData Player;
+        public List<StorageData> Storages;
     }
 
     public interface ISaveable
@@ -35,7 +36,7 @@ namespace GambleRun.Persistence
     /// </summary>
     public class SaveLoadManager : Singleton<SaveLoadManager>
     {
-        [SerializeField] GameData _gameData =new();
+        [SerializeField] GameData _gameData = new();
 
         private IDataService _dataService;
         protected override void Awake()
@@ -46,48 +47,58 @@ namespace GambleRun.Persistence
 
         public void Update()
         {
-            if (Keyboard.current.zKey.isPressed)
+
+            if (Keyboard.current.zKey.wasPressedThisFrame)
             {
                 Debug.Log("SaveGame");
                 SaveGame();
             }
 
-            if (Keyboard.current.xKey.isPressed)
+            if (Keyboard.current.xKey.wasPressedThisFrame)
             {
                 Debug.Log("LoadGame");
                 LoadGame(_gameData.FileName);
                 ApplyGameData();
             }
+
         }
 
         public void ApplyGameData()
         {
-            Bind<Player, PlayerData>(_gameData.Player);
+            _gameData.Player = Bind<Player, PlayerData>(_gameData.Player);
 
-            // Inventory
-
-            // Store
+            _gameData.Storages = Bind<Storage, StorageData>(_gameData.Storages);
         }
 
-        void Bind<T, TData>(TData data) where T : MonoBehaviour, IBind<TData> where TData : ISaveable, new()
+        TData Bind<T, TData>(TData data) where T : MonoBehaviour, IBind<TData> where TData : ISaveable, new()
         {
             var entity = FindObjectsByType<T>(FindObjectsSortMode.None).FirstOrDefault();
             if (entity != null)
             {
+                // ** 전달값이 null이면 참조가 아니기때문에 원본객체를 수정할 수 없기때문에
+                // ** new() 할당 받은 객체에 리턴값을 통해서 원복객체에 전달합니다
+                // ** ref 방법도 있음
                 if (data == null)
                 {
                     data = new TData { Id = entity.Id };
                 }
                 entity.Bind(data);
             }
+
+            return data;
         }
 
-        void Bind<T, TData>(List<TData> datas) where T : MonoBehaviour, IBind<TData> where TData : ISaveable, new()
+        List<TData> Bind<T, TData>(List<TData> datas) where T : MonoBehaviour, IBind<TData> where TData : ISaveable, new()
         {
             var entities = FindObjectsByType<T>(FindObjectsSortMode.None);
 
             foreach (var entity in entities)
             {
+                if (datas == null)
+                {
+                    datas = new List<TData>();
+                }
+
                 var data = datas.FirstOrDefault(d => d.Id == entity.Id);
                 if (data == null)
                 {
@@ -96,7 +107,10 @@ namespace GambleRun.Persistence
                 }
                 entity.Bind(data);
             }
+
+            return datas;
         }
+
         public void SaveGame() => _dataService.Save(_gameData);
         public void LoadGame(string fileName)
         {

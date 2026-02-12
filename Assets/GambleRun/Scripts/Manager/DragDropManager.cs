@@ -12,7 +12,7 @@ namespace GambleRun.Manager
         public bool IsDragging => _isDragging;
         private void OnEnable()
         {
-            ResetState(); 
+            ResetState();
         }
 
         public void BeginDragDrop(StoragePresenter presenter, int itemIndex)
@@ -62,11 +62,13 @@ namespace GambleRun.Manager
 
         private bool CanCombine(Item start, Item end, StoragePresenter endPresenter, int endIdx)
         {
+            // TODO : MaxStack 로직 추가
+
             ItemData stratData = start.Data;
             ItemData endData = end?.Data;
 
             // 같은 아이템이고, 자기 자신으로의 드롭이 아닐 때 (같은 인벤토리 내 같은 슬롯 방지)
-            return start != null && end != null &&
+            return Item.IsValid(start) && Item.IsValid(end) &&
                    stratData.ItemName == endData.ItemName &&
                    !(_startPresenter == endPresenter && _startItemIndex == endIdx)
                    && stratData.IsStackable && endData.IsStackable;
