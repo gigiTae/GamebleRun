@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 
 namespace GambleRun
@@ -20,19 +21,18 @@ namespace GambleRun
 
         public List<ProbabilityItem> ProbabilityItems;
 
-        public List<ItemData> GetRandomCloneItems()
+        public StorageData GetRandomCloneItems()
         {
-            List<ItemData> items = new List<ItemData>(SlotCount);
+            StorageData storageData = new StorageData();
 
             if (ProbabilityItems == null || ProbabilityItems.Count == 0)
             {
-                FillEmptySlots(items);
-                return items;
+                FillEmptySlots(storageData);
+                return storageData;
             }
 
-            // 1. 원본 데이터를 보호하기 위해 복사본 생성
             List<ProbabilityItem> pool = new List<ProbabilityItem>(ProbabilityItems);
-            
+
             // 2. Fisher-Yates Shuffle
             for (int i = pool.Count - 1; i > 0; i--)
             {
@@ -45,26 +45,28 @@ namespace GambleRun
             // 3. 당첨 확인 및 리스트 추가
             foreach (var data in pool)
             {
-                if (items.Count >= SlotCount) break;
+                if (storageData.Items.Count >= SlotCount) break;
 
                 float randomValue = Random.Range(0f, 100f);
                 if (randomValue <= data.Probability)
                 {
                     if (data.Item != null)
-                        items.Add(data.Item.Clone());
-                }   
+                    {
+                        Item item = new Item(data.Item, 1);
+                        storageData.Items.Add(item);
+                    }
+                }
             }
+            FillEmptySlots(storageData);
 
-            FillEmptySlots(items);
-
-            return items;
+            return storageData;
         }
 
-        private void FillEmptySlots(List<ItemData> items)
+        private void FillEmptySlots(StorageData data)
         {
-            while (items.Count < SlotCount)
+            while (data.Items.Count < SlotCount)
             {
-                items.Add(null);
+                data.Items.Add(null);
             }
         }
     }

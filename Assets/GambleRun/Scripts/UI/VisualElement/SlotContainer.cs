@@ -16,10 +16,10 @@ namespace GambleRun
             Add(_slotContainer);
 
             // UI Toolkit Build 전용
-            for (int i = 0; i < 10; ++i)
-            {
-                AddSlot(new SlotInit(null, 0, 1, true));
-            }
+            //for (int i = 0; i < 10; ++i)
+            //{
+            //    AddSlot(new SlotInit(null, 0, 1, true));
+            //}
         }
       
         public void ClearContainer()

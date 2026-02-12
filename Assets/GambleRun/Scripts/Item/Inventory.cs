@@ -14,16 +14,16 @@ namespace GambleRun
 
     public class Inventory : MonoBehaviour
     {
-        // input
+        // Input
         [SerializeField] private InputManager _inputManager;
         private DefaultInputAction _inputActions;
 
         private UIDocument _uiDocument;
 
-        // storage
-        [SerializeField] private Storage _backpack;
-        [SerializeField] private Storage _equipment;
-        [SerializeField] private Storage _loot;
+        // Storage
+        [SerializeField] private Storage _backpackStorage;
+        [SerializeField] private Storage _equipmentStorage;
+        [SerializeField] private Storage _looStorage;
 
         // event
         [SerializeField] private LootEvent _lootOpenEvent;
@@ -72,8 +72,6 @@ namespace GambleRun
             _inputActions.GamePlay.OpenInventory.performed -= OnOpenInventoryContext;
             _inputActions.Inventory.CloseInventory.performed -= OnCloseInventoryContext;
         }
-
-
         private void OnDestroy()
         {
             UnsubscribeEvent();
@@ -91,14 +89,14 @@ namespace GambleRun
 
         private void OnOpenLoot(StorageData data)
         {
-            _loot.RefreshStorage(data);
+            _looStorage.Bind(data);
             OpenFullInventory();
         }
 
         private void OpenFullInventory()
         {
             _state = InventoryState.FullyOpen;
-            _loot.SetVisible(true);
+            _looStorage.SetVisible(true);
            
             _uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
             _inventoryOpenEvent.Raise();
@@ -107,7 +105,7 @@ namespace GambleRun
         private void OpenPlayerPartInventory()
         {
             _state = InventoryState.PlayerPartOpen;
-            _loot.SetVisible(false);
+            _looStorage.SetVisible(false);
 
             _uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
             _inventoryOpenEvent.Raise();
@@ -117,7 +115,7 @@ namespace GambleRun
         {
             if (_state == InventoryState.FullyOpen)
             {
-                _lootCloseEvent.Raise(_loot.Data);
+                _lootCloseEvent.Raise(_looStorage.GetStorageData());
             }
 
             _uiDocument.rootVisualElement.style.display = DisplayStyle.None;

@@ -37,9 +37,9 @@ namespace GambleRun
             }
         }
 
-        public override void RefreshStorage(StorageData storageData)
+        public override void Bind(StorageData data)
         {
-            base.RefreshStorage(storageData);
+            base.Bind(data);
             StartIdentifyStorage();
         }
 
@@ -60,27 +60,29 @@ namespace GambleRun
 
         private IEnumerator IdentifyItemCoroutine()
         {
-            int itemCount = _storageData.Items.Count;
+            StorageData storageData = GetStorageData();
+            int itemCount = storageData.Items.Count;
 
             for (int i = 0; i < itemCount; ++i)
             {
-                ItemData item = _storageData.Items[i];
+                Item item = storageData.Items[i];
 
                 if (item != null && !item.IsIdentified)
                 {
                     yield return _identifyDelayWait;
 
                     if (item == null) continue;
+                    ItemData itemData = item.Data;
                     item.IsIdentified = true;
 
                     SlotInit initData = new(
-                            item.Icon,
-                            item.Stack,
+                            itemData.Icon,
+                            item.Quantity,
                             i,
                             item.IsIdentified
                         );
 
-                    _storageView.RefreshSlot(i, initData);
+                    _view.RefreshSlot(i, initData);
                 }
             }
 

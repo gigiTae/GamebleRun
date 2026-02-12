@@ -44,18 +44,6 @@ namespace GambleRun.Persistence
             _dataService = new FileDataService(new JsonSerializer());
         }
 
-        //void Start() => NewGame();
-
-        //void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
-        //void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
-
-        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            if (scene.name == "Menu") return;
-
-            //Bind<Inventory.Inventory, InventoryData>(gameData.inventoryData);
-        }
-
         public void Update()
         {
             if (Keyboard.current.zKey.isPressed)

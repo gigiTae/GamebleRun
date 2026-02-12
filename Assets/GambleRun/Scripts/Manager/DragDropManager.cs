@@ -7,7 +7,7 @@ namespace GambleRun.Manager
     {
         // 상태 변수
         private bool _isDragging = false;
-        private Storage _startStorage;
+        private StoragePresenter _startPresenter;
         private int _startItemIndex = -1;
         public bool IsDragging => _isDragging;
         private void OnEnable()
@@ -15,64 +15,67 @@ namespace GambleRun.Manager
             ResetState(); 
         }
 
-        public void BeginDragDrop(Storage storage, int itemIndex)
+        public void BeginDragDrop(StoragePresenter presenter, int itemIndex)
         {
-            if (storage == null || storage.GetItemData(itemIndex) == null) return;
+            if (presenter == null || presenter.GetItem(itemIndex) == null) return;
 
             _isDragging = true;
             _startItemIndex = itemIndex;
-            _startStorage = storage;
+            _startPresenter = presenter;
         }
 
-        public void EndDragDrop(Storage endStorage, int endItemIndex)
+        public void EndDragDrop(StoragePresenter endPresenter, int endItemIndex)
         {
-            if (!_isDragging || endStorage == null)
+            if (!_isDragging || endPresenter == null)
             {
                 ResetState();
                 return;
             }
 
-            ItemData startItem = _startStorage.GetItemData(_startItemIndex);
-            ItemData endItem = endStorage.GetItemData(endItemIndex);
+            Item startItem = _startPresenter.GetItem(_startItemIndex);
+            Item endItem = endPresenter.GetItem(endItemIndex);
 
-            if (CanCombine(startItem, endItem, endStorage, endItemIndex))
+            if (CanCombine(startItem, endItem, endPresenter, endItemIndex))
             {
-                CombineItems(startItem, endItem, endStorage, endItemIndex);
+                CombineItems(startItem, endItem, endPresenter, endItemIndex);
             }
             else
             {
-                SwapItems(startItem, endItem, endStorage, endItemIndex);
+                SwapItems(startItem, endItem, endPresenter, endItemIndex);
             }
 
             ResetState();
         }
 
-        private void CombineItems(ItemData start, ItemData end, Storage endStorage, int endIdx)
+        private void CombineItems(Item start, Item end, StoragePresenter endPresenter, int endIdx)
         {
             // 병합 로직: 시작 아이템 수량을 끝 아이템에 합치고 시작 슬롯 비우기
-            end.Stack += start.Stack;
-            _startStorage.SetItem(null, _startItemIndex);
-            endStorage.SetItem(end, endIdx);
+            end.Quantity += start.Quantity;
+            _startPresenter.SetItem(null, _startItemIndex);
+            endPresenter.SetItem(end, endIdx);
         }
-        private void SwapItems(ItemData start, ItemData end, Storage endStorage, int endIdx)
+        private void SwapItems(Item start, Item end, StoragePresenter endPresenter, int endIdx)
         {
-            _startStorage.SetItem(end, _startItemIndex);
-            endStorage.SetItem(start, endIdx);
+            _startPresenter.SetItem(end, _startItemIndex);
+            endPresenter.SetItem(start, endIdx);
         }
 
-        private bool CanCombine(ItemData start, ItemData end, Storage endStorage, int endIdx)
+        private bool CanCombine(Item start, Item end, StoragePresenter endPresenter, int endIdx)
         {
+            ItemData stratData = start.Data;
+            ItemData endData = end?.Data;
+
             // 같은 아이템이고, 자기 자신으로의 드롭이 아닐 때 (같은 인벤토리 내 같은 슬롯 방지)
             return start != null && end != null &&
-                   start.ItemName == end.ItemName &&
-                   !(_startStorage == endStorage && _startItemIndex == endIdx)
-                   && start.IsStackable && end.IsStackable;
+                   stratData.ItemName == endData.ItemName &&
+                   !(_startPresenter == endPresenter && _startItemIndex == endIdx)
+                   && stratData.IsStackable && endData.IsStackable;
         }
 
         private void ResetState()
         {
             _isDragging = false;
-            _startStorage = null;
+            _startPresenter = null;
             _startItemIndex = -1;
         }
     }

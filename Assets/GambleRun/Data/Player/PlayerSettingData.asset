@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSettingData
   m_EditorClassIdentifier: 
   _moveSpeed: 5
-  _sprintSpeed: 10
+  _sprintSpeed: 7
   _rotationSpeed: 10
   _gravity: -10
   _maxStamina: 100

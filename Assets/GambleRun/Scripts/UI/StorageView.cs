@@ -59,8 +59,6 @@ namespace GambleRun
             _slotContainer.ClearContainer();
         }
 
-
-
     }
 
 }

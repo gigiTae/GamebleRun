@@ -45,10 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75431128d9a4d884cb328a70b98af297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parentVisualElement: loot_panel
+  <Id>k__BackingField:
+    Part1: 3535073428
+    Part2: 1272417009
+    Part3: 929009537
+    Part4: 2033792736
+  _view: {fileID: 8723581783137189015}
   _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
-  _testData: {fileID: 11400000, guid: dc23dfc298d0bcc4ab28ea28a66fd1f6, type: 2}
-  _storageView: {fileID: 8723581783137189015}
   _identifyDelay: 2
   _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
 --- !u!114 &8723581783137189015
@@ -110,10 +113,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fee48faa1097344397ed5ce3db874df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parentVisualElement: equipment_panel
+  <Id>k__BackingField:
+    Part1: 4044987774
+    Part2: 1315911184
+    Part3: 297466282
+    Part4: 3405151142
+  _view: {fileID: 6344878829968970952}
   _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
-  _testData: {fileID: 11400000, guid: dba9580170736794b9ccde2d4e3ec06b, type: 2}
-  _storageView: {fileID: 6344878829968970952}
 --- !u!114 &6344878829968970952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,10 +179,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fee48faa1097344397ed5ce3db874df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parentVisualElement: backpack_panel
+  <Id>k__BackingField:
+    Part1: 934510749
+    Part2: 1168471164
+    Part3: 2895234440
+    Part4: 689760525
+  _view: {fileID: 5593573087135816521}
   _dragDropManager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
-  _testData: {fileID: 11400000, guid: 25ac837f9b8b12645b7dfd94d159466d, type: 2}
-  _storageView: {fileID: 5593573087135816521}
 --- !u!114 &5593573087135816521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,9 +268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
-  _backpack: {fileID: 4118987257683218595}
-  _equipment: {fileID: 7044666952649137219}
-  _loot: {fileID: 3221742059088300953}
+  _backpackStorage: {fileID: 4118987257683218595}
+  _equipmentStorage: {fileID: 7044666952649137219}
+  _looStorage: {fileID: 3221742059088300953}
   _lootOpenEvent: {fileID: 11400000, guid: feb6de6c4bf4e54428ae16e17d30e7f4, type: 2}
   _lootCloseEvent: {fileID: 11400000, guid: 0fac2a6d48aea23419113a7c047f748a, type: 2}
   _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}

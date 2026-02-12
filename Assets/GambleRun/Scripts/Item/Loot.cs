@@ -19,9 +19,10 @@ namespace GambleRun
         void Awake()
         {
             _interactionView = GetComponent<InteractionButtonView>();
-            _data = ScriptableObject.CreateInstance<StorageData>();
+            _data = new StorageData();
+            _data.Id = SerializableGuid.NewGuid();
 
-            Setup();
+            FillLoot();
         }
 
         public void Interact()
@@ -44,12 +45,11 @@ namespace GambleRun
             _interactionView.Show(false);
         }
 
-        private void Setup()
+        private void FillLoot()
         {
             if (_table != null)
             {
-                List<ItemData> items = _table.GetRandomCloneItems();
-                _data.UpdateItems(items);
+                _data = _table.GetRandomCloneItems();
                 _data.SetAllItemsIdentification(false);
             }
             else

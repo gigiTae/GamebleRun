@@ -21,40 +21,30 @@ namespace GambleRun
         Etc            // 잡탬 
     }
 
-    // 아이템 기본적인 데이터를 설정
     [CreateAssetMenu(fileName = "ItemData", menuName = "GameData/ItemData")]
     public class ItemData : ScriptableObject
     {
+        public SerializableGuid Id = SerializableGuid.NewGuid();
+
         [Header("Base")]
-        public string ItemName = "Empty";
+        public string ItemName;
         public int Price = 1;
-        public int Weight = 0;
+        public float Weight = 0;
+        public string Descrition;
 
         [Header("Stacking")]
-        public bool IsStackable = true; // 중첩 가능 여부
-        public uint Stack = 1;          // 현재 갯수
         public uint MaxStack = 99;      // 최대 중첩 수
 
+        public bool IsStackable => MaxStack > 1;
+
         [Header("Visual & Type")]
-        public Sprite Icon = null;
+        public Sprite Icon;
         public ItemRarity Rarity = ItemRarity.Common;
         public ItemType Type = ItemType.Etc;
-        public bool IsIdentified = true; 
-        
-        public ItemData Clone()
+
+        public Item Create(uint quantity)
         {
-            ItemData data = CreateInstance<ItemData>();
-            data.ItemName = ItemName;
-            data.Price = Price;
-            data.Weight = Weight;
-            data.IsStackable = IsStackable;
-            data.Stack = Stack; 
-            data.MaxStack = MaxStack;
-            data.Icon = Icon;
-            data.Rarity = Rarity;
-            data.Type = Type;
-            data.IsIdentified = IsIdentified;
-            return data;
+            return new Item(this, quantity);
         }
     }
 }
