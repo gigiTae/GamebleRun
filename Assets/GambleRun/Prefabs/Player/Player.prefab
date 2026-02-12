@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480ac42e279f3c3498f9048e82ca2760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _settingData: {fileID: 11400000, guid: 9c040e99d79e0a84597673a15bf2ef27, type: 2}
   _lootOpenEvent: {fileID: 11400000, guid: feb6de6c4bf4e54428ae16e17d30e7f4, type: 2}
   _lootCloseEvent: {fileID: 11400000, guid: 0fac2a6d48aea23419113a7c047f748a, type: 2}
 --- !u!1 &72001978342033226
@@ -1530,6 +1531,7 @@ GameObject:
   - component: {fileID: 4098965042458391610}
   - component: {fileID: 6870893794431827239}
   - component: {fileID: 708619925578869557}
+  - component: {fileID: 6146018247333998888}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1591,7 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561edc3f5c95058459dc50279317c340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerData: {fileID: 11400000, guid: cd3f620b534fe154995cd916805ce80c, type: 2}
+  _settingData: {fileID: 11400000, guid: 9c040e99d79e0a84597673a15bf2ef27, type: 2}
   _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
 --- !u!114 &4098965042458391610
 MonoBehaviour:
@@ -1621,7 +1623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _staminaChangedEvent: {fileID: 11400000, guid: e87b9290bc7f2a943b45463c7e04eb69, type: 2}
-  _playerData: {fileID: 11400000, guid: cd3f620b534fe154995cd916805ce80c, type: 2}
+  _playerSettingData: {fileID: 11400000, guid: 9c040e99d79e0a84597673a15bf2ef27, type: 2}
 --- !u!114 &708619925578869557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1634,9 +1636,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c4b40715b00594e8dd33e7f4b627e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerData: {fileID: 11400000, guid: cd3f620b534fe154995cd916805ce80c, type: 2}
+  _playerSettingData: {fileID: 11400000, guid: 9c040e99d79e0a84597673a15bf2ef27, type: 2}
   _onGoldChangedEvent: {fileID: 11400000, guid: 8f20d592180212546836a5c318eeee20, type: 2}
-  _ownedGold: 100
+--- !u!114 &6146018247333998888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372648607451857808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02c85b33e97a2940b3aabcc5b4843ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField:
+    Part1: 661864280
+    Part2: 1226404947
+    Part3: 3394256797
+    Part4: 4203876024
+  _animation: {fileID: 2192742941404000523}
 --- !u!1 &8436289567842349959
 GameObject:
   m_ObjectHideFlags: 0

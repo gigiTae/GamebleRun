@@ -14,26 +14,16 @@ namespace GambleRun
         [SerializeField] private OnProgressBarUpdate _staminaChangedEvent;
         [SerializeField] private PlayerSettingData _playerSettingData;
 
-        private float _currentStamina;
-        private bool _isExhausted;
-        private bool _canRegenStamina;
+        private PlayerData _data;
+        public void SetPlayerData(PlayerData playerData)
+        {
+            _data = playerData;
+        }
 
         private Coroutine _regenDelayCorutine;
 
-        public bool IsExhausted => _isExhausted;
+        public bool IsExhausted => _data.IsExhausted;
 
-        private void Awake()
-        {
-        }
-
-        private void Start()
-        {
-            _isExhausted = false;
-            _currentStamina = _playerSettingData.MaxStamina;
-
-            UpdateView();
-            _canRegenStamina = true;
-        }
 
         void Update()
         {
@@ -43,29 +33,29 @@ namespace GambleRun
 
         private void CheckExhausted()
         {
-            if (_isExhausted && _currentStamina >= _playerSettingData.ExhaustedRecoverThreshold)
+            if (_data.IsExhausted && _data.CurrentStamina >= _playerSettingData.ExhaustedRecoverThreshold)
             {
-                _isExhausted = false;
+                _data.IsExhausted = false;
             }
         }
 
         private void RegenStamina()
         {
-            if (_canRegenStamina)
+            if (_data.CanRegenStamina)
             {
                 float regenStamina = Time.deltaTime * _playerSettingData.StaminaRegenRate;
-                _currentStamina = Mathf.Min(_currentStamina + regenStamina, _playerSettingData.MaxStamina);
+                _data.CurrentStamina = Mathf.Min(_data.CurrentStamina + regenStamina, _playerSettingData.MaxStamina);
                 UpdateView();
             }
         }
 
         public void UseStamina(float amount)
         {
-            _currentStamina = Mathf.Max(0f, _currentStamina - amount);
+            _data.CurrentStamina = Mathf.Max(0f, _data.CurrentStamina - amount);
 
-            if (_currentStamina <= 0f)
+            if (_data.CurrentStamina <= 0f)
             {
-                _isExhausted = true;
+                _data.IsExhausted = true;
             }
 
             UpdateView();
@@ -80,14 +70,14 @@ namespace GambleRun
 
         private IEnumerator RegenDelayRoutine()
         {
-            _canRegenStamina = false;
+            _data.CanRegenStamina = false;
             yield return new WaitForSeconds(_playerSettingData.RegenDelayTime);
-            _canRegenStamina = true;
+            _data.CanRegenStamina = true;
         }
 
         private void UpdateView()
         {
-            float ratio = _currentStamina / _playerSettingData.MaxStamina;
+            float ratio = _data.CurrentStamina / _playerSettingData.MaxStamina;
             _staminaChangedEvent.Raise(new ProgressBarContext(ratio));
         }
 

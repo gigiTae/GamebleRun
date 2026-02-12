@@ -21,7 +21,6 @@ namespace GambleRun
                 _gamePlayActions.Interact.performed += OnInteractContext;
             }
         }
-
         private void OnDestroy()
         {
             if (_inputManager != null)

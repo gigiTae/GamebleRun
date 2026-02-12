@@ -9,21 +9,20 @@ namespace GambleRun
         private readonly int MOVE_SPEED_ID = Animator.StringToHash("MoveSpeed");
         private readonly int ON_INTERACTION_ID = Animator.StringToHash("OnInteraction");
 
+        [SerializeField] private PlayerSettingData _settingData;
+        private PlayerData _data;
+        public void SetPlayerData(PlayerData playerData)
+        {
+            _data = playerData;
+        }
+
         private Animator _animator;
-        private PlayerMovement _movement;
 
         [SerializeField] private LootEvent _lootOpenEvent;
         [SerializeField] private LootEvent _lootCloseEvent;
 
         private void Awake()
         {
-            _movement = GetComponentInParent<PlayerMovement>();
-
-            if (_movement == null)
-            {
-                Debug.Log("PlayertMovement is null");
-            }
-
             _animator = GetComponent<Animator>();
 
             if (_animator == null)
@@ -71,12 +70,20 @@ namespace GambleRun
         {
             UpdateAnimParams();
         }
+        private float HorizontalSpeedRatio
+        {
+            get
+            {
+                Vector3 horizontalVelocity = new Vector3(_data.CurrentVelocity.x, 0, _data.CurrentVelocity.z);
+                return horizontalVelocity.magnitude / _settingData.SprintSpeed;
+            }
+        }
 
         private void UpdateAnimParams()
         {
             if (_animator != null)
             {
-                _animator.SetFloat(MOVE_SPEED_ID, _movement.HorizontalSpeedRatio);
+                _animator.SetFloat(MOVE_SPEED_ID, HorizontalSpeedRatio);
             }
         }
     }

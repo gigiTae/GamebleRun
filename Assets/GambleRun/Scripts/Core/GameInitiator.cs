@@ -40,12 +40,25 @@ namespace GambleRun
 
             await Initialize(token);
 
-            // Creation
+
+            ////////////////// Creation Sector ////////////////
             CreateLevel();
+            var player = Instantiate(_playerPrefab);
 
 
-            // Preparation
-            
+            //////////////// Preparation Sector ///////////////
+
+            // LoadGameData
+
+            // New or Load
+
+            // ApplyGameData
+            SaveLoadManager.Instance.ApplyGameData();
+
+
+            // CameraBind
+            Camera.main.GetComponent<CameraFollow>().SetTarget(player.transform);
+
             //SaveLoadManager.Instance;
 
             _loadingScreenView.CloseLoadingScreen();

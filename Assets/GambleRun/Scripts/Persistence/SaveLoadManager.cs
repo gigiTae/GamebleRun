@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 
@@ -14,6 +15,8 @@ namespace GambleRun.Persistence
     {
         public string FileName = "Save";
         public string CurrentLevelName = "S";
+
+        public PlayerData Player;
     }
 
     public interface ISaveable
@@ -50,13 +53,32 @@ namespace GambleRun.Persistence
         {
             if (scene.name == "Menu") return;
 
-            //Bind<Hero, PlayerData>(gameData.playerData);
             //Bind<Inventory.Inventory, InventoryData>(gameData.inventoryData);
         }
 
-        void InjectGameData()
+        public void Update()
         {
+            if (Keyboard.current.zKey.isPressed)
+            {
+                Debug.Log("SaveGame");
+                SaveGame();
+            }
 
+            if (Keyboard.current.xKey.isPressed)
+            {
+                Debug.Log("LoadGame");
+                LoadGame(_gameData.FileName);
+                ApplyGameData();
+            }
+        }
+
+        public void ApplyGameData()
+        {
+            Bind<Player, PlayerData>(_gameData.Player);
+
+            // Inventory
+
+            // Store
         }
 
         void Bind<T, TData>(TData data) where T : MonoBehaviour, IBind<TData> where TData : ISaveable, new()
@@ -87,10 +109,7 @@ namespace GambleRun.Persistence
                 entity.Bind(data);
             }
         }
-
-
         public void SaveGame() => _dataService.Save(_gameData);
-
         public void LoadGame(string fileName)
         {
             _gameData = _dataService.Load(fileName);

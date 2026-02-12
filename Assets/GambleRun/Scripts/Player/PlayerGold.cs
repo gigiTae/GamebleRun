@@ -21,12 +21,15 @@ namespace GambleRun
     /// </summary>
     public class PlayerGold : MonoBehaviour
     {
-        [SerializeField] private PlayerSettingData _playerData;
+        [SerializeField] private PlayerSettingData _playerSettingData;
         [SerializeField] private OnGoldChangedEvent _onGoldChangedEvent;
 
-        public float _ownedGold = 100;
-        
-        // Update is called once per frame
+        private PlayerData _data;
+        public void SetPlayerData(PlayerData playerData)
+        {
+            _data = playerData;
+        }
+
         void Update()
         {
             AddGold(Time.deltaTime * 100f);
@@ -34,10 +37,10 @@ namespace GambleRun
 
         public void AddGold(float gold)
         {
-            float prev = _ownedGold;
-            _ownedGold += gold;
+            float prev = _data.OwnedGold;
+            _data.OwnedGold += gold;
 
-            _onGoldChangedEvent.Raise(new GoldChangedContext(prev, _ownedGold));
+            _onGoldChangedEvent.Raise(new GoldChangedContext(prev, _data.OwnedGold));
         }
     }
 

@@ -12,7 +12,6 @@ namespace GambleRun
         [SerializeField] protected StorageView _storageView;
 
         protected StorageData _storageData;
-
         public StorageData Data => _storageData;
         protected virtual void Awake()
         {
