@@ -1,5 +1,8 @@
 using UnityEngine;
 
+using GambleRun.Items;
+using GambleRun.Storages;
+
 namespace GambleRun.Manager
 {
     [CreateAssetMenu(fileName = "DragDropManager", menuName = "Manager/DragDropManager")]

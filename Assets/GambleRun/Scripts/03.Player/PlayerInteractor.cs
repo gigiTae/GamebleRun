@@ -8,8 +8,8 @@ namespace GambleRun.Player
     // 플레이어의 상호작용을 담당
     public class PlayerInteractor : MonoBehaviour
     {
-        [SerializeField] private InputManager _inputManager;
-        private DefaultInputAction.GamePlayActions _gamePlayActions;
+        [SerializeField] private GameInputReader _inputManager;
+        private GameInputAction.GamePlayActions _gamePlayActions;
 
         private IInteractable _nearestInteractableObject;
         private List<IInteractable> _interactableObjects = new List<IInteractable>();

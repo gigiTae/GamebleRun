@@ -2,6 +2,13 @@ using UnityEngine;
 
 namespace GambleRun.Core
 {
+    public enum GameMode
+    {
+        Ready,     // 게임준비단계
+        InGame,    // 인게임
+                   // Result,    //결과화면
+    }
+
     /// <summary>
     /// 게임 초기화 데이터
     /// </summary>

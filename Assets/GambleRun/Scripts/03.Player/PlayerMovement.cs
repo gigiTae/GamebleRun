@@ -23,8 +23,8 @@ namespace GambleRun.Player
         }
 
         [Header("Input")]
-        [SerializeField] private InputManager _inputManager;
-        private DefaultInputAction.GamePlayActions _gamePlayActions;
+        [SerializeField] private GameInputReader _inputManager;
+        private GameInputAction.GamePlayActions _gamePlayActions;
 
         private void Awake()
         {

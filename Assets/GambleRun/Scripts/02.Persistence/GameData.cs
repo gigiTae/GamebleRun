@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using GambleRun.Player;
+using GambleRun.Storages;
 
 namespace GambleRun.Persistence
 {
@@ -19,6 +20,7 @@ namespace GambleRun.Persistence
     public class GamePersistanceData
     {
         public List<StorageData> Storages = new(); // 창고, 장비창, 가방 등등
+
     }
 
     /// <summary>

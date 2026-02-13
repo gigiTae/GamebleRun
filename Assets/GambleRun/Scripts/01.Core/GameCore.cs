@@ -11,13 +11,10 @@ namespace GambleRun.Core
 
         private GameSerializer _serializer;
         private GameDataBinder _dataBinder;
-        private GameTerminator _terminator;
-
         private void Awake()
         {
             _serializer = gameObject.GetComponent<GameSerializer>();
             _dataBinder = gameObject.GetComponent<GameDataBinder>();
-            _terminator = gameObject.GetComponent<GameTerminator>();
         }
 
         public void Initialize(GameMode mode, string saveFileName)
@@ -33,10 +30,8 @@ namespace GambleRun.Core
 
             // 2. BindGameData
             _dataBinder.BindGameData(mode, _gameData);
-
-
-
         }
+
 
 
     }

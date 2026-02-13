@@ -1,5 +1,6 @@
 using UnityEngine;
 
+using GambleRun.Storages;
 
 namespace GambleRun.Event
 {

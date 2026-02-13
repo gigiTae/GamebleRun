@@ -7,7 +7,7 @@ namespace GambleRun.CameraControl
     {
         [SerializeField] private Vector3 _offset;
         [SerializeField] private float _smoothSpeed = 0.125f;
-        private Transform _target;
+        [SerializeField] private Transform _target;
         public void SetTarget(Transform target)
         {
             _target = target;

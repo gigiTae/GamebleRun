@@ -48,7 +48,7 @@ namespace GambleRun.Player
         }
         private void Start()
         {
-            // Test Scene Code6
+            // Test Scene Code
             if(_playerData == null)
             {
                 _playerData = new PlayerData();

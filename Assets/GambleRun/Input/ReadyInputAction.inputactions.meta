@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 891aba61da94ec641bb63018673f8da7
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 8404be70184654265930450def6a9037, type: 3}
+  generateWrapperCode: 1
+  wrapperCodePath: Assets/GambleRun/Scripts/09.Input/ReadyInputAction.cs
+  wrapperClassName: ReadyInputAction
+  wrapperCodeNamespace: GambleRun.Input
