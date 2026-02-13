@@ -24,7 +24,7 @@ namespace GambleRun
                     if (instance == null)
                     {
                         GameObject obj = new GameObject();
-                        obj.name = typeof(T).Name + "AutoCreated";
+                        obj.name = typeof(T).Name + "_Singleton";
                         instance = obj.AddComponent<T>();
                     }
                 }

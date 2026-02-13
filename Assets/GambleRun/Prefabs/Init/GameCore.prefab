@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4070366635933914801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8509241158631493023}
+  - component: {fileID: 2754067408660887327}
+  - component: {fileID: 3264085172868189672}
+  - component: {fileID: 6412349766758085804}
+  - component: {fileID: 5008067018577564735}
+  m_Layer: 0
+  m_Name: GameCore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8509241158631493023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070366635933914801}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.629161, y: 15.444197, z: -20.532892}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2754067408660887327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070366635933914801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d58b5025df880448b5ba5748e82620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3264085172868189672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070366635933914801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611ac2e27cf75754eab937ed46add9f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameData:
+    PersistanceData:
+      Storages: []
+    SessionData:
+      SceneName: 
+      State: 0
+      Player:
+        <Id>k__BackingField:
+          Part1: 0
+          Part2: 0
+          Part3: 0
+          Part4: 0
+        Position: {x: 0, y: 0, z: 0}
+        RotationEuler: {x: 0, y: 0, z: 0}
+        CurrentVelocity: {x: 0, y: 0, z: 0}
+        OwnedGold: 0
+        CurrentStamina: 0
+        IsExhausted: 0
+        CanRegenStamina: 1
+      Storages: []
+--- !u!114 &6412349766758085804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070366635933914801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcaba5a3ab53ca947908d52371ea0770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5008067018577564735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070366635933914801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 387cc73ef8f284547a6a1fc058aaaba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

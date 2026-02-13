@@ -2,19 +2,13 @@ using System;
 using System.Collections.Generic;
 using GambleRun.Player;
 
-namespace GambleRun.Core
+namespace GambleRun.Persistence
 {
     [Serializable]
     public class GameData
     {
-        public string FileName = "Save";
-        public string CurrentLevelName = "S";
-
-        public PlayerData Player;
-        public List<StorageData> Storages;
-
-        public GamePersistanceData PersistanceData;
-        public GameSessionData SessionData;
+        public GamePersistanceData PersistanceData = new();
+        public GameSessionData SessionData = new();
     }
 
     /// <summary>
@@ -24,21 +18,20 @@ namespace GambleRun.Core
     [Serializable]
     public class GamePersistanceData
     {
-        public List<StorageData> Storages; // 창고, 장비창, 가방 등등
-
-
-    }
-
-    public enum SessionState
-    {
-        New, 
-        Start,
-        End,
+        public List<StorageData> Storages = new(); // 창고, 장비창, 가방 등등
     }
 
     /// <summary>
     /// 게임 세션에 데이터
     /// ex) 전리품상자 아이템, 플레이어 위치와 상태, 몬스터 상태
+    public enum SessionState
+    {
+        New,    // 새로운 게임시작
+        Load,   // 기존 게임 로드
+        Run,    // 게임 진행중
+        End,    // 게임 종료
+    }
+
     /// </summary>
     [Serializable]
     public class GameSessionData
@@ -46,9 +39,9 @@ namespace GambleRun.Core
         public string SceneName; // 씬의 이름
         public SessionState State = SessionState.New;
 
-        public PlayerData Player;
-        public List <StorageData> Storages;
-       
+        public PlayerData Player = new();
+        public List <StorageData> Storages = new();
+
         // TODO : 전리품, 몬스터 등등
     }
 

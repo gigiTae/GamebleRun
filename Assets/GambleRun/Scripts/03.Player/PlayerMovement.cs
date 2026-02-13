@@ -14,6 +14,7 @@ namespace GambleRun.Player
         [SerializeField] private PlayerSettingData _settingData;
         private CharacterController _controller;
         private Camera _mainCamera;
+        private PlayerStamina _stamina;
 
         private PlayerData _data;
         public void SetPlayerData(PlayerData data)
@@ -25,24 +26,20 @@ namespace GambleRun.Player
         [SerializeField] private InputManager _inputManager;
         private DefaultInputAction.GamePlayActions _gamePlayActions;
 
-        public float HorizontalSpeedRatio
-        {
-            get
-            {
-                Vector3 horizontalVelocity = new Vector3(_data.CurrentVelocity.x, 0, _data.CurrentVelocity.z);
-                return horizontalVelocity.magnitude / _settingData.SprintSpeed;
-            }
-        }
-
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
-            _mainCamera = Camera.main;
+            _stamina = GetComponent<PlayerStamina>();
 
             if (_inputManager != null)
             {
                 _gamePlayActions = _inputManager.GamePlayActions;
             }
+        }
+
+        private void Start()
+        {
+            _mainCamera = Camera.main;
         }
 
         void Update()
@@ -89,7 +86,8 @@ namespace GambleRun.Player
             // 6. 스태미나 소모 (실제로 움직이고 있고 달리기 중일 때만)
             if (canSprint && moveInput.sqrMagnitude > 0.01f)
             {
-                //  _data.playerStamina.UseStamina(Time.deltaTime* _settingData.SprintStaminaCost ); // 예시: 초당 소모
+                // TODO : 의존성 제거 할까?
+                _stamina.UseStamina(Time.deltaTime * _settingData.SprintStaminaCost);
             }
         }
 

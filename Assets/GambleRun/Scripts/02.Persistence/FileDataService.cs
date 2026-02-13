@@ -45,7 +45,12 @@ namespace GambleRun.Persistence
 
             if (!File.Exists(fileLocation))
             {
-                throw new ArgumentException($"No persisted GameData with name '{name}'");
+                Debug.Log($"{fileLocation}을 찾을 수 없습니다");
+
+                // C#에서 default 키워드는 해당 타입의 기본값을 의미합니다.
+                // 제네릭(TData)을 사용할 때, 그 타입이 무엇인지 미리 알 수 없으므로
+                // "이 타입이 가질 수 있는 가장 기본 상태의 값을 줘"라고 명령하는 것입니다.
+                return default;
             }
 
             return _serializer.Deserialize<TData>(File.ReadAllText(fileLocation));

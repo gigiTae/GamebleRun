@@ -5,16 +5,12 @@ namespace GambleRun.Core
 {
     public class GameTerminator : MonoBehaviour
     {
-        void Start()
-        {
+        // 1. 게임 종료 요청
 
-        }
+        // 2. 게임 데이터 세이브
 
-        // Update is called once per frame
-        void Update()
-        {
+        // 3.
 
-        }
     }
 
 }

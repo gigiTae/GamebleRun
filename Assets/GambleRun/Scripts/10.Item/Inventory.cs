@@ -53,10 +53,7 @@ namespace GambleRun
                 BindInputAction();
             }
         }
-        private void Start()
-        {
-        }
-
+ 
         private void OnOpenInventoryContext(InputAction.CallbackContext context)
         {
             OpenPlayerPartInventory();

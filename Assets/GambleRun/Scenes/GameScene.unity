@@ -163,9 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78af4a774a8ccd34f84c77fbde24990d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadingScreenPrefab: {fileID: 693100530530108285, guid: f97483268c4d1ce47bbae08e618ca3cb, type: 3}
-  _playerPrefab: {fileID: 8372648607451857808, guid: 52789279617eea6418116fa57652a48e, type: 3}
-  _levelPrefab: {fileID: 83219651671434546, guid: acf5f909cac92bf4fb6811244ad2bf58, type: 3}
+  _initData: {fileID: 11400000, guid: 1bfd20a85806bc043ba3bb9056c9adc4, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
