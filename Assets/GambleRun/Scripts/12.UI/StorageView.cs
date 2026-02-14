@@ -33,8 +33,8 @@ namespace GambleRun.UI
                 _tooltipPanel = _uiDocument.rootVisualElement.Q(_tooltipPanelName);
                 if (_tooltipPanel != null)
                 {
-                    _tooltipTitle = _tooltipPanel.Q<Label>(_tooltipPanelName + "_title_label");
-                    _tooltipDetail = _tooltipPanel.Q<Label>(_tooltipPanelName + "_detail_label");
+                    _tooltipTitle = _tooltipPanel.Q<Label>("tooltip_title_label");
+                    _tooltipDetail = _tooltipPanel.Q<Label>("tooltip_detail_label");
                 }
                 else
                 {
@@ -45,8 +45,8 @@ namespace GambleRun.UI
                 {
                     _slotContainer.RegisterCallback<PointerDownEvent>(OnPointerDown);
                     _slotContainer.RegisterCallback<PointerUpEvent>(OnPointerUp);
-                    _slotContainer.RegisterCallback<PointerEnterEvent>(OnPointerEnterSlot);
-                    _slotContainer.RegisterCallback<PointerLeaveEvent>(OnPointerLeaveSlot);
+                    _slotContainer.RegisterCallback<PointerOverEvent>(OnPointerEnterSlot);
+                    _slotContainer.RegisterCallback<PointerOutEvent>(OnPointerLeaveSlot);
                 }
 
             }
@@ -58,8 +58,8 @@ namespace GambleRun.UI
             {
                 _slotContainer.UnregisterCallback<PointerDownEvent>(OnPointerDown);
                 _slotContainer.UnregisterCallback<PointerUpEvent>(OnPointerUp);
-                _slotContainer.UnregisterCallback<PointerEnterEvent>(OnPointerEnterSlot);
-                _slotContainer.UnregisterCallback<PointerLeaveEvent>(OnPointerLeaveSlot);
+                _slotContainer.UnregisterCallback<PointerOverEvent>(OnPointerEnterSlot);
+                _slotContainer.UnregisterCallback<PointerOutEvent>(OnPointerLeaveSlot);
             }
         }
 
@@ -73,19 +73,35 @@ namespace GambleRun.UI
             PointerUpEvent?.Invoke(evt);
         }
 
-        private void OnPointerEnterSlot(PointerEnterEvent evt)
+        private void OnPointerEnterSlot(PointerOverEvent evt)
         {
 
-            if (_tooltipPanel != null && evt.target is Slot slot)
+            if (_tooltipPanel != null && evt.target is Slot slot && slot.IsVaildSlot()) 
             {
-                Debug.Log("PointerEnter");
+                // 1. 툴팁을 먼저 표시 (표시되어야 위치 계산이 정확해질 수 있음)
                 _tooltipPanel.style.display = DisplayStyle.Flex;
-                _tooltipPanel.style.left = slot.style.right;
-                _tooltipPanel.style.top = slot.style.top;
+
+                // 2. 슬롯의 오른쪽 경계 좌표(xMax) 가져오기
+                // worldBound는 화면상의 절대 좌표를 제공합니다.
+                float slotRightWorld = slot.worldBound.xMax;
+
+                // 3. 부모 좌표계로 변환하여 적용
+                // 슬롯의 오른쪽 끝에서 약간의 여백(예: 5px)을 주고 싶다면 + 5f를 더합니다.
+                Vector2 targetPos = new Vector2(slotRightWorld + 5f, slot.worldBound.yMin);
+
+                // 툴팁의 부모(parent) 공간 기준으로 좌표를 변환합니다.
+                Vector2 localPos = _tooltipPanel.parent.WorldToLocal(targetPos);
+
+                _tooltipPanel.style.left = localPos.x;
+                _tooltipPanel.style.top = localPos.y;
+
+                // tooltip 설정
+                _tooltipTitle.text = slot.Name; 
+                _tooltipDetail.text = slot.Description;
             }
 
         }
-        private void OnPointerLeaveSlot(PointerLeaveEvent evt)
+        private void OnPointerLeaveSlot(PointerOutEvent evt)
         {
             if (_tooltipPanel != null && evt.target is Slot slot)
             {

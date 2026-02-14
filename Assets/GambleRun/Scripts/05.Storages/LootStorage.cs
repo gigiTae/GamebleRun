@@ -83,6 +83,8 @@ namespace GambleRun.Storages
                             itemData.Icon,
                             item.Quantity,
                             i,
+                            itemData.name,
+                            itemData.Description,
                             item.IsIdentified
                         );
 

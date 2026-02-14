@@ -12,12 +12,17 @@ namespace GambleRun
         public uint ItemCount;
         public int SlotIndex;
         public bool IsIdentified;
+        public string Name;
+        public string Description;
 
-        public SlotInit(Sprite icon, uint itemCount, int slotIndex, bool isIdentified = true)
+        public SlotInit(Sprite icon, uint itemCount, int slotIndex,
+           string name, string description, bool isIdentified = true)
         {
             Icon = icon;
             ItemCount = itemCount;
             SlotIndex = slotIndex;
+            Name = name;
+            Description = description;
             IsIdentified = isIdentified;
         }
     }
@@ -28,7 +33,12 @@ namespace GambleRun
         private Image _icon;
         private Label _stackLabel;
         private int _slotIndex = -1;
+        private string _name;
+        private string _description;
+
         public int SlotIndex => _slotIndex;
+        public string Name => _name;
+        public string Description => _description;
 
         public Slot()
         {
@@ -42,7 +52,8 @@ namespace GambleRun
             _stackLabel.pickingMode = PickingMode.Ignore;
             Add(_stackLabel);
 
-            RegisterCallback<GeometryChangedEvent>(evt => {
+            RegisterCallback<GeometryChangedEvent>(evt =>
+            {
                 // 1. 현재 계산된 가로 너비를 가져옵니다.
                 float currentWidth = evt.newRect.width;
 
@@ -54,6 +65,8 @@ namespace GambleRun
         public void Setup(SlotInit data)
         {
             _slotIndex = data.SlotIndex;
+            _name = data.Name;
+            _description = data.Description;
             SetStackLabel(data.ItemCount);
 
             if (data.IsIdentified)
@@ -81,6 +94,11 @@ namespace GambleRun
         {
             _stackLabel.text = itemCounts.ToString();
             _stackLabel.style.display = itemCounts < 2 ? DisplayStyle.None : DisplayStyle.Flex;
+        }
+
+        public bool IsVaildSlot()
+        {
+            return _icon != null && _name != string.Empty;
         }
     }
 }

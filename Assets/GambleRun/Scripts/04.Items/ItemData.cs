@@ -30,7 +30,7 @@ namespace GambleRun.Items
         public string ItemName;
         public int Price = 1;
         public float Weight = 0;
-        public string Descrition;
+        public string Description;
 
         [Header("Stacking")]
         public uint MaxStack = 99;      // 최대 중첩 수

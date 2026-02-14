@@ -27,7 +27,7 @@ namespace GambleRun.Storages
         public void ReleasePointerCallback()
         {
             _view.PointerDownEvent -= OnPointerDown;
-            _view.PointerUpEvent -=OnPointerUp;
+            _view.PointerUpEvent -= OnPointerUp;
         }
 
         public void BindStorageData(StorageData data)
@@ -51,19 +51,15 @@ namespace GambleRun.Storages
 
         private SlotInit CreateSlotInit(Item item, int index)
         {
-            if (item == null)
+            ItemData data = item?.Data;
+
+            if (item == null || data == null)
             {
-                return new SlotInit(null, 0, index, true);
+                return new SlotInit(null, 0, index, string.Empty, string.Empty, true);
             }
 
-            ItemData data = item.Data;
-
-            if (data == null)
-            {
-                return new SlotInit(null, 0, index, true);
-            }
-
-            return new SlotInit(data.Icon, item.Quantity, index, item.IsIdentified);
+            return new SlotInit(data.Icon, item.Quantity, index,
+                data.ItemName, data.Description, item.IsIdentified);
         }
 
         private void OnPointerDown(PointerDownEvent evt)
