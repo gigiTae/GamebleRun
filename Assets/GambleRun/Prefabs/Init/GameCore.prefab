@@ -49,6 +49,7 @@ MonoBehaviour:
   _gameCoreData: {fileID: 11400000, guid: 27c73f18d727dd1448dcd32f7398ea84, type: 2}
   _startEvent: {fileID: 11400000, guid: 6dea6785582dacf4dad7086bd209f2ea, type: 2}
   _exitEvent: {fileID: 11400000, guid: 26e3f2ce84f19df4cbe74af527873024, type: 2}
+  _endSessionEvent: {fileID: 11400000, guid: 49c077fdc7be79747a7a459455082e19, type: 2}
 --- !u!114 &3264085172868189672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,26 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611ac2e27cf75754eab937ed46add9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameData:
-    PersistanceData:
-      Storages: []
-    SessionData:
-      SceneName: 
-      State: 0
-      Player:
-        <Id>k__BackingField:
-          Part1: 0
-          Part2: 0
-          Part3: 0
-          Part4: 0
-        Position: {x: 0, y: 0, z: 0}
-        RotationEuler: {x: 0, y: 0, z: 0}
-        CurrentVelocity: {x: 0, y: 0, z: 0}
-        OwnedGold: 0
-        CurrentStamina: 0
-        IsExhausted: 0
-        CanRegenStamina: 1
-      Storages: []
 --- !u!114 &5008067018577564735
 MonoBehaviour:
   m_ObjectHideFlags: 0

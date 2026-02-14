@@ -1,4 +1,3 @@
-using GambleRun.CameraControl;
 using GambleRun.Event;
 using GambleRun.Persistence;
 using GambleRun.Storages;
@@ -20,6 +19,7 @@ namespace GambleRun.Core
         // Events
         [SerializeField] private RequestStartEvent _startEvent;
         [SerializeField] private RequestExitEvent _exitEvent;
+        [SerializeField] private RequestEndSessionEvent _endSessionEvent;
 
         private void Awake()
         {
@@ -36,6 +36,7 @@ namespace GambleRun.Core
         {
             _startEvent.Subscribe(OnRequestStart);
             _exitEvent.Subscribe(OnRequestExit);
+            _endSessionEvent.Subscribe(OnRequestEndSession);
         }
 
 
@@ -43,11 +44,11 @@ namespace GambleRun.Core
         {
             _startEvent.Unsubscribe(OnRequestStart);
             _exitEvent.Unsubscribe(OnRequestExit);
+            _endSessionEvent.Subscribe(OnRequestEndSession);
         }
 
         public void Initialize(GameMode mode)
         {
-
             // 1. LoadGameData
             _gameData = _serializer.LoadGamData(_gameCoreData.SaveFileName);
 
@@ -70,29 +71,25 @@ namespace GambleRun.Core
                 SetupNewGame();
                 _dataBinder.BindGameData(mode, _gameData);
             }
-
             
             // 4. 씬 정보 저장
             _gameData.SessionData.SceneName = SceneManager.GetActiveScene().name;
         }
 
-        public void OnRequestStart()
+        private void OnRequestStart()
         {
+            Debug.Log("StartGame");
+            
             // -NEW GAME
-            // 1. 게임 정보 저장 
-
             _gameData.SessionData.State = Persistence.SessionState.New;
             _serializer.SaveGame(_gameCoreData.SaveFileName, _gameData);
-
-            // 2. 씬 변경
-            // -LOAD GAME
-
 
             SceneManager.LoadScene(_gameCoreData.InGameScene);
         }
 
-        public void OnRequestExit()
+        private void OnRequestExit()
         {
+            Debug.Log("ExitGame");
             // TODO : 게임 종료 처리
             _serializer.SaveGame(_gameCoreData.SaveFileName, _gameData);
 
@@ -106,10 +103,17 @@ namespace GambleRun.Core
 #endif
         }
 
+        private void OnRequestEndSession()
+        {
+            Debug.Log("EndSession");
+            _gameData.SessionData.State = Persistence.SessionState.End;
+            _serializer.SaveGame(_gameCoreData.SaveFileName, _gameData);
+            SceneManager.LoadScene(_gameCoreData.ReadyScene);
+        }
 
         public void SetupNewGame()
         {
-            // 1. Store 
+            //TODO : 어딘가 깔끔하게 처리하는 클래스 만들자
             foreach (StorageData storage in _gameData.PersistanceData.Storages)
             {
                 switch (storage.Type)

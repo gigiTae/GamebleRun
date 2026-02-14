@@ -1,7 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-
 
 namespace GambleRun.Items
 {
@@ -50,6 +48,7 @@ namespace GambleRun.Items
         }
     }
 
+#if UNITY_EDITOR
     [CustomEditor(typeof(ItemData))] // ItemData 클래스를 위한 커스텀 에디터임을 명시
     public class ItemDataEditor : Editor
     {
@@ -72,4 +71,5 @@ namespace GambleRun.Items
             }
         }
     }
+#endif
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace GambleRun.CameraControl
+namespace GambleRun.Props
 {
     public class CameraFollow : MonoBehaviour
     {
