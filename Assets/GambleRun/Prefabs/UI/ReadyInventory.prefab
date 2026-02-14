@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiDocument: {fileID: 5168009493656682194}
   _storagePanelName: store_panel
+  _tooltipPanelName: 
 --- !u!114 &2726284080647190980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,8 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 08ab855129f536349b0823010daa87fc, type: 2}
   _storeStorage: {fileID: 2726284080647190980}
-  _backpackStorage: {fileID: 0}
-  _equipmentStorage: {fileID: 0}
+  _backpackStorage: {fileID: 3760276528548728319}
+  _equipmentStorage: {fileID: 2441357115700439131}
   _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
   _inventoryOpenEvent: {fileID: 11400000, guid: f04cc50e1ca768b48bc6a6b239925ce3, type: 2}
 --- !u!1001 &1468525460605992595
@@ -205,6 +206,10 @@ PrefabInstance:
       propertyPath: _uiDocument
       value: 
       objectReference: {fileID: 5168009493656682194}
+    - target: {fileID: 5409024219805183751, guid: ca1c116616e769a469bc86305c54da7e, type: 3}
+      propertyPath: _tooltipPanelName
+      value: tooltip_panel
+      objectReference: {fileID: 0}
     - target: {fileID: 6517697208614785402, guid: ca1c116616e769a469bc86305c54da7e, type: 3}
       propertyPath: m_Name
       value: BackpackStorage
@@ -219,6 +224,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3762405973734321998, guid: ca1c116616e769a469bc86305c54da7e, type: 3}
   m_PrefabInstance: {fileID: 1468525460605992595}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3760276528548728319 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2327920877396276076, guid: ca1c116616e769a469bc86305c54da7e, type: 3}
+  m_PrefabInstance: {fileID: 1468525460605992595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567cf9b35ff52ec438d4a2bdbc531952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7505762556291031591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,6 +251,10 @@ PrefabInstance:
       propertyPath: _uiDocument
       value: 
       objectReference: {fileID: 5168009493656682194}
+    - target: {fileID: 3984491037207970224, guid: 0957f94fdd1bda34d9e08f37be83984c, type: 3}
+      propertyPath: _tooltipPanelName
+      value: tooltip_panel
+      objectReference: {fileID: 0}
     - target: {fileID: 7430862359425437200, guid: 0957f94fdd1bda34d9e08f37be83984c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.34966078
@@ -285,3 +305,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7430862359425437200, guid: 0957f94fdd1bda34d9e08f37be83984c, type: 3}
   m_PrefabInstance: {fileID: 7505762556291031591}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2441357115700439131 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5316677600097454716, guid: 0957f94fdd1bda34d9e08f37be83984c, type: 3}
+  m_PrefabInstance: {fileID: 7505762556291031591}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567cf9b35ff52ec438d4a2bdbc531952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

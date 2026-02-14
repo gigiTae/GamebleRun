@@ -1,0 +1,32 @@
+#tooltip_panel {
+    position: absolute;
+    background-color: rgb(28, 28, 28);
+    border-left-width: 2px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-color: rgb(75, 75, 75);
+    border-radius: 3px;
+    padding: 10px;
+    min-width: 180px;
+    max-width: 280px;
+    display: none;
+}
+
+#tooltip_title_label {
+    -unity-font-style: bold;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(100, 100, 100);
+}
+
+#tooltip_detail_label {
+    font-size: 12px;
+    color: rgb(180, 180, 180);
+    white-space: normal;
+    line-height: 1.2;
+    -unity-text-align: upper-left;
+}

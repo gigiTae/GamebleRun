@@ -17,13 +17,17 @@ namespace GambleRun.Storages
             _model = model;
             _view = view;
             _dragDropManager = dragDrop;
-
-            BindPointerCallback();
         }
-        private void BindPointerCallback()
+        public void BindPointerCallback()
         {
             _view.PointerDownEvent += OnPointerDown;
             _view.PointerUpEvent += OnPointerUp;
+        }
+
+        public void ReleasePointerCallback()
+        {
+            _view.PointerDownEvent -= OnPointerDown;
+            _view.PointerUpEvent -=OnPointerUp;
         }
 
         public void BindStorageData(StorageData data)
@@ -61,7 +65,6 @@ namespace GambleRun.Storages
 
             return new SlotInit(data.Icon, item.Quantity, index, item.IsIdentified);
         }
-
 
         private void OnPointerDown(PointerDownEvent evt)
         {

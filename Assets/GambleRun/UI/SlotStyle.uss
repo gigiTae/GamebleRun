@@ -2,22 +2,19 @@
     width: 100px;
     height: 100px;
     margin: 10px;
-
     background-color: rgba(30, 30, 30, 0.8);
-
     border-width: 2px;
-    border-color: #4A4A4A;
+    border-color: rgb(74, 74, 74);
     border-radius: 10px;
 }
 
 .slot:hover {
-    /* 단순 노란색보다는 밝은 금색이나 형광 하늘색이 가시성이 좋습니다 */
-    border-color: #00E5FF; 
+    border-color: rgb(0, 229, 255);
     background-color: rgba(60, 60, 60, 0.9);
 }
 
 .slot:active {
-    border-color: #FFA500;
+    border-color: rgb(255, 165, 0);
     border-width: 3px;
 }
 
@@ -35,16 +32,45 @@
 }
 
 .slot_stack_label {
-    position: absolute; /* 부모인 .slot 기준 절대 위치 */
-     right: 5px;
-    bottom: 3px;       /* 바닥 끝에서 5px 띄움 */
-    
-    /* 텍스트 가독성을 위한 스타일 */
-     color: #FFEB3B;
+    position: absolute;
+    right: 5px;
+    bottom: 3px;
+    color: rgb(255, 235, 59);
     -unity-font-style: bold;
     font-size: 14px;
-
-    /* 외곽선을 조금 더 두껍게 해서 배경색에 상관없이 보이게 함 */
     -unity-text-outline-width: 1.5px;
-    -unity-text-outline-color: #000000;
+    -unity-text-outline-color: rgb(0, 0, 0);
+}
+
+#tooltip_panel {
+    position: absolute;
+    background-color: rgb(28, 28, 28);
+    border-left-width: 2px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-color: rgb(75, 75, 75);
+    border-radius: 3px;
+    padding: 10px;
+    min-width: 180px;
+    max-width: 280px;
+    display: none;
+}
+
+#tooltip_title_label {
+    -unity-font-style: bold;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(100, 100, 100);
+}
+
+#tooltip_detail_label {
+    font-size: 12px;
+    color: rgb(180, 180, 180);
+    white-space: normal;
+    line-height: 1.2;
+    -unity-text-align: upper-left;
 }

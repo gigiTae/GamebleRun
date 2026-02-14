@@ -44,7 +44,7 @@ namespace GambleRun.Core
         {
             _startEvent.Unsubscribe(OnRequestStart);
             _exitEvent.Unsubscribe(OnRequestExit);
-            _endSessionEvent.Subscribe(OnRequestEndSession);
+            _endSessionEvent.Unsubscribe(OnRequestEndSession);
         }
 
         public void Initialize(GameMode mode)

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiDocument: {fileID: 0}
   _storagePanelName: equipment_panel
+  _tooltipPanelName: tooltip_panel
 --- !u!114 &5316677600097454716
 MonoBehaviour:
   m_ObjectHideFlags: 0

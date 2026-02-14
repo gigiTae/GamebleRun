@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiDocument: {fileID: 0}
   _storagePanelName: backpack_panel
+  _tooltipPanelName: tooltip_panel
 --- !u!114 &2327920877396276076
 MonoBehaviour:
   m_ObjectHideFlags: 0

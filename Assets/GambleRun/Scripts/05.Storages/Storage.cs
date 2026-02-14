@@ -17,9 +17,14 @@ namespace GambleRun.Storages
         {
             _model = new StorageModel();
             _presenter = new StoragePresenter(_model, _view, _dragDropManager);
+            _presenter.BindPointerCallback();
         }
 
-        protected virtual void OnDestroy() { }
+        protected virtual void OnDestroy()
+        {
+            _presenter.ReleasePointerCallback();
+        }
+
         public void InitializeStorage(StorageData data)
         {
             data.Type = _type;

@@ -1,5 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/GambleRun/UI/SlotStyle.uss?fileID=7433441132597879392&amp;guid=812804eda4cf6e647bde5c1aeb955299&amp;type=3#SlotStyle" />
+    <Style src="project://database/Assets/GambleRun/UI/Style/TooltipStyle.uss?fileID=7433441132597879392&amp;guid=63d647f98e8b23549a50b93be294bc5a&amp;type=3#TooltipStyle" />
     <ui:VisualElement name="root" style="flex-grow: 1; display: flex; visibility: visible;">
         <ui:VisualElement name="inventory_panel" style="flex-grow: 1; width: auto; height: auto; position: relative; background-color: rgba(0, 0, 0, 0.59); top: auto; margin-top: 5%; margin-bottom: 5%; margin-right: 10%; margin-left: 10%; flex-direction: row; border-top-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px; display: flex;">
             <ui:VisualElement name="loot_panel" style="flex-grow: 0; width: 35%; flex-shrink: 0; display: flex; visibility: visible;">
@@ -15,6 +16,10 @@
                     <ui:Label text="가방" name="backpack_label" style="font-size: 25px; color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
                     <GambleRun.SlotContainer name="backpack_slot_container" />
                 </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="tooltip_panel" picking-mode="Ignore" style="flex-grow: 1; display: none;">
+                <ui:Label text="아이템 이름" name="tooltip_title_label" picking-mode="Ignore" />
+                <ui:Label text="이 아이템은 옛날부터 생각이 없는 인간이 었기때문에 별로 신경쓸 이유가 없습니다." name="tooltip_detail_label" enable-rich-text="true" picking-mode="Ignore" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
