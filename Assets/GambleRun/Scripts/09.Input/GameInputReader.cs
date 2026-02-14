@@ -23,6 +23,7 @@ namespace GambleRun.Input
         private void OnDisable()
         {
             _inputActions?.Disable();
+
         }
     }
 

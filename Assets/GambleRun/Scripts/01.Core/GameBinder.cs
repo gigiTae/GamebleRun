@@ -1,10 +1,11 @@
 using GambleRun.Persistence;
 using GambleRun.Player;
+using GambleRun.Storages;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Playables;
-using GambleRun.Storages;
 
 namespace GambleRun.Core
 {
@@ -27,8 +28,11 @@ namespace GambleRun.Core
 
         private void BindReadyMode(GameData data)
         {
+            GameSessionData sessionData = data.SessionData;
+            GamePersistanceData persistanceData = data.PersistanceData;
 
-
+            // 스토리지 정보 바인딩
+            persistanceData.Storages = Bind<StorageDataBinder, StorageData>(persistanceData.Storages);
         }
 
         /// <summary>
@@ -41,8 +45,6 @@ namespace GambleRun.Core
             if (sessionData.State == SessionState.New)
             {
                 // 게임 시작 정보 가져오기
-
-                // 1. PlayerStorage
 
 
             }
@@ -59,14 +61,14 @@ namespace GambleRun.Core
             // Bind 
             sessionData.Player = Bind<PlayerBinder, PlayerData>(sessionData.Player);
             sessionData.Storages = Bind<StorageDataBinder, StorageData>(sessionData.Storages);
-            
+
             // State
             sessionData.State = SessionState.Run;
         }
 
 
 
-
+        [MustUseReturnValue("반환값은 원본객체에 다시 바인딩이 필요합니다")]
         TData Bind<T, TData>(TData data) where T : MonoBehaviour, IBind<TData> where TData : ISaveable, new()
         {
             var entity = FindObjectsByType<T>(FindObjectsSortMode.None).FirstOrDefault();
@@ -84,6 +86,8 @@ namespace GambleRun.Core
 
             return data;
         }
+
+        [MustUseReturnValue("반환값은 원본객체에 다시 바인딩이 필요합니다")]
         List<TData> Bind<T, TData>(List<TData> datas) where T : MonoBehaviour, IBind<TData> where TData : ISaveable, new()
         {
             var entities = FindObjectsByType<T>(FindObjectsSortMode.None);

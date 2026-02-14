@@ -16,7 +16,6 @@ namespace GambleRun.Core
     public class GameInitData : ScriptableObject
     {
         public GameMode Mode = GameMode.Ready;
-        public string SaveFileName = "Save";
 
         [Header("Prefabs")]
         public GameObject LoadingScreen;

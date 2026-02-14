@@ -20,7 +20,6 @@ namespace GambleRun.Persistence
     public class GamePersistanceData
     {
         public List<StorageData> Storages = new(); // 창고, 장비창, 가방 등등
-
     }
 
     /// <summary>

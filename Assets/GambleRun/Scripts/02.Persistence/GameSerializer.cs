@@ -25,42 +25,21 @@ namespace GambleRun.Persistence
     /// </summary>
     public class GameSerializer : MonoBehaviour
     {
-        [SerializeField] GameData _gameData = new();
-
-        public GameData GameData => _gameData;
-
         private IDataService _dataService;
         private void Awake()
         {
             _dataService = new FileDataService(new JsonSerializer());
         }
 
-        public void Update()
+        public void SaveGame(string FileName, GameData gameData)
         {
-            if (Keyboard.current.zKey.wasPressedThisFrame)
-            {
-                Debug.Log("SaveGame");
-                SaveGame();
-            }
-
-            if (Keyboard.current.xKey.wasPressedThisFrame)
-            {
-                Debug.Log("LoadGame");
-                LoadGamData("Save");
-            }
+            _dataService.Save<GameData>(FileName, gameData);
         }
-
-        public void SaveGame() => _dataService.Save<GameData>("dd", _gameData);
 
         public GameData LoadGamData(string fileName)
         {
             return _dataService.Load<GameData>(fileName);
         }
-
-        //public void ReloadGame() => LoadGame(_gameData.FileName);
-
-        public void DeleteGame(string gameName) => _dataService.Delete(gameName);
-
     }
 
 }

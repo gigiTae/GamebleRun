@@ -3,15 +3,26 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using GambleRun.Items;
+using Unity.Hierarchy;
 
 namespace GambleRun.Storages
 {
+    public enum StorageType
+    {
+        None,
+        Backpack,   // 가방
+        Equipment,  // 장비창
+        Store,      // 창고
+        Loot        // 전리품 상자
+    }
+
     [Serializable]
     public class StorageData : ISaveable
     {
         [field: SerializeField] public SerializableGuid Id { get; set; }
 
         public List<Item> Items = new();
+        public StorageType Type = StorageType.None;
 
         public void SetAllItemsIdentification(bool isIdentified)
         {
@@ -100,13 +111,15 @@ namespace GambleRun.Storages
         //    }
         //}
 
-        //public void ResetStorage(int size)
-        //{
-        //    _items = new List<ItemData>(size);
-        //    for (int i = 0; i < size; i++)
-        //    {
-        //        _items.Add(null);
-        //    }
-        //}
+
+        public void ResetStorage(int size)
+        {
+            Items.Clear();
+
+            for (int i = 0; i < size; i++)
+            {
+                Items.Add(null);
+            }
+        }
     }
 }

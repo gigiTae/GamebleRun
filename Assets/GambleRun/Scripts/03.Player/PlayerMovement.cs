@@ -52,7 +52,7 @@ namespace GambleRun.Player
             // 1. 입력값 읽기
             Vector2 moveInput = _gamePlayActions.Move.ReadValue<Vector2>();
             Vector3 moveDirection = Vector3.zero;
-
+             
             // 2. 입력이 있을 때만 방향 계산 및 회전
             if (moveInput.sqrMagnitude > 0.01f)
             {

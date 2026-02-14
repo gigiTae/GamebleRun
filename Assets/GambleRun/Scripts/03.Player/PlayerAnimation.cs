@@ -65,7 +65,6 @@ namespace GambleRun.Player
             _animator.SetBool(ON_INTERACTION_ID, false);
         }
 
-        // Update is called once per frame
         private void Update()
         {
             UpdateAnimParams();

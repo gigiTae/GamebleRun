@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GameInit
   m_EditorClassIdentifier: 
   Mode: 1
-  SaveFileName: AL
+  SaveFileName: Save
   LoadingScreen: {fileID: 693100530530108285, guid: f97483268c4d1ce47bbae08e618ca3cb, type: 3}
   GameCore: {fileID: 4070366635933914801, guid: c5fe3c1499e5bd14db5cae09797296e2, type: 3}
   Player: {fileID: 8372648607451857808, guid: 52789279617eea6418116fa57652a48e, type: 3}
-  Level: {fileID: 83219651671434546, guid: acf5f909cac92bf4fb6811244ad2bf58, type: 3}
+  Level: {fileID: 83219651671434546, guid: 49dcd614f4fcbfe4bbf9576df6893807, type: 3}

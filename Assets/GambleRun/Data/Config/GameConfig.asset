@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 278312e25e4b2984588f63e8d41d9a80, type: 3}
-  m_Name: InputManager
+  m_Script: {fileID: 11500000, guid: 0de48fd2ded48074ab4a732f6d8c7285, type: 3}
+  m_Name: GameConfig
   m_EditorClassIdentifier: 
-  Mode: 0
-  SaveFileName: Save
-  LoadingScreen: {fileID: 0}
-  GameCore: {fileID: 0}
-  Player: {fileID: 0}
-  Level: {fileID: 0}
+  StoreCapacity: 20
+  BackpackCapacity: 5
+  EquipmentCapacity: 5

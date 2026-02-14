@@ -124,7 +124,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2826543144251836649, guid: 52789279617eea6418116fa57652a48e, type: 3}
   m_PrefabInstance: {fileID: 1967755808}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1399542805
+--- !u!1001 &1227067838
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -132,6 +132,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3629060566796213838, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+      propertyPath: _type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3742290752878863449, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.26261213
@@ -172,9 +176,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5048503389965071348, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+      propertyPath: _type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5177896766551787888, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
       propertyPath: m_Name
       value: Inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404597071613987623, guid: 7c5a7fab0c55cd148bd721f8ac0d5dae, type: 3}
+      propertyPath: _type
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -295,7 +307,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6540713727256706261, guid: 49dcd614f4fcbfe4bbf9576df6893807, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49dcd614f4fcbfe4bbf9576df6893807, type: 3}
@@ -305,4 +318,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 2194693573985542289}
   - {fileID: 1967755808}
-  - {fileID: 1399542805}
+  - {fileID: 1227067838}

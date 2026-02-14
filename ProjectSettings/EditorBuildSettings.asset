@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/GambleRun/Scenes/Build/Ready.unity
+    guid: 1287cf63d7cf8d745b3168d8657679ce
+  - enabled: 1
+    path: Assets/GambleRun/Scenes/Build/GameScene.unity
+    guid: fef03eeb67235f74ebf166ee935793f6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 5b4ffe718faebc94f98d0fc3032cda5f, type: 3}
   m_UseUCBPForAssetBundles: 0

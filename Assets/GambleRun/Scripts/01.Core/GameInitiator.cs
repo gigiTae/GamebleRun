@@ -44,12 +44,15 @@ namespace GambleRun.Core
 
 
             //////////////// Preparation Sector ///////////////
-            _gameCore.Initialize(_initData.Mode, _initData.SaveFileName);
-
+            _gameCore.Initialize(_initData.Mode);
 
 
             // TODO : 카메라 처리하는 클래스 추가
-            BindCamera();
+
+            if (_initData.Mode == GameMode.InGame)
+            {
+                BindCamera();
+            }
 
             /////////////// End Loading ///////////////////////
             _loadingScreenView.CloseLoadingScreen();
@@ -82,7 +85,7 @@ namespace GambleRun.Core
         {
             CameraFollow camera = Camera.main.GetComponent<CameraFollow>();
 
-            if(camera != null)
+            if (camera != null)
             {
                 camera.SetTarget(_player.transform);
             }

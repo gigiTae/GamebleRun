@@ -22,8 +22,6 @@ namespace GambleRun.Items
             {
                 _itemDetailsDictionary.Add(item.Id, item);
             }
-
-            Debug.Log(_itemDetailsDictionary.Count);
         }
 
         public static ItemData GetDetailsById(SerializableGuid id)

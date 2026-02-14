@@ -8,8 +8,8 @@
             </ui:VisualElement>
             <ui:VisualElement name="player_panel" style="flex-grow: 0; width: 65%; flex-shrink: 0;">
                 <ui:VisualElement name="equipment_panel" style="flex-grow: 0; flex-shrink: 0; height: 40%;">
-                    <GambleRun.SlotContainer name="equipment_slot_container" />
                     <ui:Label text="장비" name="equipment_label" style="font-size: 25px; color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+                    <GambleRun.SlotContainer name="equipment_slot_container" />
                 </ui:VisualElement>
                 <ui:VisualElement name="backpack_panel" style="flex-grow: 0; height: 60%; flex-shrink: 0;">
                     <ui:Label text="가방" name="backpack_label" style="font-size: 25px; color: rgb(255, 255, 255); -unity-text-align: upper-center;" />

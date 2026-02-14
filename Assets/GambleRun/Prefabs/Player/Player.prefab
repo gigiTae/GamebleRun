@@ -1463,7 +1463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630cd82199fbfc040b467f3435ec2185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
+  _inputManager: {fileID: 11400000, guid: 2c9fb9d8de0513b42916caa735f5f1c1, type: 2}
 --- !u!65 &4764498916362130577
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settingData: {fileID: 11400000, guid: 9c040e99d79e0a84597673a15bf2ef27, type: 2}
-  _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
+  _inputManager: {fileID: 11400000, guid: 2c9fb9d8de0513b42916caa735f5f1c1, type: 2}
 --- !u!114 &4098965042458391610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1607,7 +1607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c384619e9c25f4682f8efb99e54a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputManager: {fileID: 11400000, guid: 20460978124da6d43895906bf139b253, type: 2}
+  _inputManager: {fileID: 11400000, guid: 2c9fb9d8de0513b42916caa735f5f1c1, type: 2}
   _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
   _inventoryOpenEvent: {fileID: 11400000, guid: f04cc50e1ca768b48bc6a6b239925ce3, type: 2}
 --- !u!114 &6870893794431827239

@@ -1,3 +1,4 @@
+using GambleRun.Event;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,6 +11,9 @@ namespace GambleRun.UI
         private Button _startButton;
         private Button _exitButton;
 
+        // Events
+        [SerializeField] private RequestStartEvent _startEvent;
+        [SerializeField] private RequestExitEvent _exitEvent;
 
         private void OnEnable()
         {
@@ -33,12 +37,12 @@ namespace GambleRun.UI
 
         private void StartGame()
         {
-            Debug.Log("Start");
+            _startEvent.Raise();
         }
 
         private void ExitGame()
         {
-            Debug.Log("End");
+            _exitEvent.Raise();
         }
 
         // Update is called once per frame

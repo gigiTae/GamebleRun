@@ -8,6 +8,8 @@ namespace GambleRun.Storages
     {
         [SerializeField] protected StorageView _view;
         [SerializeField] private DragDropManager _dragDropManager;
+        [SerializeField] private StorageType _type;
+
         private StorageModel _model;
         private StoragePresenter _presenter;
 
@@ -20,14 +22,7 @@ namespace GambleRun.Storages
         protected virtual void OnDestroy() { }
         public void InitializeStorage(StorageData data)
         {
-            if (data.Items.Count == 0)
-            {
-                for (int i = 0; i < 10; ++i)
-                {
-                    data.Items.Add(null);
-                }
-            }
-
+            data.Type = _type;
             _presenter.BindStorageData(data);
         }
 
@@ -40,6 +35,8 @@ namespace GambleRun.Storages
         {
             return _model.Data;
         }
+
+        public StorageType Type => _type;
     }
 
 }
