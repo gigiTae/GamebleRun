@@ -1,4 +1,6 @@
+using UnityEditor;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 
 namespace GambleRun.Items
@@ -45,6 +47,29 @@ namespace GambleRun.Items
         public Item Create(uint quantity)
         {
             return new Item(this, quantity);
+        }
+    }
+
+    [CustomEditor(typeof(ItemData))] // ItemData 클래스를 위한 커스텀 에디터임을 명시
+    public class ItemDataEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            // 기본 인스펙터 속성들을 먼저 출력
+            DrawDefaultInspector();
+
+            ItemData data = (ItemData)target;
+
+            // 아이콘이 있을 경우에만 미리보기 출력
+            if (data.Icon != null)
+            {
+                EditorGUILayout.Space(10);
+                EditorGUILayout.LabelField("Icon Preview", EditorStyles.boldLabel);
+
+                // 이미지의 텍스처를 가져와서 박스 안에 출력
+                Rect rect = GUILayoutUtility.GetRect(100, 100); // 미리보기 크기 설정
+                GUI.DrawTexture(rect, data.Icon.texture, ScaleMode.ScaleToFit);
+            }
         }
     }
 }

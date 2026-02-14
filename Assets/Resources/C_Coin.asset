@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe5ff79eeab86944acdcea0ccf5baae, type: 3}
   m_Name: C_Coin
   m_EditorClassIdentifier: 
+  Id:
+    Part1: 1792535652
+    Part2: 1304681069
+    Part3: 4150786696
+    Part4: 1479789675
   ItemName: Coin
   Price: 10
   Weight: 1
-  Count: 1
+  Descrition: 
+  MaxStack: 99
   Icon: {fileID: 21300000, guid: 0b6ba6a8ab04194498edeafa3c23dad3, type: 3}
   Rarity: 1
+  Type: 4

@@ -47,6 +47,7 @@ namespace GambleRun.Core
 
         public void Initialize(GameMode mode)
         {
+
             // 1. LoadGameData
             _gameData = _serializer.LoadGamData(_gameCoreData.SaveFileName);
 
@@ -69,15 +70,19 @@ namespace GambleRun.Core
                 SetupNewGame();
                 _dataBinder.BindGameData(mode, _gameData);
             }
+
+            
+            // 4. 씬 정보 저장
+            _gameData.SessionData.SceneName = SceneManager.GetActiveScene().name;
         }
 
         public void OnRequestStart()
         {
-            Debug.Log("Start");
-
             // -NEW GAME
             // 1. 게임 정보 저장 
 
+            _gameData.SessionData.State = Persistence.SessionState.New;
+            _serializer.SaveGame(_gameCoreData.SaveFileName, _gameData);
 
             // 2. 씬 변경
             // -LOAD GAME
@@ -100,6 +105,7 @@ namespace GambleRun.Core
             Application.Quit();
 #endif
         }
+
 
         public void SetupNewGame()
         {

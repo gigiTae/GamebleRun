@@ -3,6 +3,7 @@ using GambleRun.Player;
 using GambleRun.Storages;
 using JetBrains.Annotations;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -42,30 +43,24 @@ namespace GambleRun.Core
         {
             GameSessionData sessionData = data.SessionData;
 
+            sessionData.Player = Bind<PlayerBinder, PlayerData>(sessionData.Player);
+            // Bind 
             if (sessionData.State == SessionState.New)
             {
-                // 게임 시작 정보 가져오기
-
-
+                sessionData.Storages = Bind<StorageDataBinder, StorageData>(data.PersistanceData.Storages);
             }
             else if (sessionData.State == SessionState.Load)
             {
-
+                sessionData.Storages = Bind<StorageDataBinder, StorageData>(sessionData.Storages);
             }
             else
             {
                 Debug.LogWarning("Session State Assert");
             }
 
-
-            // Bind 
-            sessionData.Player = Bind<PlayerBinder, PlayerData>(sessionData.Player);
-            sessionData.Storages = Bind<StorageDataBinder, StorageData>(sessionData.Storages);
-
             // State
             sessionData.State = SessionState.Run;
         }
-
 
 
         [MustUseReturnValue("반환값은 원본객체에 다시 바인딩이 필요합니다")]
@@ -112,3 +107,48 @@ namespace GambleRun.Core
         }
     }
 }
+
+
+// Temp
+//var persistanceStorages = data.PersistanceData.Storages;
+//var sessionStorages = sessionData.Storages;
+
+//StorageData persistanceBackpack = null;
+//StorageData persistanceEquipment = null;
+
+//StorageData sessionBackpack = null;
+//StorageData sessionEpuipment = null;
+
+//foreach(var persistanceStorage in persistanceStorages)
+//{
+//    if (persistanceStorage.Type == StorageType.Backpack)
+//    {
+//        persistanceBackpack = persistanceStorage;
+//    }
+//    else if(persistanceStorage.Type == StorageType.Equipment)
+//    {
+//        persistanceEquipment = persistanceStorage;
+//    }
+//}
+
+//foreach (var sessionStorage in sessionStorages)
+//{
+//    if (sessionStorage.Type == StorageType.Backpack)
+//    {
+//        sessionBackpack = sessionStorage;
+//    }
+//    else if (sessionStorage.Type == StorageType.Equipment)
+//    {
+//        sessionEpuipment = sessionStorage;
+//    }
+//}
+
+//if(persistanceBackpack !=null && sessionBackpack !=null)
+//{
+
+//}
+
+//if (persistanceEquipment != null && sessionEpuipment != null)
+//{
+
+//}

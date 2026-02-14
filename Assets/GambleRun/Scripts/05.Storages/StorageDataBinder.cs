@@ -26,10 +26,6 @@ namespace GambleRun.Storages
         {
             if (_storage != null)
             {
-                Debug.Log($"ID Class: {Id.Part1}{Id.Part2}{Id.Part3}{Id.Part4}");
-                Debug.Log($"ID In: {data.Id.Part1}{data.Id.Part2}{data.Id.Part3}{data.Id.Part4}");
-
-
                 // 데이터의 ID를 Binder의 ID와 일치시켜 데이터 무결성을 보장합니다.
                 data.Id = Id;
 

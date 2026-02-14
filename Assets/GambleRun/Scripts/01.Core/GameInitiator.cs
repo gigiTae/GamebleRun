@@ -54,6 +54,7 @@ namespace GambleRun.Core
                 BindCamera();
             }
 
+            System.GC.Collect();
             /////////////// End Loading ///////////////////////
             _loadingScreenView.CloseLoadingScreen();
 
