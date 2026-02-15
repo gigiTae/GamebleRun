@@ -6,13 +6,12 @@ namespace GambleRun.Storages
 {
     public class Storage : MonoBehaviour
     {
-        [SerializeField] protected StorageView _view;
+        [SerializeField] private StorageView _view;
         [SerializeField] private DragDropManager _dragDropManager;
         [SerializeField] private StorageType _type;
 
         private StorageModel _model;
-        private StoragePresenter _presenter;
-
+        protected StoragePresenter _presenter;
         protected virtual void Awake()
         {
             _model = new StorageModel();

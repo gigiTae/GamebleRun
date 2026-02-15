@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using GambleRun.Manager;
+using GambleRun.Items;
 
 namespace GambleRun
 {
@@ -14,9 +15,10 @@ namespace GambleRun
         public bool IsIdentified;
         public string Name;
         public string Description;
+        public ItemRarity Rarity;
 
         public SlotInit(Sprite icon, uint itemCount, int slotIndex,
-           string name, string description, bool isIdentified = true)
+           string name, string description, ItemRarity rarity = ItemRarity.None, bool isIdentified = true)
         {
             Icon = icon;
             ItemCount = itemCount;
@@ -24,6 +26,7 @@ namespace GambleRun
             Name = name;
             Description = description;
             IsIdentified = isIdentified;
+            Rarity = rarity;
         }
     }
 
@@ -35,6 +38,7 @@ namespace GambleRun
         private int _slotIndex = -1;
         private string _name;
         private string _description;
+        private ItemRarity _rarity;
 
         public int SlotIndex => _slotIndex;
         public string Name => _name;
@@ -50,6 +54,7 @@ namespace GambleRun
             _stackLabel = new Label();
             _stackLabel.AddToClassList("slot_stack_label");
             _stackLabel.pickingMode = PickingMode.Ignore;
+
             Add(_stackLabel);
 
             RegisterCallback<GeometryChangedEvent>(evt =>
@@ -67,6 +72,7 @@ namespace GambleRun
             _slotIndex = data.SlotIndex;
             _name = data.Name;
             _description = data.Description;
+            _rarity = data.Rarity;
             SetStackLabel(data.ItemCount);
 
             if (data.IsIdentified)
@@ -88,6 +94,11 @@ namespace GambleRun
         {
             _icon.sprite = icon;
             _icon.style.display = icon == null ? DisplayStyle.None : DisplayStyle.Flex;
+        }
+
+        public void SetIconVisibilty(bool isVisible)
+        {
+            _icon.style.visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void SetStackLabel(uint itemCounts)

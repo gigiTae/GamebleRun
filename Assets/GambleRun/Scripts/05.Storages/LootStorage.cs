@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using GambleRun.Event;
 using GambleRun.Items;
+using Unity.VisualScripting;
 
 namespace GambleRun.Storages
 {
@@ -76,19 +77,8 @@ namespace GambleRun.Storages
                     yield return _identifyDelayWait;
 
                     if (item == null) continue;
-                    ItemData itemData = item.Data;
                     item.IsIdentified = true;
-
-                    SlotInit initData = new(    
-                            itemData.Icon,
-                            item.Quantity,
-                            i,
-                            itemData.name,
-                            itemData.Description,
-                            item.IsIdentified
-                        );
-
-                    _view.RefreshSlot(i, initData);
+                    _presenter.SetItem(item, i);
                 }
             }
 

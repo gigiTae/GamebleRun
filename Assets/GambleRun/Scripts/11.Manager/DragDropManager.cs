@@ -2,6 +2,7 @@ using UnityEngine;
 
 using GambleRun.Items;
 using GambleRun.Storages;
+using System;
 
 namespace GambleRun.Manager
 {
@@ -12,24 +13,42 @@ namespace GambleRun.Manager
         private bool _isDragging = false;
         private StoragePresenter _startPresenter;
         private int _startItemIndex = -1;
+        private Slot _drageSlot;
+
         public bool IsDragging => _isDragging;
+        public Sprite GetDragIcon()
+        {
+            return _startPresenter.GetItemIcon(_startItemIndex);
+        }
+
+        public Action<bool> OnDragStateChanged;
+
         private void OnEnable()
         {
             ResetState();
         }
 
-        public void BeginDragDrop(StoragePresenter presenter, int itemIndex)
+        public void RequestBeginDragDrop(StoragePresenter presenter, int itemIndex, Slot drageSlot)
         {
             if (presenter == null || presenter.GetItem(itemIndex) == null) return;
 
             _isDragging = true;
             _startItemIndex = itemIndex;
             _startPresenter = presenter;
+            _drageSlot = drageSlot;
+            _drageSlot.SetIconVisibilty(false);
+
+            OnDragStateChanged?.Invoke(_isDragging);
         }
 
-        public void EndDragDrop(StoragePresenter endPresenter, int endItemIndex)
+        public void RequestEndDragDrop(StoragePresenter endPresenter, int endItemIndex)
         {
-            if (!_isDragging || endPresenter == null)
+            if (!_isDragging) return;
+
+            _drageSlot.SetIconVisibilty(true);
+            _drageSlot = null;
+
+            if (endPresenter == null)
             {
                 ResetState();
                 return;
@@ -82,7 +101,10 @@ namespace GambleRun.Manager
             _isDragging = false;
             _startPresenter = null;
             _startItemIndex = -1;
+
+            OnDragStateChanged?.Invoke(_isDragging);
         }
+
     }
 }
 

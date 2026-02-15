@@ -18,16 +18,19 @@ namespace GambleRun.Storages
             _view = view;
             _dragDropManager = dragDrop;
         }
+
         public void BindPointerCallback()
         {
             _view.PointerDownEvent += OnPointerDown;
             _view.PointerUpEvent += OnPointerUp;
+            _view.RootPointerUpEvent += OnRootPointerUp;
         }
 
         public void ReleasePointerCallback()
         {
             _view.PointerDownEvent -= OnPointerDown;
             _view.PointerUpEvent -= OnPointerUp;
+            _view.RootPointerUpEvent -= OnRootPointerUp;
         }
 
         public void BindStorageData(StorageData data)
@@ -53,22 +56,48 @@ namespace GambleRun.Storages
         {
             ItemData data = item?.Data;
 
-            if (item == null || data == null)
+            if (!Item.IsValid(item))
             {
-                return new SlotInit(null, 0, index, string.Empty, string.Empty, true);
+                return new SlotInit(null,
+                    0,
+                    index,
+                    string.Empty,
+                    string.Empty,
+                    ItemRarity.None,
+                    true);
             }
 
             return new SlotInit(data.Icon, item.Quantity, index,
-                data.ItemName, data.Description, item.IsIdentified);
+                data.ItemName, data.Description, data.Rarity, item.IsIdentified);
         }
 
         private void OnPointerDown(PointerDownEvent evt)
         {
+            // 드래그 드랍 시작
             // evt.target : 실제로 이벤트를 발생시킨 가장 깊은 곳의 자식 요소.
             // evt.currentTarget: 이벤트를 처리하고 있는 현재 요소.
             if (evt.target is Slot clickedSlot && CanBeginDrag(clickedSlot))
             {
-                _dragDropManager.BeginDragDrop(this, clickedSlot.SlotIndex);
+                _dragDropManager.RequestBeginDragDrop(this, clickedSlot.SlotIndex, clickedSlot);
+            }
+        }
+
+        private void OnPointerUp(PointerUpEvent evt)
+        {
+            // 드래그 드랍 성공
+            if (evt.target is Slot dropSlot && _dragDropManager.IsDragging)
+            {
+                _dragDropManager.RequestEndDragDrop(this, dropSlot.SlotIndex);
+                evt.StopPropagation();
+            }
+        }
+
+        private void OnRootPointerUp(PointerUpEvent evt)
+        {
+            // 드래그 드랍 중지
+            if (_dragDropManager.IsDragging)
+            {
+                _dragDropManager.RequestEndDragDrop(null, 0);
             }
         }
 
@@ -84,13 +113,6 @@ namespace GambleRun.Storages
             return true;
         }
 
-        private void OnPointerUp(PointerUpEvent evt)
-        {
-            if (evt.target is Slot dropSlot)
-            {
-                _dragDropManager.EndDragDrop(this, dropSlot.SlotIndex);
-            }
-        }
 
         public void SetItem(Item item, int index)
         {
@@ -107,6 +129,16 @@ namespace GambleRun.Storages
         public void SetVisible(bool isVisible)
         {
             _view.SetVisible(isVisible);
+        }
+
+        public Sprite GetItemIcon(int itemIndex)
+        {
+            var items = _model?.Data?.Items;
+            if (items == null) return null;
+
+            if (itemIndex < 0 || itemIndex >= items.Count) return null;
+
+            return items[itemIndex]?.Data?.Icon;
         }
 
     }

@@ -10,7 +10,8 @@ namespace GambleRun.Items
         Uncommon,
         Rare,
         Epic,
-        Legendary
+        Legendary,
+        None
     }
     public enum ItemType
     {
@@ -30,6 +31,7 @@ namespace GambleRun.Items
         public string ItemName;
         public int Price = 1;
         public float Weight = 0;
+        [TextArea(3, 10),Tooltip("아이템 상세설명")]
         public string Description;
 
         [Header("Stacking")]

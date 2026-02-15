@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 3742290752878863449}
   - component: {fileID: 2377742767382843412}
   - component: {fileID: -5928066272835909094}
+  - component: {fileID: 4903971183617789848}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -140,6 +141,21 @@ MonoBehaviour:
   _lootCloseEvent: {fileID: 11400000, guid: 0fac2a6d48aea23419113a7c047f748a, type: 2}
   _inventoryCloseEvent: {fileID: 11400000, guid: 4d302f775f1c23343b1d97030822fc2d, type: 2}
   _inventoryOpenEvent: {fileID: 11400000, guid: f04cc50e1ca768b48bc6a6b239925ce3, type: 2}
+--- !u!114 &4903971183617789848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177896766551787888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 710f42e26132d8e4ca21d3a751cae76b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manager: {fileID: 11400000, guid: a6f6b7a73d12d1f4c896bd93eb7f1f5f, type: 2}
+  _uiDocument: {fileID: 2377742767382843412}
+  _iconSize: {x: 100, y: 100}
 --- !u!1001 &2280589950316783576
 PrefabInstance:
   m_ObjectHideFlags: 0

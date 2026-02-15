@@ -1,4 +1,6 @@
+using GambleRun.Config;
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -18,9 +20,9 @@ namespace GambleRun.UI
         private Label _tooltipTitle;
         private Label _tooltipDetail;
 
-
         public event Action<PointerDownEvent> PointerDownEvent;
         public event Action<PointerUpEvent> PointerUpEvent;
+        public event Action<PointerUpEvent> RootPointerUpEvent;
 
         private void OnEnable()
         {
@@ -47,6 +49,8 @@ namespace GambleRun.UI
                     _slotContainer.RegisterCallback<PointerUpEvent>(OnPointerUp);
                     _slotContainer.RegisterCallback<PointerOverEvent>(OnPointerEnterSlot);
                     _slotContainer.RegisterCallback<PointerOutEvent>(OnPointerLeaveSlot);
+
+                    _uiDocument.rootVisualElement.RegisterCallback<PointerUpEvent>(OnRootPointerUp);
                 }
 
             }
@@ -60,6 +64,8 @@ namespace GambleRun.UI
                 _slotContainer.UnregisterCallback<PointerUpEvent>(OnPointerUp);
                 _slotContainer.UnregisterCallback<PointerOverEvent>(OnPointerEnterSlot);
                 _slotContainer.UnregisterCallback<PointerOutEvent>(OnPointerLeaveSlot);
+
+                _uiDocument.rootVisualElement.UnregisterCallback<PointerUpEvent>(OnRootPointerUp);
             }
         }
 
@@ -73,10 +79,14 @@ namespace GambleRun.UI
             PointerUpEvent?.Invoke(evt);
         }
 
+        private void OnRootPointerUp(PointerUpEvent evt)
+        {
+            RootPointerUpEvent?.Invoke(evt);
+        }
+
         private void OnPointerEnterSlot(PointerOverEvent evt)
         {
-
-            if (_tooltipPanel != null && evt.target is Slot slot && slot.IsVaildSlot()) 
+            if (_tooltipPanel != null && evt.target is Slot slot && slot.IsVaildSlot())
             {
                 // 1. 툴팁을 먼저 표시 (표시되어야 위치 계산이 정확해질 수 있음)
                 _tooltipPanel.style.display = DisplayStyle.Flex;
@@ -96,16 +106,14 @@ namespace GambleRun.UI
                 _tooltipPanel.style.top = localPos.y;
 
                 // tooltip 설정
-                _tooltipTitle.text = slot.Name; 
+                _tooltipTitle.text = slot.Name;
                 _tooltipDetail.text = slot.Description;
             }
-
         }
         private void OnPointerLeaveSlot(PointerOutEvent evt)
         {
             if (_tooltipPanel != null && evt.target is Slot slot)
             {
-                Debug.Log("PointerLeave");
                 _tooltipPanel.style.display = DisplayStyle.None;
             }
         }
@@ -129,6 +137,5 @@ namespace GambleRun.UI
         {
             _slotContainer.ClearContainer();
         }
-
     }
 }
